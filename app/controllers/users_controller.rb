@@ -2,11 +2,19 @@ class UsersController < ApplicationController
     rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
     skip_before_action :authorize, only: :create
 
+    def index
+        if @user
+            render json: User.all, status: :ok
+        else 
+            render json: { error: "You must log in or sign up to view this page." }, status: :unauthorized
+        end
+    end
+
     def show
         if @user
             render json: @user, status: :ok
         else 
-            render json: { error: "Not authorized" }, status: :unauthorized
+            render json: { error: "You must log in or sign up to view this page." }, status: :unauthorized
         end
     end
 
@@ -32,6 +40,10 @@ class UsersController < ApplicationController
         else
             render json: { error: "You may only delete your own account!" }, status: :unauthorized
         end
+    end
+
+    def users_who_liked
+        # code here for users who liked the post 
     end
 
     private
