@@ -1,7 +1,151 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+require 'faker'
+
+puts "🌱 Seeding data..."
+
+User.create(
+    profile_picture: "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/f/fd/SharonNeedlesS4CastMug.jpg/revision/latest?cb=20210901183314",
+    name: "Sharon Needles",
+    username: ,
+    bio: Faker::TvShows::RuPaul.quote,
+    password: "password",
+    password_confirmation: "password"
+)
+User.create(
+    profile_picture: "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/e/ea/ChadMichaelsS4CastMug.jpg/revision/latest?cb=20210901182655",
+    name: "Chad Michaels",
+    username: ,
+    bio: Faker::TvShows::RuPaul.quote,
+    password: "password",
+    password_confirmation: "password"
+)
+User.create(
+    profile_picture: "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/4/46/PhiPhiO%27HaraS4CastMug.jpg/revision/latest?cb=20210901183241",
+    name: "Phi Phi O'Hara",
+    username: ,
+    bio: Faker::TvShows::RuPaul.quote,
+    password: "password",
+    password_confirmation: "password"
+)
+User.create(
+    profile_picture: "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/7/7a/LatriceRoyaleS4CastMug.jpg/revision/latest?cb=20210901184848",
+    name: "Latrice Royale",
+    username: ,
+    bio: Faker::TvShows::RuPaul.quote,
+    password: "password",
+    password_confirmation: "password"
+)
+User.create(
+    profile_picture: "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/b/b4/JinkxMonsoonS5CastMug.jpg/revision/latest?cb=20210901194046",
+    name: "Jinx Monsoon",
+    username: ,
+    bio: Faker::TvShows::RuPaul.quote,
+    password: "password",
+    password_confirmation: "password"
+)
+User.create(
+    profile_picture: "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/8/8e/AlaskaS5CastMug.jpg/revision/latest?cb=20210901193454",
+    name: "Alaska",
+    username: ,
+    bio: Faker::TvShows::RuPaul.quote,
+    password: "password",
+    password_confirmation: "password"
+)
+User.create(
+    profile_picture: "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/9/96/DetoxS5CastMug.jpg/revision/latest?cb=20210901193714",
+    name: "Detox",
+    username: ,
+    bio: Faker::TvShows::RuPaul.quote,
+    password: "password",
+    password_confirmation: "password"
+)
+User.create(
+    profile_picture: "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/4/45/AlyssaEdwardsS5CastMug.jpg/revision/latest?cb=20210901193559",
+    name: "Alyssa Edwards",
+    username: ,
+    bio: Faker::TvShows::RuPaul.quote,
+    password: "password",
+    password_confirmation: "password"
+)
+User.create(
+    profile_picture: "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/7/7a/BiancaS6Promo.jpg/revision/latest?cb=20200506043328",
+    name: "Bianca Del Rio",
+    username: ,
+    bio: Faker::TvShows::RuPaul.quote,
+    password: "password",
+    password_confirmation: "password"
+)
+User.create(
+    profile_picture: "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/d/df/AdoreS6Promo.jpg/revision/latest?cb=20141201013826",
+    name: "Adore Delano",
+    username: ,
+    bio: Faker::TvShows::RuPaul.quote,
+    password: "password",
+    password_confirmation: "password"
+)
+User.create(
+    profile_picture: "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/1/19/CourtneyS6Promo.png/revision/latest?cb=20141201013826",
+    name: "Courtney Act",
+    username: ,
+    bio: Faker::TvShows::RuPaul.quote,
+    password: "password",
+    password_confirmation: "password"
+)
+User.create(
+    profile_picture: "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/8/8f/BenDeLaCremeS6Promo.jpg/revision/latest?cb=20230725021516",
+    name: "BenDeLaCreme",
+    username: ,
+    bio: Faker::TvShows::RuPaul.quote,
+    password: "password",
+    password_confirmation: "password"
+)
+User.create(
+    profile_picture: "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/a/ab/Violet_Chachki.jpg/revision/latest?cb=20200909033256",
+    name: "Violet Chachki",
+    username: ,
+    bio: Faker::TvShows::RuPaul.quote,
+    password: "password",
+    password_confirmation: "password"
+)
+User.create(
+    profile_picture: "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/f/f5/Ginger_Minj.jpg/revision/latest?cb=20141208032655",
+    name: "Ginger Minj",
+    username: ,
+    bio: Faker::TvShows::RuPaul.quote,
+    password: "password",
+    password_confirmation: "password"
+)
+User.create(
+    profile_picture: "https://static.wikia.nocookie.net/logosrupaulsdragrace/images/b/b2/Katya.jpg/revision/latest?cb=20141208032805",
+    name: "Katya",
+    username: ,
+    bio: Faker::TvShows::RuPaul.quote,
+    password: "password",
+    password_confirmation: "password"
+)
+
+40.times do
+    Post.create(
+        location: Faker::Address.country,
+        image: ,
+        caption: Faker::TvShows::RuPaul.quote,
+        user_id: rand(1..15)
+    )
+end
+
+150.times do
+    Comment.create(
+        comment: Faker::TvShows::RuPaul.quote,
+        user_id: rand(1..15),
+        post_id: rand(1..40)
+    )
+end
+
+300.times do
+    Like.create(
+        post_id: rand(1..40),
+        user_id: rand(1..15)
+    )
+end
+
+
+puts "✅ Done seeding!"
