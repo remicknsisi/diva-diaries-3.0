@@ -25,12 +25,8 @@ class UsersController < ApplicationController
     end
 
     def update
-        if @user
-            @user.update!(user_params)
-            render json: @user, status: :ok
-        else
-            render json: {error: "You must be logged in to update your account!"}, status: :unprocessable_entity
-        end
+        @user.update!(user_params)
+        render json: @user, status: :ok
     end
 
     def destroy
