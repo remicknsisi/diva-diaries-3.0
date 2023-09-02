@@ -1,13 +1,17 @@
 class UsersController < ApplicationController
     rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
-    skip_before_action :authorize, only: :create
+    # skip_before_action :authorize, only: :create
+    skip_before_action :authorize, only: :index
+
 
     def index
-        if @user
-            render json: User.all, status: :ok
-        else 
-            render json: { error: "You must log in or sign up to view this page." }, status: :unauthorized
-        end
+        # if @user
+        #     render json: User.all, status: :ok
+        # else 
+        #     render json: { error: "You must log in or sign up to view this page." }, status: :unauthorized
+        # end
+
+        render json: User.all, status: :ok
     end
 
     def show
