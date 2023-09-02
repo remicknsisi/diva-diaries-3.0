@@ -3,5 +3,5 @@ class Post < ApplicationRecord
     has_many :likes
     has_many :comments
 
-    validates: image, presence: true
+    # validates: image, presence: true
 end
