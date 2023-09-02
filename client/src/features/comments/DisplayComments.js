@@ -18,8 +18,6 @@ function DisplayComments({ id }) {
     <Comment key={c.id} comment={c}/>
   ))
 
-      //want to render comments whose post_id matches the post's id it apepars on
-
   return (
     <div>
       {commentsList}
@@ -28,3 +26,5 @@ function DisplayComments({ id }) {
 }
 
 export default DisplayComments;
+
+// want to display comments in order of most recent

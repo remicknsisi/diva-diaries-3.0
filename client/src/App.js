@@ -1,10 +1,12 @@
 import './App.css';
-import Users from './features/users/DisplayUsers';
+import Users from './features/users/DisplayUser';
 import { Route, Routes } from "react-router-dom";
-import DisplayUsers from './features/users/DisplayUsers';
+import DisplayUser from './features/users/DisplayUser';
 import Login from './features/Login';
 import Signup from './features/Signup';
 import DisplayPosts from './features/posts/DisplayPosts';
+import User from './features/users/UserDetails';
+import UserDetails from './features/users/UserDetails';
 
 function App() {
   return (
@@ -14,7 +16,7 @@ function App() {
         <Routes>
           {/* <Route path="/" element={<DisplayUsers/>}/> */}
           <Route path="/" element={<DisplayPosts/>}/>
-
+          <Route path="/users/:id" element={<UserDetails/>}/>
           <Route path="/signup" element={<Signup/>}/>
           <Route path="/login" element={<Login/>}/>
         </Routes>

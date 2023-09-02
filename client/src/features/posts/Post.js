@@ -9,7 +9,7 @@ function Post({ post }) {
     <div class="post">
         <div class="post-header">
             <img class="profile-picture" src={user.profile_picture} alt="Profile Picture"/>
-            <a class="username" href="#">{user.username}</a>
+            <a class="username" href={`/users/${user.id}`}>{user.username}</a>
         </div>
         <div class="post-location">
             <i class="fas fa-map-marker"></i>
