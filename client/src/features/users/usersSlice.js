@@ -19,7 +19,7 @@ const initialState = {
   status: "idle"
 };
 
-export default function UsersReducer(state = initialState, action) {
+export default function usersReducer(state = initialState, action) {
   switch (action.type) {
     case "users/add":
       return [...state, action.payload];

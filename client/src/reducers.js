@@ -3,8 +3,8 @@ import usersReducer from "./features/users/usersSlice";
 import likesReducer from "./features/likes/likesSlice";
 
 const rootReducer = combineReducers({
-  users: usersReducer,
-  likes: likesReducer,
+  users: usersReducer
+//   likes: likesReducer,
 });
 
 export default rootReducer;

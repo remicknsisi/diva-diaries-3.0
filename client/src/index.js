@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore, applyMiddleware } from "redux";
+import { BrowserRouter } from "react-router-dom";
+import { applyMiddleware } from "redux";
+import { configureStore } from "@reduxjs/toolkit";
 import thunkMiddleware from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 import rootReducer from "./reducers.js";
@@ -10,11 +12,15 @@ import App from './App';
 
 const composedEnhancer = composeWithDevTools(applyMiddleware(thunkMiddleware));
 
-const store = createStore(rootReducer, composedEnhancer);
+const store = configureStore({
+  reducer: rootReducer
+}, composedEnhancer);
 
 ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
+  <BrowserRouter>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </BrowserRouter>,
   document.getElementById("root")
 );
