@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 function Post({ post }) {
-    const { location, caption, image, user_id, user } = post
+    const { location, caption, image, user_id, user, comments, created_at } = post
     console.log(post)
 
   return (
@@ -29,7 +29,7 @@ function Post({ post }) {
             <a class="username" href="#">{user.username}</a>
             <span class="caption-text"> {caption}</span>
         </div>
-        {/* <div class="post-comments">
+        <div class="post-comments">
             <ul>
             <li>
                 <a class="username" href="#">commenter1</a>
@@ -42,8 +42,8 @@ function Post({ post }) {
             </ul>
         </div>
         <div class="post-timestamp">
-            <span>2 hours ago</span>
-        </div> */}
+            <span>{created_at}</span>
+        </div>
     </div>
   );
 }
