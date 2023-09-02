@@ -75,3 +75,72 @@
   margin-top: 8px;
   color: #888;
 }
+
+body, h1, p, ul, li {
+  margin: 0;
+  padding: 0;
+}
+
+/* Set a background color and font family */
+body {
+  background-color: #fafafa;
+  font-family: Arial, sans-serif;
+}
+
+/* Header styles */
+header {
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.profile-picture {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-right: 16px;
+}
+
+.username {
+  font-size: 24px;
+  font-weight: bold;
+  color: #262626;
+}
+
+.bio {
+  font-size: 16px;
+  color: #666;
+}
+
+/* User posts section */
+.user-posts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  padding: 16px;
+}
+
+.post {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.post img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Footer styles */
+footer {
+  background-color: #fff;
+  padding: 16px;
+  border-top: 1px solid #e0e0e0;
+  text-align: center;
+  font-size: 14px;
+  color: #666;
+}

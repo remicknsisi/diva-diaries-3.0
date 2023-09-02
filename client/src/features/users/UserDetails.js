@@ -19,7 +19,25 @@ function UserDetails() {
 
   if (userToDisplay){return (
     <div>
-      this is {userToDisplay.name}
+      <head>
+        <title>Instagram User Page</title>
+      </head>
+    <body>
+    <header>
+      <img class="profile-picture" src={userToDisplay.profile_picture} alt="User Profile Picture"/>
+      <div class="user-info">
+        <h1 class="username">{userToDisplay.username}</h1>
+        <p class="bio">{userToDisplay.bio}</p>
+      </div>
+    </header>
+      <section class="user-posts">
+          {/* <div class="post">
+            <img src="post1.jpg" alt="Post 1">
+          </div> */}
+      </section>
+      <footer>
+      </footer>
+    </body>
     </div>
   );
   } else { return (

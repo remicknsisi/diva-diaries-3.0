@@ -11,8 +11,8 @@ import UserDetails from './features/users/UserDetails';
 function App() {
   return (
     <div className="App">
+      DivaDiaries
       <header className="App-header">
-        DivaDiaries
         <Routes>
           {/* <Route path="/" element={<DisplayUsers/>}/> */}
           <Route path="/" element={<DisplayPosts/>}/>
