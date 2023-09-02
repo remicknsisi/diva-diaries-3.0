@@ -2,7 +2,7 @@ class PostsController < ApplicationController
     def index
         posts = Post.all
         if posts
-            render json: posts, status: :ok
+            render json: posts, include: [:user], status: :ok
         else
             render json: {error: "Could not fetch posts."}, status: :not_found
         end

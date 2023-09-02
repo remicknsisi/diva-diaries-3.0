@@ -10,6 +10,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
+        DivaDiaries
         <Routes>
           {/* <Route path="/" element={<DisplayUsers/>}/> */}
           <Route path="/" element={<DisplayPosts/>}/>

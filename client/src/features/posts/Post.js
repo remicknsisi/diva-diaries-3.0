@@ -2,16 +2,14 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 function Post({ post }) {
-    const { location, caption, image, user_id } = post
+    const { location, caption, image, user_id, user } = post
     console.log(post)
-
-    console.log(image)
 
   return (
     <div class="post">
         <div class="post-header">
-            <img class="profile-picture" src="profile.jpg" alt="Profile Picture"/>
-            <a class="username" href="#">username</a>
+            <img class="profile-picture" src={user.profile_picture} alt="Profile Picture"/>
+            <a class="username" href="#">{user.username}</a>
         </div>
         <div class="post-image">
             <img src={image} alt="Post Image"/>
@@ -28,8 +26,8 @@ function Post({ post }) {
             </div>
         </div>
         <div class="post-caption">
-            <a class="username" href="#">username</a>
-            <span class="caption-text">{caption}</span>
+            <a class="username" href="#">{user.username}</a>
+            <span class="caption-text"> {caption}</span>
         </div>
         {/* <div class="post-comments">
             <ul>
