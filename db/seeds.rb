@@ -158,7 +158,7 @@ end
 
 150.times do
     Comment.create(
-        comment: Faker::TvShows::RuPaul.quote,
+        content: Faker::TvShows::RuPaul.quote,
         user_id: rand(1..15),
         post_id: rand(1..40)
     )

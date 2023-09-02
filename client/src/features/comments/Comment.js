@@ -2,11 +2,15 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 function Comment({ comment }) {
-    // const { bio, name, profile_picture, username } = user
-
+    const { content, user } = comment
   return (
     <div>
-    this is a comment!
+        <ul>
+            <li>
+                <a class="username" href="#">{user.username}</a>
+                <span class="comment-text"> {content}</span>
+            </li>
+        </ul>
     </div>
   );
 }

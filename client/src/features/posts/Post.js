@@ -1,15 +1,19 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import DisplayComments from '../comments/DisplayComments'
 
 function Post({ post }) {
-    const { location, caption, image, user_id, user, comments, created_at } = post
-    console.log(post)
+    const { location, caption, image, user_id, user, comments, created_at, id } = post
 
   return (
     <div class="post">
         <div class="post-header">
             <img class="profile-picture" src={user.profile_picture} alt="Profile Picture"/>
             <a class="username" href="#">{user.username}</a>
+        </div>
+        <div class="post-location">
+            <i class="fas fa-map-marker"></i>
+            <span>📍 {location}</span>
         </div>
         <div class="post-image">
             <img src={image} alt="Post Image"/>
@@ -30,16 +34,7 @@ function Post({ post }) {
             <span class="caption-text"> {caption}</span>
         </div>
         <div class="post-comments">
-            <ul>
-            <li>
-                <a class="username" href="#">commenter1</a>
-                <span class="comment-text">This is a comment.</span>
-            </li>
-            <li>
-                <a class="username" href="#">commenter2</a>
-                <span class="comment-text">Another comment here.</span>
-            </li>
-            </ul>
+            <DisplayComments id={id} />
         </div>
         <div class="post-timestamp">
             <span>{created_at}</span>
