@@ -47,13 +47,10 @@ export default function usersReducer(state = initialState, action) {
 
 export function fetchUsers() {
   return function (dispatch) {
-    // dispatch an initial action to set up a "loading" state
     dispatch({ type: "users/usersLoading" });
-    // initiate a network request with fetch
     fetch("/users")
       .then((response) => response.json())
       .then((users) =>
-        // when we have data from the response, dispatch another action to add the data to our Redux store
         dispatch({
           type: "users/usersLoaded",
           payload: users,

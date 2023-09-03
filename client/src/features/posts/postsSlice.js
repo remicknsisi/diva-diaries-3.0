@@ -47,13 +47,10 @@ export const addPost = (post) => {
   
   export function fetchPosts() {
     return function (dispatch) {
-      // dispatch an initial action to set up a "loading" state
       dispatch({ type: "posts/postsLoading" });
-      // initiate a network request with fetch
       fetch("/posts")
         .then((response) => response.json())
         .then((posts) =>
-          // when we have data from the response, dispatch another action to add the data to our Redux store
           dispatch({
             type: "posts/postsLoaded",
             payload: posts,

@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUsers } from "./usersSlice";
 import { useParams } from 'react-router-dom';
+import Post from "../posts/Post";
 
 function UserDetails() {
 
@@ -15,7 +16,6 @@ function UserDetails() {
   }, [])
 
   const userToDisplay = users.find((u) => u.id === id*1)
-  console.log(userToDisplay)
 
   if (userToDisplay){return (
     <div>
@@ -31,9 +31,7 @@ function UserDetails() {
       </div>
     </header>
       <section class="user-posts">
-          {/* <div class="post">
-            <img src="post1.jpg" alt="Post 1">
-          </div> */}
+        {userToDisplay.posts.map((p) => <Post key={p.id} post={p}/>)}
       </section>
       <footer>
       </footer>

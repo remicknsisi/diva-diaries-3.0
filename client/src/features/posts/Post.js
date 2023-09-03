@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import DisplayComments from '../comments/DisplayComments'
+import DisplayComments from '../comments/DisplayComments';
 
 function Post({ post }) {
-    const { location, caption, image, user_id, user, comments, created_at, id } = post
+    const { location, caption, image, user, user_id, comments, created_at, id } = post
 
-  return (
+  if (user) {return (
     <div class="post">
         <div class="post-header">
             <img class="profile-picture" src={user.profile_picture} alt="Profile Picture"/>
@@ -40,7 +40,11 @@ function Post({ post }) {
             <span>{created_at}</span>
         </div>
     </div>
-  );
+  );} else {
+    return (
+        <p>Loading User's Posts...</p>
+    )
+  }
 }
 
 export default Post;
