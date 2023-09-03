@@ -1,5 +1,6 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { login } from "./auth/authSlice"
 
 function Login() {
     const [username, setUsername] = useState("");
@@ -7,8 +8,6 @@ function Login() {
     const [error, setError] = useState("")
 
     const navigate = useNavigate()
-
-    // const { login } = useContext(UserContext)
   
     function handleSubmit(e) {
       e.preventDefault()
@@ -27,7 +26,7 @@ function Login() {
         .then(res => {
             if(res.ok){
                 res.json().then((user) => {
-                    // login(user)
+                    login(user)
                     setUsername('')
                     setPassword('')
                     setError('')

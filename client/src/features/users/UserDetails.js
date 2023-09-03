@@ -1,10 +1,12 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUsers } from "./usersSlice";
-import { useParams } from 'react-router-dom';
+import { Navigate, useParams } from 'react-router-dom';
 import Post from "../posts/Post";
+import EditUserForm from "./EditUserForm";
 
 function UserDetails() {
+  const [isHidden, setIsHidden] = useState(true)
 
   const dispatch = useDispatch();
 
@@ -15,6 +17,8 @@ function UserDetails() {
     dispatch(fetchUsers());
   }, [])
 
+  // const navigate = Navigate()
+
   const userToDisplay = users.find((u) => u.id === id*1)
   console.log(userToDisplay)
 
@@ -24,15 +28,23 @@ function UserDetails() {
         <title>Instagram User Page</title>
       </head>
     <body>
-    <header>
-      <img class="profile-picture" src={userToDisplay.profile_picture} alt="User Profile Picture"/>
-      <div class="user-info">
-        <h1 class="username">{userToDisplay.username}</h1>
-        <p class="bio">{userToDisplay.bio}</p>
-      </div>
-    </header>
+      <header>
+        <img class="profile-picture" src={userToDisplay.profile_picture} alt="User Profile Picture"/>
+        <div class="user-info">
+          <h1 class="username">{userToDisplay.username}</h1>
+          <p class="bio">{userToDisplay.bio}</p>
+        </div>
+        <div class="edit-profile">
+          {isHidden ? <button onClick={() => setIsHidden(false)}>Edit Profile</button> : 
+            <>
+              <button onClick={() => setIsHidden(true)}>Hide Edit Profile Form</button>
+              <EditUserForm />
+            </>
+          }
+        </div>
+      </header>
       <section class="user-posts">
-        {/* {userToDisplay.posts.map((p) => <Post key={p.id} post={p}/>)} */}
+          {/* {userToDisplay.posts.map((p) => <Post key={p.id} post={p}/>)} */}
       </section>
       <footer>
       </footer>
