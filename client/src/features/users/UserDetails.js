@@ -11,16 +11,17 @@ function UserDetails() {
   const dispatch = useDispatch();
 
   const users = useSelector((state) => state.users.entities);
+  const currentUserJSON = useSelector(state => state.auth.currentUser)
+  const currentUser = JSON.parse(currentUserJSON).user
   const { id } = useParams();
+
+  console.log(currentUser)
 
   useEffect(() => {
     dispatch(fetchUsers());
   }, [])
 
-  // const navigate = Navigate()
-
   const userToDisplay = users.find((u) => u.id === id*1)
-  console.log(userToDisplay)
 
   if (userToDisplay){return (
     <div>

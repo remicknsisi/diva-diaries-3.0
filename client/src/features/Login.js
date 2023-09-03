@@ -1,13 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { login } from "./auth/authSlice"
+import { login } from "./auth/authActions";
+import { useDispatch, useSelector } from "react-redux";
 
 function Login() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const [error, setError] = useState("")
+    const [error, setError] = useState("");
 
     const navigate = useNavigate()
+    const dispatch = useDispatch();
   
     function handleSubmit(e) {
       e.preventDefault()
@@ -25,8 +27,8 @@ function Login() {
       })
         .then(res => {
             if(res.ok){
-                res.json().then((user) => {
-                    login(user)
+                res.json().then((userData) => {
+                    dispatch(login(userData))
                     setUsername('')
                     setPassword('')
                     setError('')
