@@ -22,7 +22,10 @@ export const addComment = (comment) => {
   export default function commentsReducer(state = initialState, action) {
     switch (action.type) {
       case "comments/add":
-        return [...state, action.payload];
+        return {
+            ...state, 
+            entities: [action.payload]};
+
   
       case "comments/remove":
         return state.filter((comment) => comment.id !== comment.payload);
