@@ -1,13 +1,15 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import DisplayComments from '../comments/DisplayComments';
-import { useParams } from 'react-router-dom';
 import { fetchUsers } from "../users/usersSlice";
 import EmptyHeartIcon from "../EmptyHeartIcon";
 import CommentIcon from "../CommentIcon";
+import { useNavigate, useParams } from 'react-router-dom';
 
 function Post({ post }) {
     const { location, caption, image, user, user_id, comments, created_at, id, likes } = post
+
+    const navigate = useNavigate()
 
   return (
     <div class="post">
@@ -27,7 +29,7 @@ function Post({ post }) {
             <button><EmptyHeartIcon/> {likes.length} Likes</button>
             </div>
             <div class="comment-button">
-            <button><CommentIcon/> Comment</button>
+            <button onClick={() => navigate(`/posts/${id}/comments`)}><CommentIcon/> Comment</button>
             </div>
             {/* <div class="share-button">
             <button>Share</button>

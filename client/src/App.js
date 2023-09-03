@@ -7,6 +7,7 @@ import Signup from './features/Signup';
 import DisplayPosts from './features/posts/DisplayPosts';
 import UserDetails from './features/users/UserDetails';
 import { loadUserFromStorage } from './features/auth/authActions';
+import NewCommentForm from './features/comments/NewCommentForm'
 
 function App() {
   // useEffect(() => {
@@ -28,6 +29,7 @@ function App() {
         <Routes>
           <Route path="/" element={<DisplayPosts/>}/>
           <Route path="/users/:id" element={<UserDetails/>}/>
+          <Route path="/posts/:post_id/comments" element={<NewCommentForm/>}/>
           <Route path="/signup" element={<Signup/>}/>
           <Route path="/login" element={<Login/>}/>
         </Routes>
