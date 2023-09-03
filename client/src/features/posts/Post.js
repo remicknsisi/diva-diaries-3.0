@@ -6,8 +6,7 @@ import { fetchUsers } from "../users/usersSlice";
 import EmptyHeartIcon from "../EmptyHeartIcon";
 
 function Post({ post }) {
-    const { location, caption, image, user, user_id, comments, created_at, id } = post
-    // const { id } = useParams();
+    const { location, caption, image, user, user_id, comments, created_at, id, likes } = post
 
   return (
     <div class="post">
@@ -25,7 +24,7 @@ function Post({ post }) {
         <div class="post-actions">
             <div class="like-button">
             {/* <button>Like</button> */}
-            <EmptyHeartIcon/>
+            <EmptyHeartIcon/> {likes.length} Likes
             </div>
             <div class="comment-button">
             <button>Comment</button>

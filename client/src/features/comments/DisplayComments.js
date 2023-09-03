@@ -1,30 +1,37 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Comment from "./Comment";
 import { fetchComments } from './commentsSlice';
 
 function DisplayComments({ id }) {
-  const dispatch = useDispatch();
+    const [isHidden, setIsHidden] = useState(true)
 
-  const comments = useSelector((state) => state.comments.entities);
+    const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(fetchComments());
-  }, [])
+    const comments = useSelector((state) => state.comments.entities);
 
-  const commentsToDisplay = [...comments].filter((c) => c.post_id === id)
+    useEffect(() => {
+        dispatch(fetchComments());
+    }, [])
 
-  const commentsList = commentsToDisplay.map((c) => (
-    <Comment key={c.id} comment={c}/>
-  ))
+    const commentsToDisplay = [...comments].filter((c) => c.post_id === id)
+
+    const commentsList = commentsToDisplay.map((c) => (
+        <Comment key={c.id} comment={c}/>
+    ))
 
   return (
     <div>
-      {commentsList}
+      {isHidden ? 
+        <p onClick={() => setIsHidden(false)}>View all {commentsToDisplay.length} comments</p> 
+        : 
+        <>
+            <p onClick={() => setIsHidden(true)}>Hide all {commentsToDisplay.length} comments</p> 
+            {commentsList}
+        </>
+      }
     </div>
   );
 }
 
 export default DisplayComments;
-
-// want to display comments in order of most recent
