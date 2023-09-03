@@ -8,20 +8,11 @@ function Post({ post }) {
     const { location, caption, image, user, user_id, comments, created_at, id } = post
     // const { id } = useParams();
 
-    const dispatch = useDispatch();
-
-    useEffect(() => {
-        dispatch(fetchUsers());
-      }, [])
-
-    const users = useSelector((state) => state.users.entities);
-    const post_owner = users.find((u) => u.id === post.user_id)
-
   return (
     <div class="post">
         <div class="post-header">
-            <img class="profile-picture" src={post_owner.profile_picture} alt="Profile Picture"/>
-            <a class="username" href={`/users/${post_owner.id}`}>{post_owner.username}</a>
+            <img class="profile-picture" src={user.profile_picture} alt="Profile Picture"/>
+            <a class="username" href={`/users/${user.id}`}>{user.username}</a>
         </div>
         <div class="post-location">
             <i class="fas fa-map-marker"></i>
@@ -42,7 +33,7 @@ function Post({ post }) {
             </div>
         </div>
         <div class="post-caption">
-            <a class="username" href="#">{post_owner.username}</a>
+            <a class="username" href="#">{user.username}</a>
             <span class="caption-text"> {caption}</span>
         </div>
         <div class="post-comments">

@@ -8,15 +8,15 @@ import UserDetails from './features/users/UserDetails';
 function App() {
   return (
     <div className="App">
-      DivaDiaries
       <header className="App-header">
+        <a class="title" href={`/`}>DivaDiaries</a>
+      </header>
         <Routes>
           <Route path="/" element={<DisplayPosts/>}/>
           <Route path="/users/:id" element={<UserDetails/>}/>
           <Route path="/signup" element={<Signup/>}/>
           <Route path="/login" element={<Login/>}/>
         </Routes>
-      </header>
     </div>
   );
 }

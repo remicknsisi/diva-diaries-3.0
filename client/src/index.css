@@ -144,3 +144,24 @@ footer {
   font-size: 14px;
   color: #666;
 }
+
+/* .title {
+  text-align: center;
+  margin: auto;
+  font-weight: bold;
+  text-decoration: none;
+  color: #000;
+} */
+
+.title {
+  display: inline-block;
+  background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
+  padding: 8px 16px;
+  border-radius: 50px;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  font-size: 25px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+}
