@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import DisplayComments from '../comments/DisplayComments';
 import { useParams } from 'react-router-dom';
 import { fetchUsers } from "../users/usersSlice";
+import EmptyHeartIcon from "../EmptyHeartIcon";
 
 function Post({ post }) {
     const { location, caption, image, user, user_id, comments, created_at, id } = post
@@ -23,7 +24,8 @@ function Post({ post }) {
         </div>
         <div class="post-actions">
             <div class="like-button">
-            <button>Like</button>
+            {/* <button>Like</button> */}
+            <EmptyHeartIcon/>
             </div>
             <div class="comment-button">
             <button>Comment</button>
