@@ -12,10 +12,9 @@ function UserDetails() {
 
   const users = useSelector((state) => state.users.entities);
   const currentUserJSON = useSelector(state => state.auth.currentUser)
-  const currentUser = JSON.parse(currentUserJSON).user
-  const { id } = useParams();
+  const currentUser = JSON.parse(currentUserJSON)
 
-  console.log(currentUser)
+  const { id } = useParams();
 
   useEffect(() => {
     dispatch(fetchUsers());

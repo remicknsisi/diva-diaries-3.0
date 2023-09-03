@@ -4,6 +4,7 @@ import DisplayComments from '../comments/DisplayComments';
 import { useParams } from 'react-router-dom';
 import { fetchUsers } from "../users/usersSlice";
 import EmptyHeartIcon from "../EmptyHeartIcon";
+import CommentIcon from "../CommentIcon";
 
 function Post({ post }) {
     const { location, caption, image, user, user_id, comments, created_at, id, likes } = post
@@ -23,15 +24,14 @@ function Post({ post }) {
         </div>
         <div class="post-actions">
             <div class="like-button">
-            {/* <button>Like</button> */}
-            <EmptyHeartIcon/> {likes.length} Likes
+            <button><EmptyHeartIcon/> {likes.length} Likes</button>
             </div>
             <div class="comment-button">
-            <button>Comment</button>
+            <button><CommentIcon/> Comment</button>
             </div>
-            <div class="share-button">
+            {/* <div class="share-button">
             <button>Share</button>
-            </div>
+            </div> */}
         </div>
         <div class="post-caption">
             <a class="username" href="#">{user.username}</a>
