@@ -1,15 +1,27 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import DisplayComments from '../comments/DisplayComments';
+import { useParams } from 'react-router-dom';
+import { fetchUsers } from "../users/usersSlice";
 
 function Post({ post }) {
     const { location, caption, image, user, user_id, comments, created_at, id } = post
+    // const { id } = useParams();
 
-  if (user) {return (
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(fetchUsers());
+      }, [])
+
+    const users = useSelector((state) => state.users.entities);
+    const post_owner = users.find((u) => u.id === post.user_id)
+
+  return (
     <div class="post">
         <div class="post-header">
-            <img class="profile-picture" src={user.profile_picture} alt="Profile Picture"/>
-            <a class="username" href={`/users/${user.id}`}>{user.username}</a>
+            <img class="profile-picture" src={post_owner.profile_picture} alt="Profile Picture"/>
+            <a class="username" href={`/users/${post_owner.id}`}>{post_owner.username}</a>
         </div>
         <div class="post-location">
             <i class="fas fa-map-marker"></i>
@@ -30,7 +42,7 @@ function Post({ post }) {
             </div>
         </div>
         <div class="post-caption">
-            <a class="username" href="#">{user.username}</a>
+            <a class="username" href="#">{post_owner.username}</a>
             <span class="caption-text"> {caption}</span>
         </div>
         <div class="post-comments">
@@ -40,11 +52,7 @@ function Post({ post }) {
             <span>{created_at}</span>
         </div>
     </div>
-  );} else {
-    return (
-        <p>Loading User's Posts...</p>
-    )
-  }
+  );
 }
 
 export default Post;

@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get "/users/:id/posts/:post_id", to: "posts#show"
   get "/users/:id/posts/:post_id/likes", to: "users#users_who_liked"
   post "/signup", to: "users#create"
-  get "/me", to: "users#show"
+  # get "/me", to: "users#show"
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
 
