@@ -14,17 +14,49 @@ export const addLike = (like) => {
   };
   
 // Reducers
-const initialState = [];
+const initialState = {
+    entities: [],
+    status: "idle"
+  };
 
 export default function likesReducer(state = initialState, action) {
     switch (action.type) {
       case "likes/add":
-        return [...state, action.payload];
+        return {
+            ...state, 
+            entities: [action.payload]};
   
       case "likes/remove":
         return state.filter((like) => like.id !== action.payload);
+
+        case "likes/likesLoading":
+            return {
+              ...state,
+              status: "loading",
+            };
+          
+          case "likes/likesLoaded":
+            return {
+              ...state,
+              status: "idle",
+              entities: action.payload,
+            };
   
       default:
         return state;
     }
+  }
+
+  export function fetchLikes() {
+    return function (dispatch) {
+      dispatch({ type: "likes/likesLoading" });
+      fetch("/likes")
+        .then((response) => response.json())
+        .then((likes) =>
+          dispatch({
+            type: "likes/likesLoaded",
+            payload: likes,
+          })
+        );
+    };
   }

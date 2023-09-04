@@ -35,6 +35,7 @@ function UserDetails() {
           <p class="bio">{userToDisplay.bio}</p>
         </div>
         <div class="edit-profile">
+          {/* only render this button if its your own profile */}
           {isHidden ? <button onClick={() => setIsHidden(false)}>Edit Profile</button> : 
             <>
               <button onClick={() => setIsHidden(true)}>Hide Edit Profile Form</button>

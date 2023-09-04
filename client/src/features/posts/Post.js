@@ -5,6 +5,7 @@ import { fetchUsers } from "../users/usersSlice";
 import EmptyHeartIcon from "../EmptyHeartIcon";
 import CommentIcon from "../CommentIcon";
 import { useNavigate, useParams } from 'react-router-dom';
+import DisplayLikes from "../likes/DisplayLikes";
 
 function Post({ post }) {
     const { location, caption, image, user, user_id, comments, created_at, id, likes } = post
@@ -26,7 +27,7 @@ function Post({ post }) {
         </div>
         <div class="post-actions">
             <div class="like-button">
-            <button><EmptyHeartIcon/> {likes.length} Likes</button>
+            <DisplayLikes id={id}/>
             </div>
             <div class="comment-button">
             <button onClick={() => navigate(`/posts/${id}/comments`)}><CommentIcon/> Comment</button>

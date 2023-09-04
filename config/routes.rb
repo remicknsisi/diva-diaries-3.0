@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :users
   resources :posts
   resources :comments, only: [:index]
+  resources :likes, only: [:index]
 
   get "/users/:id/posts/:post_id", to: "posts#show"
   get "/users/:id/posts/:post_id/likes", to: "users#users_who_liked"

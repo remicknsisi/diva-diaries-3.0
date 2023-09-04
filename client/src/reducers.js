@@ -9,8 +9,8 @@ const rootReducer = combineReducers({
   users: usersReducer,
   posts: postsReducer,
   comments: commentsReducer,
-  auth: authReducer
-//   likes: likesReducer,
+  auth: authReducer,
+  likes: likesReducer
 });
 
 export default rootReducer;
