@@ -21,7 +21,7 @@ class CommentsController < ApplicationController
         end
     end
 
-    def delete
+    def destroy
         comment = Comment.find_by(id: params[:id])
         if @user && @user.id == comment.user_id
             comment.destroy

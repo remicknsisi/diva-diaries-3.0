@@ -1,8 +1,13 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { removeComment } from "./commentsSlice";
+import { useNavigate } from "react-router-dom";
 
 function Comment({ comment }) {
-    const { content, user, id } = comment
+  const [error, setError] = useState('')
+  const navigate = useNavigate()
+  const dispatch = useDispatch();
+  const { content, user, id } = comment
 
     const currentUserJSON = useSelector(state => state.auth.currentUser)
     const currentUser = JSON.parse(currentUserJSON)
@@ -15,7 +20,7 @@ function Comment({ comment }) {
         .then(res => {
           if(res.ok){
               res.json().then((deletedComment) => {
-                  dispatch(removeComment(deletedComment));
+                  dispatch(removeComment(deletedComment.id));
                   navigate('/')})
           } else {
               res.json().then((message) => {
@@ -33,6 +38,7 @@ function Comment({ comment }) {
                 <a class="username" href="#">{user.username}</a>
                 <span class="comment-text"> {content}</span>
                 {user.id === currentUser.user.id ? <button onClick={() => handleDeleteComment()}>X</button> : null}
+                <p className="error-message">{error}</p>    
             </li>
         </ul>
     </div>
