@@ -1,6 +1,6 @@
 import React from "react";
 import DisplayComments from '../comments/DisplayComments';
-import CommentIcon from "../CommentIcon";
+import CommentIcon from "../icons/CommentIcon";
 import { useNavigate } from 'react-router-dom';
 import DisplayLikes from "../likes/DisplayLikes";
 import { useDispatch, useSelector } from "react-redux";
@@ -9,10 +9,10 @@ function Post({ post }) {
     const { location, caption, image, user, user_id, comments, created_at, id, likes } = post
 
     const navigate = useNavigate()
-    const currentUserJSON = useSelector(state => state.auth.currentUser)
-    const currentUser = JSON.parse(currentUserJSON)
+    const currentUser = useSelector(state => state.auth.currentUser)
+    // const currentUser = JSON.parse(currentUserJSON)
 
-    const likeExists = post.likes.find((l) => l.user_id === currentUser.user.id)
+    const likeExists = post.likes.find((l) => l.user_id === currentUser.id)
     const selfLiked = likeExists ? true : false
 
   return (

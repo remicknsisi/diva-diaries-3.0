@@ -11,9 +11,13 @@ export const login = (user) => {
     };
   };
   
-  export const logout = () => {
+  export const logout = (user) => {
+    localStorage.setItem('authToken', null);
+    localStorage.setItem('userData', null);
+
     return {
       type: LOGOUT,
+      payload: user
     };
   };
 

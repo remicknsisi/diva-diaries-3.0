@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchLikes } from './likesSlice';
-import EmptyHeartIcon from "../EmptyHeartIcon";
-import FullHeartIcon from "../FullHeartIcon";
+import EmptyHeartIcon from "../icons/EmptyHeartIcon";
+import FullHeartIcon from "../icons/FullHeartIcon";
 import { addLike, removeLike } from "./likesSlice";
 import { useNavigate } from "react-router-dom";
 
@@ -22,7 +22,7 @@ function DisplayLikes({ id, selfLiked }) {
     const likesToDisplay = [...likes].filter((l) => l.post_id === id)
 
     function handleLike() {
-        fetch(`/likes`, {
+        fetch(`/posts/${id}/likes`, {
             method: 'POST',
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify({
