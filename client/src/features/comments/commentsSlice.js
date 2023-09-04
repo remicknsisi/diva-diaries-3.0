@@ -25,7 +25,6 @@ export const addComment = (comment) => {
         return {
             ...state, 
             entities: [action.payload]};
-
   
       case "comments/remove":
         return state.filter((comment) => comment.id !== comment.payload);

@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchLikes } from './likesSlice';
 import EmptyHeartIcon from "../EmptyHeartIcon";
+import { addLike } from "./likesSlice"
 
 function DisplayLikes({ id }) {
     const dispatch = useDispatch();
@@ -12,11 +13,15 @@ function DisplayLikes({ id }) {
         dispatch(fetchLikes());
     }, [])
 
+    function handleOnClick() {
+        dispatch(addLike());
+    }
+
     const likesToDisplay = [...likes].filter((l) => l.post_id === id)
 
   return (
     <div>
-        <button><EmptyHeartIcon/> {likesToDisplay.length} Likes</button>
+        <button onClick={handleOnClick}><EmptyHeartIcon/> {likesToDisplay.length} Likes</button>
     </div>
   );
 }

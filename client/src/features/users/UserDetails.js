@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUsers } from "./usersSlice";
-import { Navigate, useParams } from 'react-router-dom';
-import Post from "../posts/Post";
+import { useParams } from 'react-router-dom';
 import EditUserForm from "./EditUserForm";
 
 function UserDetails() {

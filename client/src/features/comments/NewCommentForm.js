@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { addComment } from './commentsSlice';
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 function NewCommentForm () {
     const [newContent, setNewContent] = useState('')

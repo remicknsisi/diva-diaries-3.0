@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React from "react";
 
 function Comment({ comment }) {
     const { content, user } = comment
+    
   return (
     <div>
         <ul>

@@ -1,10 +1,7 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React from "react";
 import DisplayComments from '../comments/DisplayComments';
-import { fetchUsers } from "../users/usersSlice";
-import EmptyHeartIcon from "../EmptyHeartIcon";
 import CommentIcon from "../CommentIcon";
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import DisplayLikes from "../likes/DisplayLikes";
 
 function Post({ post }) {

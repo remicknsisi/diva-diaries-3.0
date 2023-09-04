@@ -24,7 +24,7 @@ export default function likesReducer(state = initialState, action) {
       case "likes/add":
         return {
             ...state, 
-            entities: [action.payload]};
+            entities: [action.payload.length + 1]};
   
       case "likes/remove":
         return state.filter((like) => like.id !== action.payload);
