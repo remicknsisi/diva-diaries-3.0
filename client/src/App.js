@@ -23,7 +23,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <a class="title" href={`/`}>DivaDiaries</a>
-        {currentUser !== 'null' ? <a class="title" href={`/login`} onClick={() => logout(currentUser)}>Logout</a> : <a class="title" href={`/login`}>Login</a>}
+        {currentUser !== 'null' ? <a class="button" href={`/login`} onClick={() => logout(currentUser)}>Logout</a> : <a class="button" href={`/login`}>Login</a>}
       </header>
         <Routes>
           <Route path="/" element={<DisplayPosts/>}/>

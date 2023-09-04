@@ -165,3 +165,49 @@ footer {
   letter-spacing: 5px;
   text-transform: uppercase;
 }
+
+.login-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.login-container {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.login-input {
+  font-weight: bold;
+  text-decoration: none;
+  color: #000;
+}
+
+.signup-prompt {
+  font-size: 14px;
+}
+
+.button {
+  display: inline-block;
+  background-color: #405de6; /* Instagram's blue color */
+  color: #ffffff; /* Text color */
+  padding: 10px 20px; /* Adjust padding as needed */
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #3f4cd6; /* Slightly darker shade on hover */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.form {
+  padding: 50px
+}
