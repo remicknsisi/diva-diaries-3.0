@@ -9,6 +9,7 @@ import UserDetails from './features/users/UserDetails';
 import { loadUserFromStorage } from './features/auth/authActions';
 import NewCommentForm from './features/comments/NewCommentForm';
 import StickyMenu from './features/StickyMenu';
+import NewPostForm from "./features/posts/NewPostForm";
 
 function App() {
   const dispatch = useDispatch();
@@ -23,6 +24,7 @@ function App() {
         <Routes>
           <Route path="/" element={<DisplayPosts/>}/>
           <Route path="/users/:id" element={<UserDetails/>}/>
+          <Route path="/users/:id/posts" element={<NewPostForm/>}/>
           <Route path="/posts/:post_id/comments" element={<NewCommentForm/>}/>
           <Route path="/signup" element={<Signup/>}/>
           <Route path="/login" element={<Login/>}/>

@@ -22,7 +22,9 @@ export const addPost = (post) => {
   export default function postsReducer(state = initialState, action) {
     switch (action.type) {
       case "posts/add":
-        return [...state, action.payload];
+        return {
+            ...state, 
+            entities: [action.payload]};
   
       case "posts/remove":
         return state.filter((post) => post.id !== post.payload);
