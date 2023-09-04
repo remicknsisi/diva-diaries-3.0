@@ -63,7 +63,7 @@ function Signup (){
                 <p className='login-input'>Username: </p>
                 <input
                 type="text"
-                placeholder="E.g. rupaul@dragrace.com"
+                placeholder="E.g. rupaul"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 className='login-input'/>

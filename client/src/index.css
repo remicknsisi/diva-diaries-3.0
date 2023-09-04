@@ -70,6 +70,11 @@
   font-size: 14px;
 }
 
+.post-location {
+  font-size: 14px;
+  color: #666
+}
+
 /* Style the post timestamp */
 .post-timestamp {
   margin-top: 8px;
@@ -214,4 +219,28 @@ footer {
 
 .error-message {
   color: #666
+}
+
+/* Base styles for the StickyMenu */
+.sticky-menu {
+  /* Your regular menu styles here */
+
+  /* Make it initially non-sticky */
+  position: relative;
+  z-index: 1; /* Set a z-index value, it can be any positive integer */
+}
+
+/* Add a class to make it sticky */
+.sticky {
+  /* Stick it to the top */
+  position: fixed;
+  top: 0;
+
+  /* Increase the z-index value to bring it to the top of the stacking order */
+  z-index: 2; /* Use a higher value than the base z-index */
+  
+  /* Add a background color, box shadow, or any other styles you want */
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  /* Additional styles as needed */
 }
