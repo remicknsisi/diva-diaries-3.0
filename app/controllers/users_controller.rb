@@ -16,7 +16,7 @@ class UsersController < ApplicationController
 
     def show
         if @user
-            render json: @user, status: :ok
+            render json: @user, include: [:likes], status: :ok
         else 
             render json: { error: "You must log in or sign up to view this page." }, status: :unauthorized
         end

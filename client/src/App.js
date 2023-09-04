@@ -10,14 +10,9 @@ import { loadUserFromStorage } from './features/auth/authActions';
 import NewCommentForm from './features/comments/NewCommentForm'
 
 function App() {
-  // useEffect(() => {
-  //   // Dispatch the action to load user data from storage
-  //   loadUserFromStorage();
-  // }, [loadUserFromStorage]);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // Dispatch the action to load user data from storage when the app initializes
     dispatch(loadUserFromStorage());
   }, [dispatch]);
 

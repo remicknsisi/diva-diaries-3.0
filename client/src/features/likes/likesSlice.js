@@ -27,7 +27,9 @@ export default function likesReducer(state = initialState, action) {
             entities: [action.payload.length + 1]};
   
       case "likes/remove":
-        return state.filter((like) => like.id !== action.payload);
+        return {
+            ...state, 
+            entities: [action.payload.length - 1]};
 
         case "likes/likesLoading":
             return {

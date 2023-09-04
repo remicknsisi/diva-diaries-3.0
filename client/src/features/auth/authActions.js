@@ -4,7 +4,6 @@ import { LOGIN, LOGOUT, LOAD_USER_FROM_STORAGE } from './actionTypes';
 export const login = (user) => {
     localStorage.setItem('authToken', user.authToken);
     localStorage.setItem('userData', JSON.stringify(user));
-    // localStorage.setItem('userData', user);
 
     return {
       type: LOGIN,

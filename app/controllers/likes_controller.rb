@@ -2,7 +2,7 @@ class LikesController < ApplicationController
     def index
         likes = Like.all
         if likes
-            render json: likes, status: :ok
+            render json: likes, include: [:user], status: :ok
         else
             render json: {error: "Could not fetch likes."}, status: :not_found
         end
@@ -18,6 +18,16 @@ class LikesController < ApplicationController
             end
         else
             render json: {error: "You must login or signup to like a post."}, status: :unauthorized
+        end
+    end
+
+    def delete
+        like = Like.find_by(id: params[:id])
+        if @user && @user.id == like.user_id
+            like.destroy
+            render json: like, status: :ok
+        else
+            render json: {error: "You can only remove your own likes."}, status: :unauthorized
         end
     end
 

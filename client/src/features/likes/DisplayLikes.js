@@ -3,21 +3,24 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchLikes } from './likesSlice';
 import EmptyHeartIcon from "../EmptyHeartIcon";
 import FullHeartIcon from "../FullHeartIcon";
-import { addLike } from "./likesSlice"
+import { addLike, removeLike } from "./likesSlice";
 import { useNavigate } from "react-router-dom";
 
-function DisplayLikes({ id }) {
+function DisplayLikes({ id, selfLiked }) {
     const [errorsList, setErrorsList] = useState([])
-    const dispatch = useDispatch();
     const navigate = useNavigate()
-
+    const dispatch = useDispatch();
     const likes = useSelector((state) => state.likes.entities);
-
     useEffect(() => {
         dispatch(fetchLikes());
     }, [])
 
-    function handleOnClick() {
+    const currentUserJSON = useSelector(state => state.auth.currentUser)
+    const currentUser = JSON.parse(currentUserJSON)
+
+    const likesToDisplay = [...likes].filter((l) => l.post_id === id)
+
+    function handleLike() {
         fetch(`/likes`, {
             method: 'POST',
             headers: {"Content-Type": "application/json"},
@@ -39,19 +42,34 @@ function DisplayLikes({ id }) {
         })
     }
 
-    const currentUserJSON = useSelector(state => state.auth.currentUser)
-    const currentUser = JSON.parse(currentUserJSON)
+    function handleUnlike() {
+        const unlikedLike = likesToDisplay.find((l) => l.user_id === currentUser.user.id)
 
-    const likesToDisplay = [...likes].filter((l) => l.post_id === id)
-    const selfLiked = likesToDisplay.filter((l) => l.user_id === currentUser.id)
-    console.log(selfLiked)
+        fetch(`/likes/${unlikedLike.id}`, {
+            method: 'DELETE',
+            headers: {"Content-Type": "application/json"},
+          })
+          .then(res => {
+            if(res.ok){
+                res.json().then((deletedLike) => {
+                    dispatch(removeLike(deletedLike));
+                    navigate('/')})
+            } else {
+                res.json().then((message) => {
+                    const errorLis = message.errors.map(error => <li key={error}>{error}</li>)
+                    setErrorsList(errorLis)
+                })
+            }
+        })
+    }
 
   return (
     <div>
-        { selfLiked ? <button onClick={handleOnClick}><FullHeartIcon/> {likesToDisplay.length} Likes</button> : <button onClick={handleOnClick}><EmptyHeartIcon/> {likesToDisplay.length} Likes</button>}
-        <p className="error-message">{errorsList}</p>
+        { selfLiked ? <button onClick={() => handleUnlike()}><FullHeartIcon/> {likesToDisplay.length} Likes</button> : <button onClick={() => handleLike()}><EmptyHeartIcon/> {likesToDisplay.length} Likes</button>}
+        <p className="error-message">{errorsList}</p>    
     </div>
   );
 }
 
 export default DisplayLikes;
+    

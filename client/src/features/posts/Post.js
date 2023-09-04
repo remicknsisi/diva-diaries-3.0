@@ -3,11 +3,16 @@ import DisplayComments from '../comments/DisplayComments';
 import CommentIcon from "../CommentIcon";
 import { useNavigate } from 'react-router-dom';
 import DisplayLikes from "../likes/DisplayLikes";
+import { useDispatch, useSelector } from "react-redux";
 
 function Post({ post }) {
     const { location, caption, image, user, user_id, comments, created_at, id, likes } = post
 
     const navigate = useNavigate()
+    const currentUserJSON = useSelector(state => state.auth.currentUser)
+    const currentUser = JSON.parse(currentUserJSON)
+
+    const selfLiked = post.user_id === currentUser.id ? true : false
 
   return (
     <div class="post">
@@ -24,7 +29,7 @@ function Post({ post }) {
         </div>
         <div class="post-actions">
             <div class="like-button">
-            <DisplayLikes id={id}/>
+            <DisplayLikes selfLiked={selfLiked} id={id}/>
             </div>
             <div class="comment-button">
             <button onClick={() => navigate(`/posts/${id}/comments`)}><CommentIcon/> Comment</button>
