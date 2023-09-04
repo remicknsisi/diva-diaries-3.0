@@ -1,11 +1,14 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchLikes } from './likesSlice';
 import EmptyHeartIcon from "../EmptyHeartIcon";
 import { addLike } from "./likesSlice"
+import { useParams, useNavigate } from "react-router-dom";
 
 function DisplayLikes({ id }) {
+    const [errorsList, setErrorsList] = useState([])
     const dispatch = useDispatch();
+    const navigate = useNavigate()
 
     const likes = useSelector((state) => state.likes.entities);
 
@@ -14,7 +17,25 @@ function DisplayLikes({ id }) {
     }, [])
 
     function handleOnClick() {
-        dispatch(addLike());
+        fetch(`/likes`, {
+            method: 'POST',
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({
+                post_id: id
+        })
+          })
+          .then(res => {
+            if(res.ok){
+                res.json().then((newLike) => {
+                    dispatch(addLike(newLike));
+                    navigate('/')})
+            } else {
+                res.json().then((message) => {
+                    const errorLis = message.errors.map(error => <li key={error}>{error}</li>)
+                    setErrorsList(errorLis)
+                })
+            }
+        })
     }
 
     const likesToDisplay = [...likes].filter((l) => l.post_id === id)
@@ -22,6 +43,7 @@ function DisplayLikes({ id }) {
   return (
     <div>
         <button onClick={handleOnClick}><EmptyHeartIcon/> {likesToDisplay.length} Likes</button>
+        <p className="error-message">{errorsList}</p>
     </div>
   );
 }
