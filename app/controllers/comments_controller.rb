@@ -21,6 +21,16 @@ class CommentsController < ApplicationController
         end
     end
 
+    def delete
+        comment = Comment.find_by(id: params[:id])
+        if @user && @user.id == comment.user_id
+            comment.destroy
+            render json: comment, status: :ok
+        else
+            render json: {error: "You can only delete your own comments."}, status: :unauthorized
+        end
+    end
+
     private
 
     def comment_params

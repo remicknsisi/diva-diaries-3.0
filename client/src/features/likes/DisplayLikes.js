@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 
 function DisplayLikes({ id, selfLiked }) {
     const [errorsList, setErrorsList] = useState([])
+    const [error, setError] = useState('')
     const navigate = useNavigate()
     const dispatch = useDispatch();
     const likes = useSelector((state) => state.likes.entities);
@@ -35,6 +36,7 @@ function DisplayLikes({ id, selfLiked }) {
                     navigate('/')})
             } else {
                 res.json().then((message) => {
+                    console.log(message)
                     const errorLis = message.errors.map(error => <li key={error}>{error}</li>)
                     setErrorsList(errorLis)
                 })
@@ -56,8 +58,8 @@ function DisplayLikes({ id, selfLiked }) {
                     navigate('/')})
             } else {
                 res.json().then((message) => {
-                    const errorLis = message.errors.map(error => <li key={error}>{error}</li>)
-                    setErrorsList(errorLis)
+                    const errorMessage = message.error
+                    setError(errorMessage)
                 })
             }
         })
@@ -66,7 +68,8 @@ function DisplayLikes({ id, selfLiked }) {
   return (
     <div>
         { selfLiked ? <button onClick={() => handleUnlike()}><FullHeartIcon/> {likesToDisplay.length} Likes</button> : <button onClick={() => handleLike()}><EmptyHeartIcon/> {likesToDisplay.length} Likes</button>}
-        <p className="error-message">{errorsList}</p>    
+        <p className="error-message">{errorsList}</p>  
+        <p className="error-message">{error}</p>    
     </div>
   );
 }

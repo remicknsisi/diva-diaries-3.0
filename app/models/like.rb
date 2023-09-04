@@ -6,7 +6,7 @@ class Like < ApplicationRecord
 
     def like_exists
         likes = Like.all
-        result = likes.find{|l| l.user_id == self.user_id && l.tpost_id == self.post_id}
+        result = likes.find{|l| l.user_id == self.user_id && l.post_id == self.post_id}
         if result
             errors.add(:user, "has already liked this post")
         end
