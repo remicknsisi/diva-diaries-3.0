@@ -1,6 +1,8 @@
+require_relative '../services/auth_token'
+
 class UsersController < ApplicationController
     rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
-    # skip_before_action :authorize, only: :create
+    skip_before_action :authorize, only: :create
     # skip_before_action :authorize, only: :index
 
 
@@ -23,9 +25,10 @@ class UsersController < ApplicationController
     end
 
     def create
-        user = User.create!(user_params)
-        session[:user_id] = user.id
-        render json: user, status: :created
+        userData = User.create!(user_params)
+        session[:user_id] = userData.id
+        auth_token = AuthToken.encode(user_id: userData.id)
+        render json: {user: userData, authToken: auth_token}, status: :created
     end
 
     def update

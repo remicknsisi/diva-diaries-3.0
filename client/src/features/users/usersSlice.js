@@ -22,7 +22,9 @@ const initialState = {
 export default function usersReducer(state = initialState, action) {
   switch (action.type) {
     case "users/add":
-      return [...state, action.payload];
+      return {
+        ...state, 
+        entities: [action.payload]};
 
     case "users/remove":
       return state.filter((user) => user.id !== user.payload);

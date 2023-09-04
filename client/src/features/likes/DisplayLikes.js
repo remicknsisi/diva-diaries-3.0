@@ -16,8 +16,8 @@ function DisplayLikes({ id, selfLiked }) {
         dispatch(fetchLikes());
     }, [])
 
-    const currentUserJSON = useSelector(state => state.auth.currentUser)
-    const currentUser = JSON.parse(currentUserJSON)
+    const currentUser = useSelector(state => state.auth.currentUser)
+    // const currentUser = JSON.parse(currentUserJSON)
 
     const likesToDisplay = [...likes].filter((l) => l.post_id === id)
 

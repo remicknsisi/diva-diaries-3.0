@@ -1,5 +1,4 @@
 require_relative '../services/auth_token'
-
 class SessionsController < ApplicationController
     skip_before_action :authorize, only: :create
 

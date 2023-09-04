@@ -211,3 +211,7 @@ footer {
 .form {
   padding: 50px
 }
+
+.error-message {
+  color: #666
+}

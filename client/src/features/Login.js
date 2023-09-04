@@ -61,6 +61,7 @@ function Login() {
         />
         <br/><br/>
         <button className="button" type="submit">Login</button>
+        <br/><br/>
         {Boolean(error) ? <p className="error-message">**{error}**</p> : null}
         <br/><br/><br/>
         <p className='signup-prompt'>Don't have an account? <Link to={`/signup`}>Sign up</Link></p>
