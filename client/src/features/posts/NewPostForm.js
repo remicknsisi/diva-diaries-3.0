@@ -49,15 +49,21 @@ function NewPostForm () {
     return (
         <div className="form-container">
             <form className="form" onSubmit={onSubmitPost}>
-            Caption: <input className="form-input" type="text" placeholder="E.g. Love this post!" value={newCaption} onChange={e => setNewCaption(e.target.value)}>
-                </input>
-            <br/>
-            Image: <input className="form-input" type="text" placeholder="E.g. Love this post!" value={newImage} onChange={e => setNewImage(e.target.value)}>
-                </input>
-            Location: <input className="form-input" type="text" placeholder="E.g. Love this post!" value={newLocation} onChange={e => setNewLocation(e.target.value)}>
-                </input>
-                <button>Submit</button>
-                <p className="error-message">{errorsList}</p>
+            <h1 className="form-header">Craft Your New Post</h1>
+            <p className='form-input'>Caption: </p>
+            <input className="form-input" type="text" placeholder="E.g. The Library is Open" value={newCaption} onChange={e => setNewCaption(e.target.value)}>
+            </input>
+            <br/><br/>
+            <p className='form-input'>Image: </p>
+            <input className="form-input" type="text" placeholder="Paste Image URL here" value={newImage} onChange={e => setNewImage(e.target.value)}>
+            </input>
+            <br/><br/>
+            <p className='form-input'>Location: </p>
+            <input className="form-input" type="text" placeholder="E.g. The Werk Room" value={newLocation} onChange={e => setNewLocation(e.target.value)}>
+            </input>
+            <br/><br/>
+            <button className="button" type="submit">Submit</button>
+            <p className="error-message">{errorsList}</p>
             </form>
         </div>
     )

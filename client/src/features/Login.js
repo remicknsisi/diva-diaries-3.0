@@ -40,31 +40,31 @@ function Login() {
     }
   
     return (
-    <div className='login-container'>
+    <div className='form-container'>
       <form onSubmit={handleSubmit} className="form">
-      <h1 className="login-header">Log In Below</h1>
-      <p className='login-input'>Username: </p>
+      <h1 className="form-header">Log In Below</h1>
+      <p className='form-input'>Username: </p>
         <input
           type="text"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
-          className='login-input'
+          className='form-input'
         />
         <br/>
         <br/>
-        <p className='login-input'>Password:</p>
+        <p className='form-input'>Password:</p>
         <input
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          className='login-input'
+          className='form-input'
         />
         <br/><br/>
         <button className="button" type="submit">Login</button>
         <br/><br/>
         {Boolean(error) ? <p className="error-message">**{error}**</p> : null}
         <br/><br/><br/>
-        <p className='signup-prompt'>Don't have an account? <Link to={`/signup`}>Sign up</Link></p>
+        <p className='form-prompt'>Don't have an account? <Link to={`/signup`}>Sign up</Link></p>
       </form>
     </div>
     );

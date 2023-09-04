@@ -48,45 +48,45 @@ function Signup (){
     }
 
     return (
-        <div className='login-container'>
+        <div className='form-container'>
             <form onSubmit={handleSubmit} className="form">
-                <h1 className="signup-header">Sign Up Below</h1>
+                <h1 className="form-header">Sign Up Below</h1>
                 <br/>
-                <p className='login-input'>Name: </p>
+                <p className='form-input'>Name: </p>
                 <input
                 type="text"
                 placeholder="E.g. Ru Paul"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className='login-input'/>
+                className='form-input'/>
                 <br/><br/>
-                <p className='login-input'>Username: </p>
+                <p className='form-input'>Username: </p>
                 <input
                 type="text"
                 placeholder="E.g. rupaul"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
-                className='login-input'/>
+                className='form-input'/>
                 <br/><br/>
-                <p className='login-input'>Password: </p>
+                <p className='form-input'>Password: </p>
                 <input
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className='login-input'/>
+                className='form-input'/>
                 <br/><br/>
-                <p className='login-input'>Confirm Password: </p>
+                <p className='form-input'>Confirm Password: </p>
                 <input
                 type="password"
                 value={password_confirmation}
                 onChange={(e) => setPasswordConfirmation(e.target.value)}
-                className='login-input'/>
+                className='form-input'/>
                 <br/><br/>
                 <button className="button" type="submit">Sign Up</button>
                 <br/><br/>
                 <p className="error-message">{errorsList}</p>
                 <br/><br/><br/>
-                <p className='signup-prompt'>Already have an account? <Link to={`/login`}>Login</Link></p>
+                <p className='form-prompt'>Already have an account? <Link to={`/login`}>Login</Link></p>
             </form>
         </div>
     )

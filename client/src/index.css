@@ -182,26 +182,26 @@ footer {
   text-transform: uppercase;
 }
 
-.login-header {
+.form-header {
   display: flex;
   align-items: center;
   margin-bottom: 12px;
 }
 
-.login-container {
+.form-container {
   position: relative;
   overflow: hidden;
   border: 1px solid #ccc;
   border-radius: 8px;
 }
 
-.login-input {
+.form-input {
   font-weight: bold;
   text-decoration: none;
   color: #000;
 }
 
-.signup-prompt {
+.form-prompt {
   font-size: 14px;
 }
 
