@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { logout } from './auth/authActions';
 import { useDispatch, useSelector } from 'react-redux';
+import AccountIcon from './icons/AccountIcon';
 
 function StickyMenu() {
   const [isSticky, setIsSticky] = useState(false);
@@ -22,19 +23,22 @@ function StickyMenu() {
     };
   }, []);
 
-  const currentUser = useSelector(state => state.auth.currentUser)
+  const currentUserJSON = useSelector(state => state.auth.currentUser)
+  const currentUser = JSON.parse(currentUserJSON)
 
-
-  return (
+  if(currentUser){return (
     <header className={`sticky-menu ${isSticky ? 'sticky' : ''}`}>
-    <header className="App-header">
-        <a class="title" href={`/`}>DivaDiaries</a>
-        {currentUser !== 'null' ? <a class="button" href={`/login`} onClick={() => logout(currentUser)}>Logout</a> : <a class="button" href={`/login`}>Login</a>}
-      </header>
-      {/* Your menu items go here */}
-      <p>this is the sticky menu!</p>
+        <header className="app-header">
+            <a className="title" href={`/`}>DivaDiaries</a>
+            <a href={`/users/${currentUser.user.id}`} ><AccountIcon /></a>
+            <a className="button" href={`/login`} onClick={() => logout(currentUser)}>Logout</a>
+        </header>
     </header>
-  );
+  );} else {
+    return(
+        null
+    )
+  }
 }
 
 export default StickyMenu;

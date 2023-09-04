@@ -101,6 +101,17 @@ header {
   border-bottom: 1px solid #e0e0e0;
 }
 
+.app-header {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center; 
+  margin:auto
+}
+
+.app-header a {
+  padding: 8px 25px;
+}
+
 .profile-picture {
   width: 100px;
   height: 100px;
@@ -228,6 +239,9 @@ footer {
   /* Make it initially non-sticky */
   position: relative;
   z-index: 1; /* Set a z-index value, it can be any positive integer */
+  width: 100%; /* Set the width to 100% to span the entire width */
+  margin: 0; /* Remove default margins */
+  padding: 0; /* Remove default padding */
 }
 
 /* Add a class to make it sticky */
