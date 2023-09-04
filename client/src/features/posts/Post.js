@@ -12,7 +12,8 @@ function Post({ post }) {
     const currentUserJSON = useSelector(state => state.auth.currentUser)
     const currentUser = JSON.parse(currentUserJSON)
 
-    const selfLiked = post.user_id === currentUser.id ? true : false
+    const likeExists = post.likes.find((l) => l.user_id === currentUser.user.id)
+    const selfLiked = likeExists ? true : false
 
   return (
     <div class="post">
