@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchLikes } from './likesSlice';
 import EmptyHeartIcon from "../EmptyHeartIcon";
+import FullHeartIcon from "../FullHeartIcon";
 import { addLike } from "./likesSlice"
-import { useParams, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function DisplayLikes({ id }) {
     const [errorsList, setErrorsList] = useState([])
@@ -38,11 +39,16 @@ function DisplayLikes({ id }) {
         })
     }
 
+    const currentUserJSON = useSelector(state => state.auth.currentUser)
+    const currentUser = JSON.parse(currentUserJSON)
+
     const likesToDisplay = [...likes].filter((l) => l.post_id === id)
+    const selfLiked = likesToDisplay.filter((l) => l.user_id === currentUser.id)
+    console.log(selfLiked)
 
   return (
     <div>
-        <button onClick={handleOnClick}><EmptyHeartIcon/> {likesToDisplay.length} Likes</button>
+        { selfLiked ? <button onClick={handleOnClick}><FullHeartIcon/> {likesToDisplay.length} Likes</button> : <button onClick={handleOnClick}><EmptyHeartIcon/> {likesToDisplay.length} Likes</button>}
         <p className="error-message">{errorsList}</p>
     </div>
   );
