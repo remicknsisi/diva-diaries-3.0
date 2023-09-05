@@ -22,6 +22,7 @@ function Post({ post, inUserDetails }) {
 
     const users = useSelector((state) => state.users.entities);
     const userOfPost = users.find((u) => u.id === user_id*1)
+    console.log(userOfPost)
 
     function handleDeletePost(){
         fetch(`/posts/${id}`, {

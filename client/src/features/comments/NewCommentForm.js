@@ -45,10 +45,11 @@ function NewCommentForm () {
         <div className="review-form-container">
             {/* render the post you are looking at here! */}
             <form className="form" onSubmit={onSubmitComment}>
-            Leave a Comment: <input className="form-input" type="text" placeholder="E.g. Love this post!" value={newContent} onChange={e => setNewContent(e.target.value)}>
+            <h1 className="form-header">Leave A Comment:</h1>
+            <input className="form-input" type="text" placeholder="E.g. Love this post!" value={newContent} onChange={e => setNewContent(e.target.value)}>
                 </input>
-            <br/>
-                <button>Submit</button>
+            <br/><br/>
+            <button className="button" type="submit">Submit</button>
                 <p className="error-message">{errorsList}</p>
             </form>
         </div>
