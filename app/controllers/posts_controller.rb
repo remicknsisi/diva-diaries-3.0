@@ -30,7 +30,7 @@ class PostsController < ApplicationController
         end
     end
 
-    def delete
+    def destroy
         post = Post.find_by(id: params[:id])
         if @user && @user.id == post.user_id
             post.destroy

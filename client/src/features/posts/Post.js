@@ -28,7 +28,7 @@ function Post({ post, inUserDetails, user }) {
             if(res.ok){
                 res.json().then((deletedPost) => {
                     dispatch(removePost(deletedPost.id));
-                    navigate('/')})
+                    navigate(`/users/${user.id}`)})
             } else {
                 res.json().then((message) => {
                     const errorMessage = message.error
@@ -51,7 +51,7 @@ function Post({ post, inUserDetails, user }) {
         <div className="post-header">
             <img className="profile-picture" src={user.profile_picture} alt="user"/>
             <a className="username" href={`/users/${user.id}`}>{user.username}</a>
-            {currentUser.user.id === user_id ? <button onClick={() => handleDeletePost()}><DeleteIcon/></button> : null}
+            {currentUser.user.id === user_id ? <button onClick={() => handleDeletePost()}>Delete Post <DeleteIcon/></button> : null}
             <p className="error-message">{error}</p>    
         </div>
         <div className="post-location">
