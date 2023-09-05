@@ -42,7 +42,7 @@ function UserDetails() {
         </div>
       </header>
       <section className="user-posts">
-          {userToDisplay.posts.map((p) => <Post key={p.id} inUserDetails={true} post={p}/>)}
+          {userToDisplay.posts.map((p) => <Post key={p.id} inUserDetails={true} post={p} user={userToDisplay} />)}
       </section>
       <footer>
       </footer>

@@ -14,7 +14,7 @@ function DisplayLikes({ id, selfLiked }) {
     const likes = useSelector((state) => state.likes.entities);
     useEffect(() => {
         dispatch(fetchLikes());
-    }, [dispatch])
+    }, [])
 
     const currentUserJSON = useSelector(state => state.auth.currentUser)
     const currentUser = JSON.parse(currentUserJSON)

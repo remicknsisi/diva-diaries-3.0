@@ -12,7 +12,7 @@ function DisplayComments({ id }) {
 
     useEffect(() => {
         dispatch(fetchComments());
-    }, [dispatch])
+    }, [])
 
     const commentsToDisplay = [...comments].filter((c) => c.post_id === id)
 

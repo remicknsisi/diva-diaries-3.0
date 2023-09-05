@@ -36,7 +36,7 @@ function NewPostForm () {
                     setNewCaption('')
                     setNewLocation('')
                     setNewImage('')
-                    navigate('/')})
+                    navigate(`/users/${id}`)})
             } else {
                 res.json().then((message) => {
                     const errorLis = message.errors.map(error => <li key={error}>{error}</li>)

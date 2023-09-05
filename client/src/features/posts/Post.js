@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import DisplayComments from '../comments/DisplayComments';
 import CommentIcon from "../icons/CommentIcon";
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import DisplayLikes from "../likes/DisplayLikes";
 import { useDispatch, useSelector } from "react-redux";
 import DeleteIcon from "../icons/DeleteIcon";
 import { removePost } from "./postsSlice";
-import PostDetails from "./PostDetails";
 
-function Post({ post, inUserDetails }) {
+function Post({ post, inUserDetails, user }) {
     const { location, caption, image, user_id, created_at, id } = post
     const [error, setError] = useState('')
     const dispatch = useDispatch();
@@ -19,10 +18,6 @@ function Post({ post, inUserDetails }) {
 
     const likeExists = post.likes.find((l) => l.user_id === currentUser.user.id)
     const selfLiked = likeExists ? true : false
-
-    const users = useSelector((state) => state.users.entities);
-    const userOfPost = users.find((u) => u.id === user_id*1)
-    console.log(userOfPost)
 
     function handleDeletePost(){
         fetch(`/posts/${id}`, {
@@ -45,7 +40,7 @@ function Post({ post, inUserDetails }) {
 
   if(inUserDetails){
     return(
-        <div className="post-on-user-page" onClick={() => navigate(`/users/${userOfPost.id}/posts/${post.id}`)}>
+        <div className="post-on-user-page" onClick={() => navigate(`/users/${user.id}/posts/${post.id}`)}>
             <div className="post-on-user-page-img">
                 <img src={image} alt="post"/>
             </div>
@@ -54,8 +49,8 @@ function Post({ post, inUserDetails }) {
   }else {return (
     <div className="post">
         <div className="post-header">
-            <img className="profile-picture" src={userOfPost.profile_picture} alt="user"/>
-            <a className="username" href={`/users/${userOfPost.id}`}>{userOfPost.username}</a>
+            <img className="profile-picture" src={user.profile_picture} alt="user"/>
+            <a className="username" href={`/users/${user.id}`}>{user.username}</a>
             {currentUser.user.id === user_id ? <button onClick={() => handleDeletePost()}><DeleteIcon/></button> : null}
             <p className="error-message">{error}</p>    
         </div>
@@ -71,11 +66,11 @@ function Post({ post, inUserDetails }) {
             <DisplayLikes selfLiked={selfLiked} id={id}/>
             </div>
             <div className="comment-button">
-            <button onClick={() => navigate(`/posts/${id}/comments`)}><CommentIcon/> Comment</button>
+            <button onClick={() => navigate(`/users/${user.id}/posts/${id}/comments`)}><CommentIcon/> Comment</button>
             </div>
         </div>
         <div className="post-caption">
-            <a className="username" href="/">{userOfPost.username}</a>
+            <a className="username" href="/">{user.username}</a>
             <span className="caption-text"> {caption}</span>
         </div>
         <div className="post-comments">
