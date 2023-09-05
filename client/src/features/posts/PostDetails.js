@@ -6,53 +6,18 @@ import DisplayLikes from "../likes/DisplayLikes";
 import { useDispatch, useSelector } from "react-redux";
 import DeleteIcon from "../icons/DeleteIcon";
 import { removePost } from "./postsSlice";
-import PostDetails from "./PostDetails";
 
-function Post({ post, inUserDetails }) {
-    const { location, caption, image, user_id, created_at, id } = post
-    const [error, setError] = useState('')
+function PostDetails() {
     const dispatch = useDispatch();
     const navigate = useNavigate()
+    const { id } = useParams();
 
-    const currentUserJSON = useSelector(state => state.auth.currentUser)
-    const currentUser = JSON.parse(currentUserJSON)
-
-    const likeExists = post.likes.find((l) => l.user_id === currentUser.user.id)
-    const selfLiked = likeExists ? true : false
-
-    const users = useSelector((state) => state.users.entities);
-    const userOfPost = users.find((u) => u.id === user_id*1)
-
-    function handleDeletePost(){
-        fetch(`/posts/${id}`, {
-            method: 'DELETE',
-            headers: {"Content-Type": "application/json"},
-          })
-          .then(res => {
-            if(res.ok){
-                res.json().then((deletedPost) => {
-                    dispatch(removePost(deletedPost.id));
-                    navigate('/')})
-            } else {
-                res.json().then((message) => {
-                    const errorMessage = message.error
-                    setError(errorMessage)
-                })
-            }
-        })
-    }
-
-  if(inUserDetails){
-    return(
-        <div className="post" onClick={() => navigate(`/users/${userOfPost.id}/posts/${post.id}`)}>
-            <div className="post-image">
-                <img src={image} alt="post"/>
-            </div>
-        </div> 
-    )
-  }else {return (
-    <div className="post">
-        <div className="post-header">
+    return (
+    <div className="post-details">
+        post details
+        <button onClick={() => {
+            navigate(`/users/${id}`)}}>Back</button>
+        {/* <div className="post-header">
             <img className="profile-picture" src={userOfPost.profile_picture} alt="user"/>
             <a className="username" href={`/users/${userOfPost.id}`}>{userOfPost.username}</a>
             {currentUser.user.id === user_id ? <button onClick={() => handleDeletePost()}><DeleteIcon/></button> : null}
@@ -82,9 +47,9 @@ function Post({ post, inUserDetails }) {
         </div>
         <div className="post-timestamp">
             <span>{created_at}</span>
-        </div>
+        </div> */}
     </div>
-  )}
+  )
 }
 
-export default Post;
+export default PostDetails;
