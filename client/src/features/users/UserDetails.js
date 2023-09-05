@@ -4,9 +4,6 @@ import { fetchUsers } from "./usersSlice";
 import { useParams } from 'react-router-dom';
 import EditUserForm from "./EditUserForm";
 import Post from "../posts/Post";
-// import store from "..../src/store"
-
-// console.log(store.getState())
 
 function UserDetails() {
   const [isHidden, setIsHidden] = useState(true)
@@ -16,7 +13,6 @@ function UserDetails() {
   const users = useSelector((state) => state.users.entities);
   const currentUserJSON = useSelector(state => state.auth.currentUser)
   const currentUser = JSON.parse(currentUserJSON)
-  console.log(currentUser)
 
   const { id } = useParams();
 
@@ -25,7 +21,6 @@ function UserDetails() {
   }, [])
 
   const userToDisplay = users.find((u) => u.id === id*1)
-  console.log(userToDisplay)
 
   if (userToDisplay){return (
     <div>
@@ -47,8 +42,7 @@ function UserDetails() {
         </div>
       </header>
       <section className="user-posts">
-          {userToDisplay.posts.map((p) => <Post key={p.id} post={p}/>)}
-          {/* {userToDisplay.posts.map((p) => <p>hi!</p>)} */}
+          {userToDisplay.posts.map((p) => <Post key={p.id} inUserDetails={true} post={p}/>)}
       </section>
       <footer>
       </footer>

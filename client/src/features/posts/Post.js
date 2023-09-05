@@ -7,11 +7,13 @@ import { useDispatch, useSelector } from "react-redux";
 import DeleteIcon from "../icons/DeleteIcon";
 import { removePost } from "./postsSlice";
 
-function Post({ post }) {
+function Post({ post, inUserDetails }) {
     const { location, caption, image, user_id, created_at, id } = post
     const [error, setError] = useState('')
+    const [isHidden, setIsHidden] = useState(true)
     const dispatch = useDispatch();
     const navigate = useNavigate()
+
     const currentUserJSON = useSelector(state => state.auth.currentUser)
     const currentUser = JSON.parse(currentUserJSON)
 
@@ -40,7 +42,18 @@ function Post({ post }) {
         })
     }
 
-  return (
+  if(inUserDetails){
+    return(
+        isHidden ? 
+        <div className="post" onClick={() => setIsHidden(false)}>
+            <div className="post-image">
+                <img src={image} alt="post"/>
+            </div>
+        </div> 
+        : 
+        navigate(`/posts/${post.id}`)
+    )
+  }else {return (
     <div className="post">
         <div className="post-header">
             <img className="profile-picture" src={userOfPost.profile_picture} alt="user"/>
@@ -62,9 +75,6 @@ function Post({ post }) {
             <div className="comment-button">
             <button onClick={() => navigate(`/posts/${id}/comments`)}><CommentIcon/> Comment</button>
             </div>
-            {/* <div class="share-button">
-            <button>Share</button>
-            </div> */}
         </div>
         <div className="post-caption">
             <a className="username" href="/">{userOfPost.username}</a>
@@ -77,7 +87,7 @@ function Post({ post }) {
             <span>{created_at}</span>
         </div>
     </div>
-  );
+  )}
 }
 
 export default Post;

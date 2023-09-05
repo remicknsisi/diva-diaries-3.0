@@ -14,7 +14,7 @@ function DisplayPosts() {
 
   return (
     <div>
-      {posts.map((p) => <Post key={p.id} post={p}/>)}
+      {posts.map((p) => <Post key={p.id} post={p} inUserDetails={false}/>)}
     </div>
   );
 }
