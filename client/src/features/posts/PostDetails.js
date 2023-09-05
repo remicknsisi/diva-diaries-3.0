@@ -14,9 +14,7 @@ function PostDetails() {
 
     return (
     <div className="post-details">
-        post details
-        <button onClick={() => {
-            navigate(`/users/${id}`)}}>Back</button>
+        <button className="button" onClick={() => navigate(`/users/${id}`)}>Back</button>
         {/* <div className="post-header">
             <img className="profile-picture" src={userOfPost.profile_picture} alt="user"/>
             <a className="username" href={`/users/${userOfPost.id}`}>{userOfPost.username}</a>

@@ -44,8 +44,8 @@ function Post({ post, inUserDetails }) {
 
   if(inUserDetails){
     return(
-        <div className="post" onClick={() => navigate(`/users/${userOfPost.id}/posts/${post.id}`)}>
-            <div className="post-image">
+        <div className="post-on-user-page" onClick={() => navigate(`/users/${userOfPost.id}/posts/${post.id}`)}>
+            <div className="post-on-user-page-img">
                 <img src={image} alt="post"/>
             </div>
         </div> 

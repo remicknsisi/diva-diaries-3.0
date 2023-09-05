@@ -16,6 +16,20 @@
   border-radius: 4px;
 }
 
+.post-on-user-page{
+  width: 100%; /* Ensure the image takes the full width of its grid cell */
+  padding-bottom: 100%; /* Create a square aspect ratio (1:1) */
+  position: relative;
+  overflow: hidden;
+}
+
+.post-on-user-page-img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Crop the image if it doesn't fit perfectly */
+}
+
 /* Style the post header */
 .post-header {
   display: flex;
@@ -158,6 +172,12 @@ header {
   max-width: 100%;
   height: auto;
   display: block;
+}
+
+.post-image-on-user-page {
+  max-width: 100%;
+  height: auto;
+  display: flex
 }
 
 /* Footer styles */
