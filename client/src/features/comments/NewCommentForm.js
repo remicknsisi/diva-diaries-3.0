@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 function NewCommentForm () {
     const [newContent, setNewContent] = useState('')
     const [errorsList, setErrorsList] = useState([])
-    const { post_id } = useParams()
+    const { id, post_id } = useParams()
 
     const navigate = useNavigate()
     const dispatch = useDispatch();
@@ -43,7 +43,7 @@ function NewCommentForm () {
 
     return (
         <div className="review-form-container">
-            {/* render the post you are looking at here! */}
+            <button className="button" onClick={() => navigate(`/users/${id}/posts/${post_id}`)}>Back to Post</button>
             <form className="form" onSubmit={onSubmitComment}>
             <h1 className="form-header">Leave A Comment:</h1>
             <input className="form-input" type="text" placeholder="E.g. Love this post!" value={newContent} onChange={e => setNewContent(e.target.value)}>

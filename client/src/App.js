@@ -27,7 +27,7 @@ function App() {
           <Route path="/users/:id" element={<UserDetails/>}/>
           <Route path="/users/:id/posts/:post_id" element={<PostDetails/>}/>
           <Route path="/users/:id/posts" element={<NewPostForm/>}/>
-          <Route path="/posts/:post_id/comments" element={<NewCommentForm/>}/>
+          <Route path="/users/:id/posts/:post_id/comments" element={<NewCommentForm/>}/>
           <Route path="/signup" element={<Signup/>}/>
           <Route path="/login" element={<Login/>}/>
         </Routes>
