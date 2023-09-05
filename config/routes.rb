@@ -6,9 +6,9 @@ Rails.application.routes.draw do
   resources :likes, only: [:index, :destroy]
 
   get "/users/:id/posts/:post_id", to: "posts#show"
-  get "/users/:id/posts/:post_id/likes", to: "users#users_who_liked"
+  # get "/users/:id/posts/:post_id/likes", to: "users#users_who_liked"
   post "/posts/:post_id/comments", to: "comments#create"
-  post "/posts/:post_id/likes", to: "likes#create"
+  post "/users/:id/posts/:post_id/likes", to: "likes#create"
   post "/users/:id/posts", to: "posts#create"
   post "/signup", to: "users#create"
   post "/login", to: "sessions#create"

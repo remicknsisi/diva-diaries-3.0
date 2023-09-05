@@ -16,9 +16,6 @@ function Post({ post, inUserDetails, user }) {
     const currentUserJSON = useSelector(state => state.auth.currentUser)
     const currentUser = JSON.parse(currentUserJSON)
 
-    const likeExists = post.likes.find((l) => l.user_id === currentUser.user.id)
-    const selfLiked = likeExists ? true : false
-
     function handleDeletePost(){
         fetch(`/posts/${id}`, {
             method: 'DELETE',
@@ -63,7 +60,7 @@ function Post({ post, inUserDetails, user }) {
         </div>
         <div className="post-actions">
             <div className="like-button">
-            <DisplayLikes selfLiked={selfLiked} id={id}/>
+            <DisplayLikes id={id} post={post}/>
             </div>
             <div className="comment-button">
             <button onClick={() => navigate(`/users/${user.id}/posts/${id}/comments`)}><CommentIcon/> Comment</button>
