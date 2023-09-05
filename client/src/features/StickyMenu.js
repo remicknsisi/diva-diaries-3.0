@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { logout } from './auth/authActions';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import AccountIcon from './icons/AccountIcon';
 import PlusIcon from './icons/PlusIcon';
 
 function StickyMenu() {
   const [isSticky, setIsSticky] = useState(false);
-  const dispatch = useDispatch();
 
   useEffect(() => {
     const handleScroll = () => {

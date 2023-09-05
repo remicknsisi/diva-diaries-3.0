@@ -1,20 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from "react-router-dom";
-import { applyMiddleware } from "redux";
-import { configureStore } from "@reduxjs/toolkit";
-import thunkMiddleware from "redux-thunk";
-import { composeWithDevTools } from "redux-devtools-extension";
-import rootReducer from "./reducers.js";
 import { Provider } from "react-redux"; 
 import './index.css';
 import App from './App';
+import store from "./store.js"
 
-const composedEnhancer = composeWithDevTools(applyMiddleware(thunkMiddleware));
-
-const store = configureStore({
-  reducer: rootReducer
-}, composedEnhancer);
+console.log(store.getState())
 
 ReactDOM.render(
   <BrowserRouter>

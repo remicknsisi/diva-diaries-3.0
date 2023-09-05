@@ -10,7 +10,7 @@ function DisplayPosts() {
 
   useEffect(() => {
     dispatch(fetchPosts());
-  }, [])
+  }, [dispatch])
 
   return (
     <div>

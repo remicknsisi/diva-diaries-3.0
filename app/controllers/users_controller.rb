@@ -3,8 +3,6 @@ require_relative '../services/auth_token'
 class UsersController < ApplicationController
     rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
     skip_before_action :authorize, only: :create
-    # skip_before_action :authorize, only: :index
-
 
     def index
         # if @user

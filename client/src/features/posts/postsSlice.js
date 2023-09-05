@@ -27,8 +27,10 @@ export const addPost = (post) => {
             entities: [action.payload]};
   
       case "posts/remove":
-        return state.filter((post) => post.id !== post.payload);
-  
+        return {
+            ...state,
+            entities: state.entities.filter((p) => p.id !== action.payload)
+        };  
       case "posts/postsLoading":
         return {
           ...state,

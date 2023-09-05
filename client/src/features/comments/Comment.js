@@ -35,8 +35,8 @@ function Comment({ comment }) {
     <div>
         <ul>
             <li>
-                <a class="username" href="#">{user.username}</a>
-                <span class="comment-text"> {content}</span>
+                <a className="username" href="/">{user.username}</a>
+                <span className="comment-text"> {content}</span>
                 {user.id === currentUser.user.id ? <button onClick={() => handleDeleteComment()}>X</button> : null}
                 <p className="error-message">{error}</p>    
             </li>
