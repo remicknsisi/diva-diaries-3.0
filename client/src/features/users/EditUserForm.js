@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
-import { updateUser } from "./usersSlice";
+import { updateUser, removeUser } from "./usersSlice";
 
 function EditUserForm () {
     const [isHidden, setIsHidden] = useState(true)
     const [errorsList, setErrorsList] = useState([])
+    const [error, setError] = useState('')
     const { id } = useParams()
-    const dispatch = useDispatch();
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     const [newName, setNewName] = useState('')
     const [newProfPic, setNewProfPic] = useState('')
@@ -54,6 +56,27 @@ function EditUserForm () {
         })
     }
 
+    function confirmDelete(){
+        if (window.confirm("Are you sure you want to delete your account? This action cannot be undone.")) {
+            fetch(`/users/${currentUser.user.id}`, {
+                method: 'DELETE',
+                headers: {"Content-Type": "application/json"},
+              })
+              .then(res => {
+                if(res.ok){
+                    res.json().then((deletedUser) => {
+                        dispatch(removeUser(deletedUser.id))
+                        navigate('/login')})
+                } else {
+                    res.json().then((message) => {
+                        const errorMessage = message.error
+                        setError(errorMessage)
+                    })
+                }
+            })
+        }
+    }
+
     return (
         <div className="profile-form-container">
             <button className="button" onClick={() => setIsHidden(!isHidden)}>{isHidden ? "Edit Profile" : "Hide Edit Profile"}</button>
@@ -75,8 +98,9 @@ function EditUserForm () {
                     <br/>
                     <input className="form-input" type="text" onChange={(e) => setNewBio(e.target.value)} value={newBio} placeholder="E.g. Sissy that walk" />
                     <br/><br/>
-                    <button className="button" type="submit">Finish Editing Profile</button>
+                    <button className="button" type="submit">Finish Editing Profile</button> <button className="button" onClick={() => confirmDelete()}>Delete Profile</button>
                     <p className="error-message">{errorsList}</p>
+                    <p className="error-message">{error}</p>
                 </form>}
         </div>
     )
