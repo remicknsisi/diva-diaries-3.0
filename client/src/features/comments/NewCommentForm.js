@@ -31,7 +31,7 @@ function NewCommentForm () {
                 res.json().then((newComment) => {
                     dispatch(addComment(newComment))
                     setNewContent('')
-                    navigate('/')})
+                    navigate(`/users/${id}/posts/${post_id}`)})
             } else {
                 res.json().then((message) => {
                     const errorLis = message.errors.map(error => <li key={error}>{error}</li>)

@@ -12,6 +12,10 @@ function Post({ post, inUserDetails, user }) {
     const [error, setError] = useState('')
     const dispatch = useDispatch();
     const navigate = useNavigate()
+    const isoDate = created_at
+    const date = new Date(isoDate);
+    const options = { month: 'long', day: 'numeric' };
+    const formattedDate = date.toLocaleDateString(undefined, options);
 
     const currentUserJSON = useSelector(state => state.auth.currentUser)
     const currentUser = JSON.parse(currentUserJSON)
@@ -60,7 +64,7 @@ function Post({ post, inUserDetails, user }) {
         </div>
         <div className="post-actions">
             <div className="like-button">
-            <DisplayLikes id={id} post={post}/>
+            <DisplayLikes post={post}/>
             </div>
             <div className="comment-button">
             <button onClick={() => navigate(`/users/${user.id}/posts/${id}/comments`)}><CommentIcon/> Comment</button>
@@ -71,10 +75,10 @@ function Post({ post, inUserDetails, user }) {
             <span className="caption-text"> {caption}</span>
         </div>
         <div className="post-comments">
-            <DisplayComments id={id} />
+            <DisplayComments id={id} inPostDetails={false} />
         </div>
         <div className="post-timestamp">
-            <span>{created_at}</span>
+            <span>{formattedDate}</span>
         </div>
     </div>
   )}

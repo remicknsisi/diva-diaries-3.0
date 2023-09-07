@@ -19,7 +19,11 @@ class PostsController < ApplicationController
 
     def create
         if @user
+            # js_timestamp = params[:created_at]
+            # ruby_time = Time.at(js_timestamp.to_i / 1000.0)
+            # ruby_datetime = ruby_time.to_datetime
             post = @user.posts.create(post_params)
+            # post.created_at = ruby_datetime
             if post.valid?
                 render json: post, status: :created
             else
@@ -43,6 +47,6 @@ class PostsController < ApplicationController
     private
 
     def post_params
-        params.permit(:location, :image, :caption)
+        params.permit(:location, :image, :caption, :created_at)
     end
 end

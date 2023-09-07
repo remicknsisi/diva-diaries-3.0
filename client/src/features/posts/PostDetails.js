@@ -38,7 +38,7 @@ function PostDetails() {
         </div>
         <div className="post-actions">
             <div className="like-button">
-            {/* <DisplayLikes selfLiked={selfLiked} id={id}/> */}
+            <DisplayLikes post={post}/>
             </div>
             <div className="comment-button">
             <button onClick={() => navigate(`/users/${id}/posts/${post_id}/comments`)}><CommentIcon/> Comment</button>
@@ -49,7 +49,8 @@ function PostDetails() {
             <span className="caption-text"> {post.caption}</span>
         </div>
         <div className="post-comments">
-            <DisplayComments id={post_id} />
+            <DisplayComments id={post_id} inPostDetails={true} />
+            {/* why wont comments render here? */}
         </div>
         <div className="post-timestamp">
             <span>{post.created_at}</span>

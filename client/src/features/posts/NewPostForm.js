@@ -54,7 +54,7 @@ function NewPostForm () {
             <input className="form-input" type="text" placeholder="E.g. The Library is Open" value={newCaption} onChange={e => setNewCaption(e.target.value)}>
             </input>
             <br/><br/>
-            <p className='form-input'>Image: </p>
+            <p className='form-input'>Image: (600x600 recommended) </p>
             <input className="form-input" type="text" placeholder="Paste Image URL here" value={newImage} onChange={e => setNewImage(e.target.value)}>
             </input>
             <br/><br/>

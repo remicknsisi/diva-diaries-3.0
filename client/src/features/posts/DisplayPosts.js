@@ -13,7 +13,7 @@ function DisplayPosts() {
   }, [])
 
   return (
-    <div>
+    <div className="posts-container">
       {posts.map((p) => <Post key={p.id} post={p} user={p.user} inUserDetails={false}/>)}
     </div>
   );

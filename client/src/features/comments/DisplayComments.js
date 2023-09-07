@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Comment from "./Comment";
 import { fetchComments } from './commentsSlice';
 
-function DisplayComments({ id }) {
+function DisplayComments({ id, inPostDetails }) {
     const [isHidden, setIsHidden] = useState(true)
 
     const dispatch = useDispatch();
@@ -20,7 +20,12 @@ function DisplayComments({ id }) {
         <Comment key={c.id} comment={c}/>
     ))
 
-  return (
+  if(inPostDetails){return(
+        <>
+            {commentsList}
+        </>
+    )} 
+  else{ return (
     <div>
       {isHidden ? 
         <p onClick={() => setIsHidden(false)}>View all {commentsToDisplay.length} comments</p> 
@@ -31,7 +36,7 @@ function DisplayComments({ id }) {
         </>
       }
     </div>
-  );
+  );}
 }
 
 export default DisplayComments;
