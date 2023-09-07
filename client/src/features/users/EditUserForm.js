@@ -1,20 +1,27 @@
-import React, { useState } from "react";
-import { useParams, useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { useParams } from 'react-router-dom';
+import { useDispatch } from "react-redux";
+import { updateUser } from "./usersSlice";
 
-function EditUserForm () {
+function EditUserForm ({ currentUser }) {
     const [isHidden, setIsHidden] = useState(true)
     const [errorsList, setErrorsList] = useState([])
     const { id } = useParams()
-    const [newName, setNewName] = useState('')
-    const [newImage, setNewImage] = useState('')
-    const navigate = useNavigate()
+    const dispatch = useDispatch();
 
-    // useEffect(() => {
-    //     if (currentUser){
-    //     setNewName(currentUser.name)
-    //     setNewImage(currentUser.image)
-    // }
-    // }, [currentUser])
+    const [newName, setNewName] = useState('')
+    const [newProfPic, setNewProfPic] = useState('')
+    const [newBio, setNewBio] = useState('')
+    const [newUserName, setNewUsername] = useState('')
+
+    useEffect(() => {
+        if (currentUser){
+        setNewName(currentUser.name)
+        setNewProfPic(currentUser.profile_picture)
+        setNewBio(currentUser.bio)
+        setNewUsername(currentUser.username)
+    }
+    }, [currentUser])
 
     function handleEditProfile(e){
         e.preventDefault()
@@ -24,13 +31,15 @@ function EditUserForm () {
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify({
                 name: newName,
-                image: newImage
+                profile_picture: newProfPic,
+                bio: newBio,
+                username: newUserName
              })
            })
            .then(res => {
             if(res.ok){
                 res.json().then((updatedUser) => {
-                    // handleEditUser(updatedUser)
+                    dispatch(updateUser(updatedUser))
                     })
             } else {
                 res.json().then((message) => {
@@ -43,16 +52,22 @@ function EditUserForm () {
 
     return (
         <div className="profile-form-container">
-            <button className="button" onClick={setIsHidden(!isHidden)}>Edit Profile:</button>
+            <button className="button" onClick={() => setIsHidden(!isHidden)}>Edit Profile</button>
             {isHidden ? null : 
                 <form onSubmit={handleEditProfile} className="form">
                     <label>Edit Full Name: </label>
                     <input className="form-input" type="text" onChange={(e) => setNewName(e.target.value)} value={newName} placeholder="Full Name" />
                     <br/>
-                    <label>Edit Image URL (optional): </label>
-                    <input className="form-input" type="text" onChange={(e) => setNewImage(e.target.value)} value={newImage} placeholder="Image URL" />
+                    <label>Edit Profile Picture: </label>
+                    <input className="form-input" type="text" onChange={(e) => setNewProfPic(e.target.value)} value={newProfPic} placeholder="Image URL" />
+                    <br/>
+                    <label>Edit UserName: </label>
+                    <input className="form-input" type="text" onChange={(e) => setNewUsername(e.target.value)} value={newUserName} placeholder="E.g. thenextallstar" />
+                    <br/>
+                    <label>Edit Bio: </label>
+                    <input className="form-input" type="text" onChange={(e) => setNewBio(e.target.value)} value={newBio} placeholder="E.g. Sissy that walk" />
                     <br/><br/>
-                    <button type="submit">Finish Editing Profile ✏️ </button>
+                    <button className="button" type="submit">Finish Editing Profile</button>
                     <p className="error-message">{errorsList}</p>
                 </form>}
         </div>

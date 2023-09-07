@@ -13,6 +13,13 @@ export const removeUser = (id) => {
   };
 };
 
+export const updateUser = (user) => {
+  return {
+    type: "users/update",
+    payload: user,
+  };
+};
+
 // Reducers
 const initialState = {
   entities: [],
@@ -28,6 +35,9 @@ export default function usersReducer(state = initialState, action) {
 
     case "users/remove":
       return state.filter((user) => user.id !== user.payload);
+
+    case "users/update":
+      return state.map((user) => user.id === user.payload.id ? user.payload : user);
 
     case "users/usersLoading":
       return {

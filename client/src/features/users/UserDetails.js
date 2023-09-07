@@ -31,7 +31,7 @@ function UserDetails() {
         </div>
         <br/><br/>
         <div className="edit-profile">
-          {currentUser.user.id === id*1 ? <EditUserForm/> : null}
+          {currentUser.user.id === id*1 ? <EditUserForm currentUser={currentUser.user} /> : null}
         </div>
       </header>
       <section className="user-posts">
