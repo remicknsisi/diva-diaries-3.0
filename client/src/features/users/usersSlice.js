@@ -37,7 +37,9 @@ export default function usersReducer(state = initialState, action) {
       return state.filter((user) => user.id !== user.payload);
 
     case "users/update":
-      return state.map((user) => user.id === user.payload.id ? user.payload : user);
+      return {
+        ...state, 
+        entities: state.entities.map((user) => user.id === action.payload.id ? action.payload : user)};
 
     case "users/usersLoading":
       return {
