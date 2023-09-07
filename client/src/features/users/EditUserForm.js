@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from 'react-router-dom';
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { updateUser } from "./usersSlice";
 
-function EditUserForm ({ currentUser }) {
+function EditUserForm () {
     const [isHidden, setIsHidden] = useState(true)
     const [errorsList, setErrorsList] = useState([])
     const { id } = useParams()
@@ -14,14 +14,17 @@ function EditUserForm ({ currentUser }) {
     const [newBio, setNewBio] = useState('')
     const [newUserName, setNewUsername] = useState('')
 
+    const currentUserJSON = useSelector(state => state.auth.currentUser)
+    const currentUser = JSON.parse(currentUserJSON)
+
     useEffect(() => {
-        if (currentUser){
-        setNewName(currentUser.name)
-        setNewProfPic(currentUser.profile_picture)
-        setNewBio(currentUser.bio)
-        setNewUsername(currentUser.username)
+        if (currentUser.user){
+        setNewName(currentUser.user.name)
+        setNewProfPic(currentUser.user.profile_picture)
+        setNewBio(currentUser.user.bio)
+        setNewUsername(currentUser.user.username)
     }
-    }, [currentUser])
+    }, [])
 
     function handleEditProfile(e){
         e.preventDefault()
@@ -40,6 +43,7 @@ function EditUserForm ({ currentUser }) {
             if(res.ok){
                 res.json().then((updatedUser) => {
                     dispatch(updateUser(updatedUser))
+                    setIsHidden(true)
                     })
             } else {
                 res.json().then((message) => {
