@@ -52,7 +52,7 @@ function Post({ post, inUserDetails, user }) {
         <div className="post-header">
             <img className="profile-picture" src={user.profile_picture} alt="user"/>
             <a className="username" href={`/users/${user.id}`}>{user.username}</a>
-            {currentUser.user.id === user_id ? <button onClick={() => handleDeletePost()}>Delete Post <DeleteIcon/></button> : null}
+            {currentUser.user.id === user_id ? <button className="button" onClick={() => handleDeletePost()}>Delete Post <DeleteIcon/></button> : null}
             <p className="error-message">{error}</p>    
         </div>
         <div className="post-location">
@@ -71,7 +71,7 @@ function Post({ post, inUserDetails, user }) {
             </div>
         </div>
         <div className="post-caption">
-            <a className="username" href="/">{user.username}</a>
+            <a className="username" href={`/users/${user.id}`}>{user.username}</a>
             <span className="caption-text"> {caption}</span>
         </div>
         <div className="post-comments">

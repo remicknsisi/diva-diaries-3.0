@@ -9,16 +9,44 @@ import { removePost } from "./postsSlice";
 import { fetchPosts } from './postsSlice';
 
 function PostDetails() {
-    const dispatch = useDispatch();
+    const dispatch = useDispatch()
+    const [error, setError] = useState('')
     const navigate = useNavigate()
-    const { id, post_id } = useParams();
+    const { id, post_id } = useParams()
 
-    const posts = useSelector((state) => state.posts.entities);
+    const posts = useSelector((state) => state.posts.entities)
     const post = posts.find((p) => p.id === post_id*1)
+
+    const currentUserJSON = useSelector(state => state.auth.currentUser)
+    const currentUser = JSON.parse(currentUserJSON)
+
+    const isoDate = post ? post.created_at : null
+    const date = new Date(isoDate)
+    const options = { month: 'long', day: 'numeric' }
+    const formattedDate = date.toLocaleDateString(undefined, options)
   
     useEffect(() => {
       dispatch(fetchPosts());
     }, [dispatch])
+
+    function handleDeletePost(){
+        fetch(`/posts/${post_id}`, {
+            method: 'DELETE',
+            headers: {"Content-Type": "application/json"},
+          })
+          .then(res => {
+            if(res.ok){
+                res.json().then((deletedPost) => {
+                    dispatch(removePost(deletedPost.id));
+                    navigate(`/users/${id}`)})
+            } else {
+                res.json().then((message) => {
+                    const errorMessage = message.error
+                    setError(errorMessage)
+                })
+            }
+        })
+    }
 
     if(post) {return (
     <div className="post-details">
@@ -26,8 +54,8 @@ function PostDetails() {
         <div className="post-header">
             <img className="profile-picture" src={post.user.profile_picture} alt="user"/>
             <a className="username" href={`/users/${post.user.id}`}>{post.user.username}</a>
-            {/* {currentUser.user.id === user_id ? <button onClick={() => handleDeletePost()}><DeleteIcon/></button> : null} */}
-            {/* <p className="error-message">{error}</p>     */}
+            {currentUser.user.id === id*1 ? <button className="button" onClick={() => handleDeletePost()}>Delete Post <DeleteIcon/></button> : null}
+            <p className="error-message">{error}</p>    
         </div>
         <div className="post-location">
             <i className="fas fa-map-marker"></i>
@@ -53,7 +81,7 @@ function PostDetails() {
             {/* why wont comments render here? */}
         </div>
         <div className="post-timestamp">
-            <span>{post.created_at}</span>
+            <span>{formattedDate}</span>
         </div>
     </div>
   )} else {
