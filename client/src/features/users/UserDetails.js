@@ -29,11 +29,10 @@ function UserDetails() {
           <h1 className="username">{userToDisplay.username}</h1>
           <p className="bio">{userToDisplay.bio}</p>
         </div>
-        <br/><br/>
-        <div className="edit-profile">
+      </header>
+      <div className="edit-profile">
           {currentUser.user.id === id*1 ? <EditUserForm currentUser={currentUser.user} /> : null}
         </div>
-      </header>
       <section className="user-posts">
           {userToDisplay.posts.map((p) => <Post key={p.id} inUserDetails={true} post={p} user={userToDisplay} />)}
       </section>

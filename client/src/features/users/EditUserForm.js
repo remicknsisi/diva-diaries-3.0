@@ -56,19 +56,23 @@ function EditUserForm () {
 
     return (
         <div className="profile-form-container">
-            <button className="button" onClick={() => setIsHidden(!isHidden)}>Edit Profile</button>
+            <button className="button" onClick={() => setIsHidden(!isHidden)}>{isHidden ? "Edit Profile" : "Hide Edit Profile"}</button>
             {isHidden ? null : 
                 <form onSubmit={handleEditProfile} className="form">
                     <label>Edit Full Name: </label>
+                    <br/>
                     <input className="form-input" type="text" onChange={(e) => setNewName(e.target.value)} value={newName} placeholder="Full Name" />
-                    <br/>
+                    <br/><br/>
                     <label>Edit Profile Picture: </label>
+                    <br/>
                     <input className="form-input" type="text" onChange={(e) => setNewProfPic(e.target.value)} value={newProfPic} placeholder="Image URL" />
-                    <br/>
+                    <br/><br/>
                     <label>Edit UserName: </label>
-                    <input className="form-input" type="text" onChange={(e) => setNewUsername(e.target.value)} value={newUserName} placeholder="E.g. thenextallstar" />
                     <br/>
+                    <input className="form-input" type="text" onChange={(e) => setNewUsername(e.target.value)} value={newUserName} placeholder="E.g. thenextallstar" />
+                    <br/><br/>
                     <label>Edit Bio: </label>
+                    <br/>
                     <input className="form-input" type="text" onChange={(e) => setNewBio(e.target.value)} value={newBio} placeholder="E.g. Sissy that walk" />
                     <br/><br/>
                     <button className="button" type="submit">Finish Editing Profile</button>

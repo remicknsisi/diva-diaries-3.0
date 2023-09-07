@@ -243,6 +243,7 @@ footer {
   font-weight: bold;
   text-decoration: none;
   color: #000;
+  min-width: 300px; 
 }
 
 .form-prompt {
@@ -301,4 +302,8 @@ footer {
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   /* Additional styles as needed */
+}
+
+.edit-profile {
+  padding: 15px
 }
