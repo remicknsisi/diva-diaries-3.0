@@ -6,8 +6,6 @@ import EditUserForm from "./EditUserForm";
 import Post from "../posts/Post";
 
 function UserDetails() {
-  const [isHidden, setIsHidden] = useState(true)
-
   const dispatch = useDispatch();
 
   const users = useSelector((state) => state.users.entities);
@@ -31,14 +29,9 @@ function UserDetails() {
           <h1 className="username">{userToDisplay.username}</h1>
           <p className="bio">{userToDisplay.bio}</p>
         </div>
+        <br/><br/>
         <div className="edit-profile">
-          {/* only render this button if its your own profile */}
-          {isHidden ? <button onClick={() => setIsHidden(false)}>Edit Profile</button> : 
-            <>
-              <button onClick={() => setIsHidden(true)}>Hide Edit Profile Form</button>
-              <EditUserForm />
-            </>
-          }
+          {currentUser.user.id === id*1 ? <EditUserForm/> : null}
         </div>
       </header>
       <section className="user-posts">
