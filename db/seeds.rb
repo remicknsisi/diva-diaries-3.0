@@ -126,7 +126,7 @@ User.create(
 10.times do
     Post.create(
         location: Faker::Address.country,
-        image: 'https://teesvalley-ca.gov.uk/visit/wp-content/uploads/sites/4/2022/11/RuPaul-S4-768x432-ETV.jpg',
+        image: 'https://pyxis.nymag.com/v1/imgs/527/df4/8d0844b20983ad42dbd3f829d6610d8273-recaps-rupaul-down-under-ep-1.rsquare.w700.jpg',
         caption: Faker::TvShows::RuPaul.quote,
         user_id: rand(1..15)
     )
@@ -134,7 +134,7 @@ end
 10.times do
     Post.create(
         location: Faker::Address.country,
-        image: 'https://static.wikia.nocookie.net/logosrupaulsdragrace/images/9/9f/RDR8.jpg',
+        image: 'https://pyxis.nymag.com/v1/imgs/563/6a3/208eeb45af5cf37307633254a47c7f49e3-24-rupaul-makeup.rsquare.w700.jpg',
         caption: Faker::TvShows::RuPaul.quote,
         user_id: rand(1..15)
     )
@@ -142,7 +142,7 @@ end
 10.times do
     Post.create(
         location: Faker::Address.country,
-        image: 'https://media-cldnry.s-nbcnews.com/image/upload/rockcms/2022-08/drag-race-square-ak-2aa507.jpg',
+        image: 'https://pyxis.nymag.com/v1/imgs/172/887/76a6c024da7d6cfaf40285d987c04486d1-rupaul-drag-race-all-stars.rsquare.w700.jpg',
         caption: Faker::TvShows::RuPaul.quote,
         user_id: rand(1..15)
     )
@@ -150,7 +150,7 @@ end
 10.times do
     Post.create(
         location: Faker::Address.country,
-        image: 'https://static01.nyt.com/images/2014/02/23/fashion/23SUBRUPAUL_SPAN/23SUBRUPAUL-superJumbo.jpg',
+        image: 'https://pyxis.nymag.com/v1/imgs/921/694/16534c10a39a562bc32a69b45dcb1c1138-28-rupaul.rsquare.w700.jpg',
         caption: Faker::TvShows::RuPaul.quote,
         user_id: rand(1..15)
     )
