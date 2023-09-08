@@ -6,8 +6,6 @@ import './index.css';
 import App from './App';
 import store from "./store.js"
 
-console.log(store.getState())
-
 ReactDOM.render(
   <BrowserRouter>
     <Provider store={store}>

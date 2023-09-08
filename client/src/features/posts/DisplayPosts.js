@@ -12,11 +12,13 @@ function DisplayPosts() {
     dispatch(fetchPosts());
   }, [])
 
-  return (
+  if(posts){return (
     <div className="posts-container">
       {posts.map((p) => <Post key={p.id} post={p} user={p.user} inUserDetails={false}/>)}
     </div>
-  );
+  );} else{
+    return(<p>Loading...</p>)
+  }
 }
 
 export default DisplayPosts;

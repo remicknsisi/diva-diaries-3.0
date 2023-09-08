@@ -34,7 +34,9 @@ export default function usersReducer(state = initialState, action) {
         entities: [action.payload]};
 
     case "users/remove":
-      return state.filter((user) => user.id !== user.payload);
+      return {
+        ...state, 
+        entities: state.entities.filter((user) => user.id !== action.payload)};
 
     case "users/update":
       return {

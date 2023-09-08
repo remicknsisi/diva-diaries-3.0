@@ -37,7 +37,7 @@ class UsersController < ApplicationController
     def destroy
         if @user
             @user.destroy
-            head :no_content, status: :ok
+            render json: @user, status: :ok
         else
             render json: { error: "You may only delete your own account!" }, status: :unauthorized
         end

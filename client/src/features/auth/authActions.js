@@ -24,7 +24,6 @@ export const login = (user) => {
 export const loadUserFromStorage = () => {
     const authToken = localStorage.getItem('authToken');
     const userData = localStorage.getItem('userData');
-    console.log(localStorage);
   
     if (authToken && userData) {
     //   const userData = JSON.parse(userDataJSON);

@@ -98,10 +98,11 @@ function EditUserForm () {
                     <br/>
                     <input className="form-input" type="text" onChange={(e) => setNewBio(e.target.value)} value={newBio} placeholder="E.g. Sissy that walk" />
                     <br/><br/>
-                    <button className="button" type="submit">Finish Editing Profile</button> <button className="button" onClick={() => confirmDelete()}>Delete Profile</button>
+                    <button className="button" type="submit">Finish Editing Profile</button>
                     <p className="error-message">{errorsList}</p>
                     <p className="error-message">{error}</p>
                 </form>}
+                <button className="button" onClick={() => confirmDelete()}>Delete Profile</button>
         </div>
     )
 }

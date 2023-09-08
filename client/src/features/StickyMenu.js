@@ -24,15 +24,29 @@ function StickyMenu() {
   }, []);
 
   const currentUserJSON = useSelector(state => state.auth.currentUser)
-  const currentUser = JSON.parse(currentUserJSON)
+  // console.log(currentUserJSON, typeof(currentUserJSON))
+  // const currentUser = typeof(currentUserJSON) == 'string' ? JSON.parse(currentUserJSON) : null
+  let currentUser = null;
+
+  if (typeof currentUserJSON === 'string') {
+    try {
+      currentUser = JSON.parse(currentUserJSON);
+    } catch (error) {
+      console.error('Error parsing currentUserJSON:', error);
+      // Handle the parsing error, e.g., set currentUser to null or a default value
+    }
+  } else if (typeof currentUserJSON === 'object') {
+    currentUser = currentUserJSON;
+  }
 
   if(currentUser){return (
     <header className={`sticky-menu ${isSticky ? 'sticky' : ''}`}>
         <header className="app-header">
             <a className="title" href={`/`}>DivaDiaries</a>
-            <a href={`/users/${currentUser.user.id}`} ><AccountIcon /></a>
-            <a href={`/users/${currentUser.user.id}/posts`} ><PlusIcon /></a>
+            <a href={`/users/${currentUser.id}`} ><AccountIcon /></a>
+            <a href={`/users/${currentUser.id}/posts`} ><PlusIcon /></a>
             <a className="button" href={`/login`} onClick={() => logout(currentUser)}>Logout</a>
+            {/* mkae this change to login */}
         </header>
     </header>
   );} else {
