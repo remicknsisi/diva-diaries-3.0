@@ -7,8 +7,8 @@ import { useDispatch, useSelector } from "react-redux";
 import DeleteIcon from "../icons/DeleteIcon";
 import { removePost } from "./postsSlice";
 
-function Post({ post, inUserDetails, user }) {
-    const { location, caption, image, user_id, created_at, id } = post
+function Post({ post, inUserDetails }) {
+    const { location, caption, image, user_id, created_at, id, user } = post
     const [error, setError] = useState('')
     const dispatch = useDispatch();
     const navigate = useNavigate()
@@ -25,7 +25,7 @@ function Post({ post, inUserDetails, user }) {
         currentUser = JSON.parse(currentUserJSON);
       } catch (error) {
         console.error('Error parsing currentUserJSON:', error);
-        // Handle the parsing error, e.g., set currentUser to null or a default value
+        currentUser = null
       }
     } else if (typeof currentUserJSON === 'object') {
       currentUser = currentUserJSON;
@@ -51,11 +51,11 @@ function Post({ post, inUserDetails, user }) {
         })
     }
 
-    console.log(user_id, currentUser)
+    console.log(post)
 
   if(inUserDetails){
     return(
-        <div className="post-on-user-page" onClick={() => navigate(`/users/${user.id}/posts/${post.id}`)}>
+        <div className="post-on-user-page" onClick={() => navigate(`/users/${user_id}/posts/${post.id}`)}>
             <div className="post-on-user-page-img">
                 <img src={image} alt="post"/>
             </div>
@@ -66,7 +66,7 @@ function Post({ post, inUserDetails, user }) {
     <div className="post">
         <div className="post-header">
             <img className="profile-picture" src={user.profile_picture} alt="user"/>
-            <a className="username" href={`/users/${user.id}`}>{user.username}</a>
+            <a className="username" href={`/users/${user.id}`}>{post.user.username}</a>
             {currentUser.user.id === user_id ? <button className="button" onClick={() => handleDeletePost()}>Delete Post <DeleteIcon/></button> : null}
             <p className="error-message">{error}</p>    
         </div>
@@ -86,7 +86,7 @@ function Post({ post, inUserDetails, user }) {
             </div>
         </div>
         <div className="post-caption">
-            <a className="username" href={`/users/${user.id}`}>{user.username}</a>
+            <a className="username" href={`/users/${user.id}`}>{post.user.username}</a>
             <span className="caption-text"> {caption}</span>
         </div>
         <div className="post-comments">

@@ -14,11 +14,12 @@ function DisplayComments({ id, inPostDetails }) {
         dispatch(fetchComments());
     }, [])
 
-    const commentsToDisplay = [...comments].filter((c) => c.post_id === id)
+    const commentsToDisplay = [...comments].filter((c) => c.post_id*1 === id*1)
 
     const commentsList = commentsToDisplay.map((c) => (
         <Comment key={c.id} comment={c}/>
     ))
+    console.log(commentsToDisplay)
 
   if(inPostDetails){return(
         <>
