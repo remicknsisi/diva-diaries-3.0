@@ -33,17 +33,18 @@ function StickyMenu() {
       currentUser = JSON.parse(currentUserJSON);
     } catch (error) {
       console.error('Error parsing currentUserJSON:', error);
-      // Handle the parsing error, e.g., set currentUser to null or a default value
+      currentUser = null
     }
   } else if (typeof currentUserJSON === 'object') {
     currentUser = currentUserJSON;
   }
+  console.log(currentUser)
 
   if(currentUser){return (
     <header className={`sticky-menu ${isSticky ? 'sticky' : ''}`}>
         <header className="app-header">
             <a className="title" href={`/`}>DivaDiaries</a>
-            <a href={`/users/${currentUser.id}`} ><AccountIcon /></a>
+            <a href={`/users/${currentUser.user.id}`} ><AccountIcon /></a>
             <a href={`/users/${currentUser.id}/posts`} ><PlusIcon /></a>
             <a className="button" href={`/login`} onClick={() => logout(currentUser)}>Logout</a>
             {/* mkae this change to login */}

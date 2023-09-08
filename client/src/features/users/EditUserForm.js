@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import { updateUser, removeUser } from "./usersSlice";
+import { logout } from "../auth/authActions"
 
 function EditUserForm () {
     const [isHidden, setIsHidden] = useState(true)
@@ -66,6 +67,7 @@ function EditUserForm () {
                 if(res.ok){
                     res.json().then((deletedUser) => {
                         dispatch(removeUser(deletedUser.id))
+                        dispatch(logout(deletedUser))
                         navigate('/login')})
                 } else {
                     res.json().then((message) => {

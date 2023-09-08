@@ -18,7 +18,19 @@ function Post({ post, inUserDetails, user }) {
     const formattedDate = date.toLocaleDateString(undefined, options);
 
     const currentUserJSON = useSelector(state => state.auth.currentUser)
-    const currentUser = JSON.parse(currentUserJSON)
+    let currentUser = null;
+
+    if (typeof currentUserJSON === 'string') {
+      try {
+        currentUser = JSON.parse(currentUserJSON);
+      } catch (error) {
+        console.error('Error parsing currentUserJSON:', error);
+        // Handle the parsing error, e.g., set currentUser to null or a default value
+      }
+    } else if (typeof currentUserJSON === 'object') {
+      currentUser = currentUserJSON;
+    }
+    // const currentUser = JSON.parse(currentUserJSON)
 
     function handleDeletePost(){
         fetch(`/posts/${id}`, {
@@ -39,6 +51,8 @@ function Post({ post, inUserDetails, user }) {
         })
     }
 
+    console.log(user_id, currentUser)
+
   if(inUserDetails){
     return(
         <div className="post-on-user-page" onClick={() => navigate(`/users/${user.id}/posts/${post.id}`)}>
@@ -47,7 +61,8 @@ function Post({ post, inUserDetails, user }) {
             </div>
         </div> 
     )
-  }else {return (
+  }else {
+    if(currentUser){return (
     <div className="post">
         <div className="post-header">
             <img className="profile-picture" src={user.profile_picture} alt="user"/>
@@ -81,7 +96,9 @@ function Post({ post, inUserDetails, user }) {
             <span>{formattedDate}</span>
         </div>
     </div>
-  )}
+  )}else{
+    <p>Loading...</p>
+  }}
 }
 
 export default Post;
