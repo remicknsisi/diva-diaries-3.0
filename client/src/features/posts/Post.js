@@ -18,19 +18,19 @@ function Post({ post, inUserDetails }) {
     const formattedDate = date.toLocaleDateString(undefined, options);
 
     const currentUserJSON = useSelector(state => state.auth.currentUser)
-    let currentUser = null;
+    // let currentUser = null;
 
-    if (typeof currentUserJSON === 'string') {
-      try {
-        currentUser = JSON.parse(currentUserJSON);
-      } catch (error) {
-        console.error('Error parsing currentUserJSON:', error);
-        currentUser = null
-      }
-    } else if (typeof currentUserJSON === 'object') {
-      currentUser = currentUserJSON;
-    }
-    // const currentUser = JSON.parse(currentUserJSON)
+    // if (typeof currentUserJSON === 'string') {
+    //   try {
+    //     currentUser = JSON.parse(currentUserJSON);
+    //   } catch (error) {
+    //     console.error('Error parsing currentUserJSON:', error);
+    //     currentUser = null
+    //   }
+    // } else if (typeof currentUserJSON === 'object') {
+    //   currentUser = currentUserJSON;
+    // }
+    const currentUser = JSON.parse(currentUserJSON)
 
     function handleDeletePost(){
         fetch(`/posts/${id}`, {
@@ -50,8 +50,6 @@ function Post({ post, inUserDetails }) {
             }
         })
     }
-
-    console.log(post)
 
   if(inUserDetails){
     return(

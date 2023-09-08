@@ -5,11 +5,8 @@ import { fetchComments } from './commentsSlice';
 
 function DisplayComments({ id, inPostDetails }) {
     const [isHidden, setIsHidden] = useState(true)
-
     const dispatch = useDispatch();
-
     const comments = useSelector((state) => state.comments.entities);
-
     useEffect(() => {
         dispatch(fetchComments());
     }, [])
@@ -19,7 +16,6 @@ function DisplayComments({ id, inPostDetails }) {
     const commentsList = commentsToDisplay.map((c) => (
         <Comment key={c.id} comment={c}/>
     ))
-    console.log(commentsToDisplay)
 
   if(inPostDetails){return(
         <>

@@ -78,7 +78,6 @@ function PostDetails() {
         </div>
         <div className="post-comments">
             <DisplayComments id={post_id} inPostDetails={true} />
-            {/* why wont comments render here? */}
         </div>
         <div className="post-timestamp">
             <span>{formattedDate}</span>

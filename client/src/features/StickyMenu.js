@@ -25,20 +25,20 @@ function StickyMenu() {
 
   const currentUserJSON = useSelector(state => state.auth.currentUser)
   // console.log(currentUserJSON, typeof(currentUserJSON))
-  // const currentUser = typeof(currentUserJSON) == 'string' ? JSON.parse(currentUserJSON) : null
-  let currentUser = null;
+  const currentUser = JSON.parse(currentUserJSON)
+  // let currentUser = null;
 
-  if (typeof currentUserJSON === 'string') {
-    try {
-      currentUser = JSON.parse(currentUserJSON);
-    } catch (error) {
-      console.error('Error parsing currentUserJSON:', error);
-      currentUser = null
-    }
-  } else if (typeof currentUserJSON === 'object') {
-    currentUser = currentUserJSON;
-  }
-  console.log(currentUser)
+  // if (typeof currentUserJSON === 'string') {
+  //   try {
+  //     currentUser = JSON.parse(currentUserJSON);
+  //   } catch (error) {
+  //     console.error('Error parsing currentUserJSON:', error);
+  //     currentUser = null
+  //   }
+  // } else if (typeof currentUserJSON === 'object') {
+  //   currentUser = currentUserJSON;
+  // }
+  // console.log(currentUser)
 
   if(currentUser){return (
     <header className={`sticky-menu ${isSticky ? 'sticky' : ''}`}>

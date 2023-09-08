@@ -11,19 +11,19 @@ function DisplayLikes({ post }) {
     const dispatch = useDispatch();
 
     const currentUserJSON = useSelector(state => state.auth.currentUser)
-    // const currentUser = JSON.parse(currentUserJSON)
-    let currentUser = null;
+    const currentUser = JSON.parse(currentUserJSON)
+    // let currentUser = null;
 
-    if (typeof currentUserJSON === 'string') {
-      try {
-        currentUser = JSON.parse(currentUserJSON);
-      } catch (error) {
-        console.error('Error parsing currentUserJSON:', error);
-        // Handle the parsing error, e.g., set currentUser to null or a default value
-      }
-    } else if (typeof currentUserJSON === 'object') {
-      currentUser = currentUserJSON;
-    }
+    // if (typeof currentUserJSON === 'string') {
+    //   try {
+    //     currentUser = JSON.parse(currentUserJSON);
+    //   } catch (error) {
+    //     console.error('Error parsing currentUserJSON:', error);
+    //     // Handle the parsing error, e.g., set currentUser to null or a default value
+    //   }
+    // } else if (typeof currentUserJSON === 'object') {
+    //   currentUser = currentUserJSON;
+    // }
 
     const likeExists = post.likes.find((l) => l.user_id === currentUser.id)
     const selfLiked = likeExists ? true : false
