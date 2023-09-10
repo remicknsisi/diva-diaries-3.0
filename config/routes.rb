@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   resources :posts
   resources :comments, only: [:index, :destroy]
   resources :likes, only: [:index, :destroy]
+  resources :direct_messages, only: [:index, :create]
+  resources :followings, only: [:index, :create, :destroy]
 
   get "/users/:id/posts/:post_id", to: "posts#show"
   # get "/users/:id/posts/:post_id/likes", to: "users#users_who_liked"
