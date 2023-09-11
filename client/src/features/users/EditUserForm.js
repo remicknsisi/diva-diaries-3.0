@@ -18,13 +18,14 @@ function EditUserForm () {
     const [newUserName, setNewUsername] = useState('')
 
     const currentUserJSON = useSelector(state => state.auth.currentUser)
+    const currentUser = JSON.parse(currentUserJSON)
 
     useEffect(() => {
-        if (currentUserJSON.user){
-        setNewName(currentUserJSON.user.name)
-        setNewProfPic(currentUserJSON.user.profile_picture)
-        setNewBio(currentUserJSON.user.bio)
-        setNewUsername(currentUserJSON.user.username)
+        if (currentUser.user){
+        setNewName(currentUser.user.name)
+        setNewProfPic(currentUser.user.profile_picture)
+        setNewBio(currentUser.user.bio)
+        setNewUsername(currentUser.user.username)
     }
     }, [])
 
@@ -58,7 +59,7 @@ function EditUserForm () {
 
     function confirmDelete(){
         if (window.confirm("Are you sure you want to delete your account? This action cannot be undone.")) {
-            fetch(`/users/${currentUserJSON.user.id}`, {
+            fetch(`/users/${currentUser.user.id}`, {
                 method: 'DELETE',
                 headers: {"Content-Type": "application/json"},
               })

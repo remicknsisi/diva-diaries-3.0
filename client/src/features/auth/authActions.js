@@ -5,9 +5,14 @@ export const login = (user) => {
     localStorage.setItem('authToken', user.authToken);
     localStorage.setItem('userData', JSON.stringify(user));
 
+    // return {
+    //   type: LOGIN,
+    //   payload: user,
+    // };
     return {
       type: LOGIN,
-      payload: user,
+      payload: { authToken: user.authToken, 
+        user: JSON.stringify(user) }
     };
   };
   
@@ -21,15 +26,35 @@ export const login = (user) => {
     };
   };
 
+
+  // export const loadUserFromStorage = () => {
+  //   const authToken = localStorage.getItem('authToken');
+  //   const userData = localStorage.getItem('userData');
+  
+  //   if (authToken && userData) {
+  //     return {
+  //       type: LOAD_USER_FROM_STORAGE,
+  //       payload: JSON.parse(userData)
+  //     };
+  //   } else {
+  //     // Handle the case where either authToken or userDataJSON is not defined
+  //     // You can return an empty object or any other suitable value here
+  //     return {
+  //       type: LOAD_USER_FROM_STORAGE,
+  //       payload: null,
+  //     };
+  //   }
+  // };
+
 export const loadUserFromStorage = () => {
     const authToken = localStorage.getItem('authToken');
     const userData = localStorage.getItem('userData');
   
     if (authToken && userData) {
-    //   const userData = JSON.parse(userDataJSON);
       return {
         type: LOAD_USER_FROM_STORAGE,
-        payload: { authToken, userData },
+        payload: { authToken: authToken, 
+          userData: userData }
       };
     } else {
       // Handle the case where either authToken or userDataJSON is not defined

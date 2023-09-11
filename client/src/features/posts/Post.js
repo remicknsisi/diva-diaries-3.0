@@ -18,6 +18,7 @@ function Post({ post, inUserDetails }) {
     const formattedDate = date.toLocaleDateString(undefined, options);
 
     const currentUserJSON = useSelector(state => state.auth.currentUser)
+    const currentUser = JSON.parse(currentUserJSON)
 
     function handleDeletePost(){
         fetch(`/posts/${id}`, {
@@ -47,12 +48,12 @@ function Post({ post, inUserDetails }) {
         </div> 
     )
   }else {
-    if(currentUserJSON.user){return (
+    if(currentUser){return (
     <div className="post">
         <div className="post-header">
             <img className="profile-picture" src={user.profile_picture} alt="user"/>
             <a className="username" href={`/users/${user.id}`}>{post.user.username}</a>
-            {currentUserJSON.user.id === user_id ? <button className="button" onClick={() => handleDeletePost()}>Delete Post <DeleteIcon/></button> : null}
+            {currentUser.user.id === user_id ? <button className="button" onClick={() => handleDeletePost()}>Delete Post <DeleteIcon/></button> : null}
             <p className="error-message">{error}</p>    
         </div>
         <div className="post-location">
