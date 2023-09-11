@@ -24,22 +24,7 @@ function StickyMenu() {
   }, []);
 
   const currentUserJSON = useSelector(state => state.auth.currentUser)
-  //is an object upon initial log in, bc login action is setting state equal to an object
-  // console.log(currentUserJSON, typeof(currentUserJSON))
-  // const currentUser = JSON.parse(currentUserJSON)
-  // let currentUser = null;
 
-  // if (typeof currentUserJSON === 'string') {
-  //   try {
-  //     currentUser = JSON.parse(currentUserJSON);
-  //   } catch (error) {
-  //     console.error('Error parsing currentUserJSON:', error);
-  //     currentUser = null
-  //   }
-  // } else if (typeof currentUserJSON === 'object') {
-  //   currentUser = currentUserJSON;
-  // }
-  // console.log(currentUser)
 
   if (currentUserJSON) {return (
     <header className={`sticky-menu ${isSticky ? 'sticky' : ''}`}>
@@ -53,7 +38,11 @@ function StickyMenu() {
     </header>
   );} else{
     return(
-      <p>Loading...</p>
+      <header className={`sticky-menu ${isSticky ? 'sticky' : ''}`}>
+        <header className="app-header">
+            <a className="title">DivaDiaries</a>
+        </header>
+    </header>
     )
   }
 }
