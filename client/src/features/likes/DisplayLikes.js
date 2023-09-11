@@ -11,7 +11,7 @@ function DisplayLikes({ post }) {
     const dispatch = useDispatch();
 
     const currentUserJSON = useSelector(state => state.auth.currentUser)
-    const currentUser = JSON.parse(currentUserJSON)
+    // const currentUser = JSON.parse(currentUserJSON)
     // let currentUser = null;
 
     // if (typeof currentUserJSON === 'string') {
@@ -25,7 +25,7 @@ function DisplayLikes({ post }) {
     //   currentUser = currentUserJSON;
     // }
 
-    const likeExists = post.likes.find((l) => l.user_id === currentUser.id)
+    const likeExists = post.likes.find((l) => l.user_id === currentUserJSON.user.id)
     const selfLiked = likeExists ? true : false
 
     function handleLike() {
@@ -52,7 +52,7 @@ function DisplayLikes({ post }) {
     }
 
     function handleUnlike() {
-        const unlikedLike = post.likes.find((l) => l.user_id === currentUser.id)
+        const unlikedLike = post.likes.find((l) => l.user_id === currentUserJSON.user.id)
 
         fetch(`/likes/${unlikedLike.id}`, {
             method: 'DELETE',

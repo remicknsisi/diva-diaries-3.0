@@ -24,8 +24,9 @@ function StickyMenu() {
   }, []);
 
   const currentUserJSON = useSelector(state => state.auth.currentUser)
+  //is an object upon initial log in, bc login action is setting state equal to an object
   // console.log(currentUserJSON, typeof(currentUserJSON))
-  const currentUser = JSON.parse(currentUserJSON)
+  // const currentUser = JSON.parse(currentUserJSON)
   // let currentUser = null;
 
   // if (typeof currentUserJSON === 'string') {
@@ -40,19 +41,19 @@ function StickyMenu() {
   // }
   // console.log(currentUser)
 
-  if(currentUser){return (
+  if (currentUserJSON) {return (
     <header className={`sticky-menu ${isSticky ? 'sticky' : ''}`}>
         <header className="app-header">
             <a className="title" href={`/`}>DivaDiaries</a>
-            <a href={`/users/${currentUser.user.id}`} ><AccountIcon /></a>
-            <a href={`/users/${currentUser.id}/posts`} ><PlusIcon /></a>
-            <a className="button" href={`/login`} onClick={() => logout(currentUser)}>Logout</a>
+            <a href={`/users/${currentUserJSON.user.id}`} ><AccountIcon /></a>
+            <a href={`/users/${currentUserJSON.user.id}/posts`} ><PlusIcon /></a>
+            <a className="button" href={`/login`} onClick={() => logout(currentUserJSON.user)}>Logout</a>
             {/* mkae this change to login */}
         </header>
     </header>
-  );} else {
+  );} else{
     return(
-        null
+      <p>Loading...</p>
     )
   }
 }

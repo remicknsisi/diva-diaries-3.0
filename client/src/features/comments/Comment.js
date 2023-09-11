@@ -11,7 +11,6 @@ function Comment({ comment }) {
   const { content, user, id } = comment
 
     const currentUserJSON = useSelector(state => state.auth.currentUser)
-    const currentUser = JSON.parse(currentUserJSON)
 
     function handleDeleteComment() {
       fetch(`/comments/${id}`, {
@@ -39,7 +38,7 @@ function Comment({ comment }) {
             <li>
                 <a className="username" href="/">{user.username}</a>
                 <span className="comment-text"> {content}</span>
-                {user.id === currentUser.user.id ? <button onClick={() => handleDeleteComment()}>X</button> : null}
+                {user.id === currentUserJSON.user.id ? <button onClick={() => handleDeleteComment()}>X</button> : null}
                 <p className="error-message">{error}</p>    
             </li>
         </ul>

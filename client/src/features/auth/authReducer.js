@@ -30,7 +30,8 @@ const authReducer = (state = initialState, action) => {
       }
       return {
         ...state,
-        currentUser: action.payload.userData,
+        // currentUser: action.payload.userData,
+        currentUser: JSON.parse(action.payload.userData),
         authToken: action.payload.authToken,
       };
     default:

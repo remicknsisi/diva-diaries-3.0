@@ -10,7 +10,6 @@ function UserDetails() {
 
   const users = useSelector((state) => state.users.entities);
   const currentUserJSON = useSelector(state => state.auth.currentUser)
-  const currentUser = JSON.parse(currentUserJSON)
 
   const { id } = useParams();
 
@@ -31,7 +30,7 @@ function UserDetails() {
         </div>
       </header>
       <div className="edit-profile">
-          {currentUser.user.id === id*1 ? <EditUserForm currentUser={currentUser.user} /> : null}
+          {currentUserJSON.user.id === id*1 ? <EditUserForm currentUser={currentUserJSON.user} /> : null}
         </div>
       <section className="user-posts">
           {userToDisplay.posts.map((p) => <Post key={p.id} inUserDetails={true} post={p} user={userToDisplay} />)}
