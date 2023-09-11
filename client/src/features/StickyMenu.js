@@ -25,8 +25,6 @@ function StickyMenu() {
 
   const currentUserJSON = useSelector(state => state.auth.currentUser)
   const currentUser = JSON.parse(currentUserJSON)
-  console.log(currentUser)
-//I need the output of the LOGIN action to be the same as the LOAD FROM STORAGE action. One ie feeding an object.user and the other is just giving user, hence my errors
 
   if (currentUser) {return (
     <header className={`sticky-menu ${isSticky ? 'sticky' : ''}`}>

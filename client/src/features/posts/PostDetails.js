@@ -17,7 +17,8 @@ function PostDetails() {
     const posts = useSelector((state) => state.posts.entities)
     const post = posts.find((p) => p.id === post_id*1)
 
-    const currentUser = useSelector(state => state.auth.currentUser)
+    const currentUserJSON = useSelector(state => state.auth.currentUser)
+    const currentUser = JSON.parse(currentUserJSON)
 
     const isoDate = post ? post.created_at : null
     const date = new Date(isoDate)
@@ -53,7 +54,7 @@ function PostDetails() {
         <div className="post-header">
             <img className="profile-picture" src={post.user.profile_picture} alt="user"/>
             <a className="username" href={`/users/${post.user.id}`}>{post.user.username}</a>
-            {currentUser.id === id*1 ? <button className="button" onClick={() => handleDeletePost()}>Delete Post <DeleteIcon/></button> : null}
+            {currentUser.user.id === id*1 ? <button className="delete-button" onClick={() => handleDeletePost()}>Delete Post <DeleteIcon/></button> : null}
             <p className="error-message">{error}</p>    
         </div>
         <div className="post-location">
