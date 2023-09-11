@@ -8,7 +8,7 @@ I have implemented a secure functionality for signing up and logging in users th
 
 I built this app to continue to sharpen my API-building skills. In doing so, I wanted to try to learn and implement a new concept. This time, I taught myself Redux and I used it to manage state in my frontend to keep track of changes based on user interaction as well as persist session information as a queen navigates around the app.
 
-I have a few ideas on how I would like to expand upon this project, and some I've already begun to pursue. Like Instagram, I would like to add in a DM model and a Following Model to my backend. This way, I can manipulate the relationships between users and display new information in ineeresting new ways. Eventually, I might also look into building out a Discover page possibly tied to an external API.
+I have a few ideas on how I would like to expand upon this project, and some I've already begun to pursue. Like Instagram, I would like to add in a DM model and a Following Model to my backend. This way, I can manipulate the relationships between users and display new information in interesting new ways. With a Following model, I could more closely emulate Instagram by only displaying content from queens that the current user follows. Eventually, I might also look into building out a Discover page possibly tied to an external API.
 
 Thanks again for checking out DivaDiaries, I hope you like it!
 
