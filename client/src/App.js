@@ -13,6 +13,7 @@ import NewPostForm from "./features/posts/NewPostForm";
 import PostDetails from './features/posts/PostDetails';
 
 function App() {
+  console.log('test')
   const dispatch = useDispatch();
 
   useEffect(() => {
