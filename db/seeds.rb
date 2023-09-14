@@ -171,5 +171,12 @@ end
     )
 end
 
+150.times do
+    DirectMessage.create(
+        content: Faker::TvShows::RuPaul.quote,
+        user_id: rand(1..15)
+    )
+end
+
 
 puts "✅ Done seeding!"
