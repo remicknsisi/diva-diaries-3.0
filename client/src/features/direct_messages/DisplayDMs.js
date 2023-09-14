@@ -2,9 +2,11 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import DM from "./DM";
 import { fetchMessages } from "./dmsSlice";
+import { useNavigate } from 'react-router-dom';
 
 function DisplayDMs() {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const messages = useSelector((state) => state.messages.entities);
     console.log(messages)
@@ -14,9 +16,14 @@ function DisplayDMs() {
     }, [])
   
     if(messages){return (
-      <div className="posts-container">
+    <>
+        <button className="button" onClick={() => navigate(`/`)}>Back</button>
+        <div className="conversation-list">
+            Messages
+        
         {messages.map((m) => <DM key={m.id} message={m} user={m.user}/>)}
-      </div>
+        </div>
+    </>
     );} else{
       return(<p>Loading DMs...</p>)
     }
