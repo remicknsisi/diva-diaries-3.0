@@ -3,6 +3,7 @@ import { logout } from './auth/authActions';
 import { useSelector } from 'react-redux';
 import AccountIcon from './icons/AccountIcon';
 import PlusIcon from './icons/PlusIcon';
+import DMIcon from './icons/DMIcon';
 
 function StickyMenu() {
   const [isSticky, setIsSticky] = useState(false);
@@ -33,7 +34,7 @@ function StickyMenu() {
             <a href={`/users/${currentUser.user.id}`} ><AccountIcon /></a>
             <a href={`/users/${currentUser.user.id}/posts`} ><PlusIcon /></a>
             <a className="button" href={`/login`} onClick={() => logout(currentUser.user)}>Logout</a>
-            {/* mkae this change to login */}
+            <a href={`/users/${currentUser.user.id}/direct_messages`} ><DMIcon /></a>
         </header>
     </header>
   );} else{
