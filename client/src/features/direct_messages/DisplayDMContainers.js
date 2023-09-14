@@ -5,7 +5,7 @@ import { fetchMessages } from "./dmsSlice";
 import { fetchUsers } from "../users/usersSlice";
 import { useNavigate } from 'react-router-dom';
 
-function DisplayDMs() {
+function DisplayDMContainers() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -49,4 +49,4 @@ function DisplayDMs() {
     }
 }
 
-export default DisplayDMs;
+export default DisplayDMContainers;

@@ -11,7 +11,8 @@ import NewCommentForm from './features/comments/NewCommentForm';
 import StickyMenu from './features/StickyMenu';
 import NewPostForm from "./features/posts/NewPostForm";
 import PostDetails from './features/posts/PostDetails';
-import DisplayDMs from './features/direct_messages/DisplayDMs';
+import DisplayDMContainers from './features/direct_messages/DisplayDMContainers';
+import DisplayDirectMessages from './features/direct_messages/DirectMessage';
 
 function App() {
   const dispatch = useDispatch();
@@ -29,7 +30,8 @@ function App() {
           <Route path="/users/:id/posts/:post_id" element={<PostDetails/>}/>
           <Route path="/users/:id/posts" element={<NewPostForm/>}/>
           <Route path="/users/:id/posts/:post_id/comments" element={<NewCommentForm/>}/>
-          <Route path="/users/:id/direct_messages" element={<DisplayDMs/>}/>
+          <Route path="/users/:id/direct_messages" element={<DisplayDMContainers/>}/>
+          <Route path="/users/:id/direct_messages/:recipient_id" element={<DisplayDirectMessages/>}/>
           <Route path="/signup" element={<Signup/>}/>
           <Route path="/login" element={<Login/>}/>
         </Routes>
