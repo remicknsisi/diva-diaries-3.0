@@ -172,12 +172,20 @@ end
 end
 
 150.times do
+    user_id = nil
+    recipient_id = nil
+  
+    loop do
+      user_id = rand(1..15)
+      recipient_id = rand(1..15)
+      break if user_id != recipient_id
+    end
+  
     DirectMessage.create(
-        content: Faker::TvShows::RuPaul.quote,
-        user_id: rand(1..15),
-        # recipient_id: 
+      content: Faker::TvShows::RuPaul.quote,
+      user_id: user_id,
+      recipient_id: recipient_id
     )
-end
-
+  end
 
 puts "✅ Done seeding!"
