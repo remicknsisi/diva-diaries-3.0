@@ -174,7 +174,8 @@ end
 150.times do
     DirectMessage.create(
         content: Faker::TvShows::RuPaul.quote,
-        user_id: rand(1..15)
+        user_id: rand(1..15),
+        # recipient_id: 
     )
 end
 

@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-function DM() {
-  
+function DM({ message }) {
+  const { content, user_id, recipient_id } = message
 
   return (
     <div>
-        this is a dm component
+        <p>{content}</p>
     </div>
   );
 }
