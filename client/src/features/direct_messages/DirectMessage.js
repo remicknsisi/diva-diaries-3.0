@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
-import { fetchMessages } from "./dmsSlice";
 
-function DisplayDirectMessages() {
-  // const dispatch = useDispatch();
-  // const navigate = useNavigate();
-  // const { id } = useParams()
+function DirectMessage({ message }) {
+    const { id, user_id, recipient_id, content, created_at } = message
+//   const dispatch = useDispatch();
+//   const navigate = useNavigate();
+//   const { id, recipient_id } = useParams()
 
-  // const messages = useSelector((state) => state.messages.entities);
+//   const messages = useSelector((state) => state.messages.entities);
   // const messagesToDisplay = [...messages].filter((m) => m.recipient_id === recipient.id)
   // {messagesToDisplay.map((message) => <DirectMessage key={message.id} message={message}/>)}
 
@@ -16,16 +16,17 @@ function DisplayDirectMessages() {
   // console.log(messagesToDisplay)
 
 
-  // useEffect(() => {
-  //   dispatch(fetchMessages());
-  // }, [])
+//   useEffect(() => {
+//     dispatch(fetchMessages());
+//   }, [])
+
+console.log(message)
 
   return (
     <div>
-      this is the display direct messages component
-      render messages here for this recipient
+      {message.content}
     </div>
   );
 }
 
-export default DisplayDirectMessages;
+export default DirectMessage;

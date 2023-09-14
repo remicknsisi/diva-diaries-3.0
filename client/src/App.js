@@ -12,7 +12,7 @@ import StickyMenu from './features/StickyMenu';
 import NewPostForm from "./features/posts/NewPostForm";
 import PostDetails from './features/posts/PostDetails';
 import DisplayDMContainers from './features/direct_messages/DisplayDMContainers';
-import DisplayDirectMessages from './features/direct_messages/DirectMessage';
+import DisplayDirectMessages from './features/direct_messages/DisplayDirectMessages';
 
 function App() {
   const dispatch = useDispatch();
