@@ -315,3 +315,43 @@ footer {
   border-radius: 50%;
   margin-right: 10px;
 }
+
+.message {
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.message-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.message-input {
+  display: flex;
+  border-top: 1px solid #ddd;
+  padding: 10px 0;
+}
+
+.message-input input {
+  flex-grow: 1;
+  border: none;
+  outline: none;
+  padding: 10px;
+  font-size: 14px;
+}
+
+.send-button {
+  background-color: #3897f0;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.send-button:hover {
+  background-color: #2473c0;
+}

@@ -20,10 +20,8 @@ function DirectMessage({ message }) {
 //     dispatch(fetchMessages());
 //   }, [])
 
-console.log(message)
-
   return (
-    <div>
+    <div className="message">
       {message.content}
     </div>
   );
