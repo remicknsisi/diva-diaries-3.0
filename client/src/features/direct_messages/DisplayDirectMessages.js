@@ -4,6 +4,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { fetchMessages } from "./dmsSlice";
 import DirectMessage from "./DirectMessage";
 import NewDirectMessageForm from "./NewDirectMessageForm";
+import { fetchUsers } from "../users/usersSlice";
 
 function DisplayDirectMessages() {
   const { id, recipient_id } = useParams()
@@ -11,46 +12,34 @@ function DisplayDirectMessages() {
   const navigate = useNavigate();
 
   const messages = useSelector((state) => state.messages.entities);
+  const users = useSelector((state) => state.users.entities);
 
   useEffect(() => {
     dispatch(fetchMessages());
+    dispatch(fetchUsers());
   }, [])
 
-  const messagesToDisplay = [...messages].filter((m) => m.recipient_id === recipient_id*1)
+  const sentMessagesToDisplay = [...messages].filter((m) => m.recipient_id === recipient_id*1)
+  const recipientToDisplay = users.find((u) => u.id === recipient_id*1)
+  const receivedMessagesToDisplay = recipientToDisplay.direct_messages
+  const allMessages = [...receivedMessagesToDisplay, ...sentMessagesToDisplay]
+
+  allMessages.sort((a, b) => {
+    // Convert the 'created_at' strings to Date objects for comparison
+    const dateA = new Date(a.created_at);
+    const dateB = new Date(b.created_at);
+  
+    // Compare the dates
+    return dateA - dateB;
+  });
 
   return (
     <div className="message-container">
       <button className="button" onClick={() => navigate(`/users/${id}/direct_messages`)}>Back</button>
-      {messagesToDisplay.map((message) => <DirectMessage key={message.id} message={message}/>)}
+      {allMessages.map((message) => <DirectMessage key={message.id} message={message}/>)}
       <NewDirectMessageForm/>
     </div>
   );
 }
 
 export default DisplayDirectMessages;
-
-// .message-input {
-//   display: flex;
-//   border-top: 1px solid #ddd;
-//   padding: 10px 0;
-// }
-
-// .message-input input {
-//   flex-grow: 1;
-//   border: none;
-//   outline: none;
-//   padding: 10px;
-//   font-size: 14px;
-// }
-
-// .send-button {
-//   background-color: #3897f0;
-//   color: #fff;
-//   border: none;
-//   padding: 10px 20px;
-//   cursor: pointer;
-// }
-
-// .send-button:hover {
-//   background-color: #2473c0;
-// }

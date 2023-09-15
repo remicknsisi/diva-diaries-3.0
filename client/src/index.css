@@ -352,15 +352,19 @@ footer {
   color: #bbb;
 }
 
-.send-button {
-  background-color: #3897f0;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
+.dm-header {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
 }
 
-.send-button:hover {
-  background-color: #2473c0;
+.user-info-profile-pic {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
 }
 
+.user-info {
+  font-weight: bold;
+}

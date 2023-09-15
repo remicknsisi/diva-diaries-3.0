@@ -1,28 +1,25 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
+import { fetchUsers } from "../users/usersSlice";
 
 function DirectMessage({ message }) {
     const { id, user_id, recipient_id, content, created_at } = message
-//   const dispatch = useDispatch();
-//   const navigate = useNavigate();
-//   const { id, recipient_id } = useParams()
+    const dispatch = useDispatch();
+    const currentUserJSON = useSelector(state => state.auth.currentUser)
+    const currentUser = JSON.parse(currentUserJSON)
 
-//   const messages = useSelector((state) => state.messages.entities);
-  // const messagesToDisplay = [...messages].filter((m) => m.recipient_id === recipient.id)
-  // {messagesToDisplay.map((message) => <DirectMessage key={message.id} message={message}/>)}
-
-
-  // console.log(messagesToDisplay)
-
-
-//   useEffect(() => {
-//     dispatch(fetchMessages());
-//   }, [])
+    useEffect(() => {
+        dispatch(fetchUsers());
+    }, [])
 
   return (
     <div className="message">
-      {message.content}
+        <header className="dm-header">
+            {/* <img className="user-info-profile-pic" src={currentUser.user.profile_picture}/>
+            <p className="user-info">{currentUser.user.username}</p> */}
+        </header>
+        {message.content}
     </div>
   );
 }
