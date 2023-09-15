@@ -351,12 +351,6 @@ footer {
   color: #bbb;
 }
 
-.dm-header {
-  display: flex;
-  align-items: center;
-  padding: 10px 0;
-}
-
 .user-info-profile-pic {
   width: 40px;
   height: 40px;
@@ -368,7 +362,7 @@ footer {
   font-weight: bold;
 }
 
-.sent-message {
+/* .sent-message {
   background-color: #3897f0;
   color: #fff;
   padding: 5px;
@@ -388,6 +382,59 @@ footer {
   max-width: 70%; 
   word-wrap: break-word;
   text-align: left;
+} */
+
+.message-content {
+  padding: 5px;
+  border-radius: 25px;
+  display: inline-block;
+  max-width: 70%; /* Adjust the maximum width as needed */
+  word-wrap: break-word; /* Ensure long messages wrap to the next line */
+}
+/* 
+.sent-message {
+  background-color: #3897f0;
+  color: #fff;
+  text-align: right;
+} */
+
+.sent-message {
+  background-color: #3897f0;
+  color: #fff;
+  padding: 5px;
+  border-radius: 25px;
+  display: inline-block;
+  max-width: 70%;
+  word-wrap: break-word;
+  text-align: right; /* Ensure text alignment is set to right */
+}
+
+.received-message {
+  background-color: #e5e5ea;
+  color: #000;
+  text-align: left;
+}
+
+
+/* .dm-timestamp-received {
+  margin-top: 8px;
+  color: #888;
+  text-align: left;
+}
+
+.dm-timestamp-sent {
+  margin-top: 8px;
+  color: #888;
+  text-align: right;
+} */
+
+.dm-header-sent {
+  justify-content: flex-end;
+
+} 
+
+.dm-header-received {
+  justify-content: flex-start;
 }
 
 .dm-timestamp-received {
@@ -400,13 +447,4 @@ footer {
   margin-top: 8px;
   color: #888;
   text-align: right;
-}
-
-.dm-header-sent {
-  justify-content: flex-end;
-
-} 
-
-.dm-header-received {
-  justify-content: flex-start;
 }
