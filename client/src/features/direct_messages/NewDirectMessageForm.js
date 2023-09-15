@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import SendMessageIcon from "../icons/SendMessageIcon";
-import { addMessage } from "./dmsSlice";
+import { addMessage, fetchMessages } from "./dmsSlice";
 
 function NewDirectMessageForm () {
     const [newContent, setNewContent] = useState('')
@@ -30,6 +30,7 @@ function NewDirectMessageForm () {
             if(res.ok){
                 res.json().then((newDM) => {
                     dispatch(addMessage(newDM))
+                    dispatch(fetchMessages())
                     setNewContent('')
                     })
             } else {
