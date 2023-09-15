@@ -23,7 +23,21 @@ function UserDetails() {
   if (userToDisplay){return (
     <div>
         <title>Instagram User Page</title>
-      <header>
+        <div class="counts">
+          <div class="count">
+            <span class="count-number">123</span>
+            <span class="count-label">Posts</span>
+          </div>
+          <div class="count">
+            <span class="count-number">456</span>
+            <span class="count-label">Followers</span>
+          </div>
+          <div class="count">
+            <span class="count-number">789</span>
+            <span class="count-label">Following</span>
+          </div>
+        </div>
+        <header>
         <img className="profile-picture" src={userToDisplay.profile_picture} alt="User"/>
         <div className="user-info">
           <h1 className="username">{userToDisplay.username}</h1>
