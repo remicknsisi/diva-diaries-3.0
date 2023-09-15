@@ -25,11 +25,9 @@ function DisplayDirectMessages() {
   const allMessages = receivedMessagesToDisplay ? [...receivedMessagesToDisplay, ...sentMessagesToDisplay] : null
 
   if (allMessages){allMessages.sort((a, b) => {
-    // Convert the 'created_at' strings to Date objects for comparison
     const dateA = new Date(a.created_at);
     const dateB = new Date(b.created_at);
   
-    // Compare the dates
     return dateA - dateB;
   })};
 
@@ -41,7 +39,8 @@ function DisplayDirectMessages() {
     </div>
   )} else {
     return(
-    <p>Loading messages...</p>)
+      <p>Loading messages...</p>
+    )
   }
 }
 
