@@ -13,7 +13,10 @@ function DirectMessage({ message }) {
     const day = dateObject.getDate();
     const month = dateObject.toLocaleString('default', { month: 'long' });
     const time = dateObject.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-    const formattedDate = `${day} ${month} ${time}`;
+    const formattedDate = `${day} ${month} ${time}`;    
+    
+    const currentUserJSON = useSelector(state => state.auth.currentUser)
+    const currentUser = JSON.parse(currentUserJSON)
 
     useEffect(() => {
         dispatch(fetchUsers());
@@ -21,12 +24,14 @@ function DirectMessage({ message }) {
 
   return (
     <div className="message">
-        <header className="dm-header">
+        <header className={currentUser.user.id === user_id ?  "dm-header-sent" : "dm-header-received"}>
             <img className="user-info-profile-pic" src={userToDisplay.profile_picture}/>
             <p className="user-info">{userToDisplay.username}</p>
         </header>
-        {message.content}
-        <div className="post-timestamp">
+        <div className="message-content">
+            <p className={currentUser.user.id === user_id ? "sent-message" : "received-message"}>{message.content}</p>
+        </div>
+        <div className={currentUser.user.id === user_id ?  "dm-timestamp-sent" : "dm-timestamp-received"}>
             <span>{formattedDate}</span>
         </div>
     </div>

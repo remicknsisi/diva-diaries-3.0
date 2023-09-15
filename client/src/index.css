@@ -317,7 +317,6 @@ footer {
 }
 
 .message {
-  padding: 10px;
   border-radius: 10px;
   margin-bottom: 10px;
 }
@@ -367,4 +366,47 @@ footer {
 
 .user-info {
   font-weight: bold;
+}
+
+.sent-message {
+  background-color: #3897f0;
+  color: #fff;
+  padding: 5px;
+  border-radius: 25px;
+  display: inline-block;
+  max-width: 70%; 
+  word-wrap: break-word;
+  text-align: right;
+}
+    
+.received-message {
+  background-color: #e5e5ea;
+  color: #000;
+  padding: 5px;
+  border-radius: 25px;
+  display: inline-block;
+  max-width: 70%; 
+  word-wrap: break-word;
+  text-align: left;
+}
+
+.dm-timestamp-received {
+  margin-top: 8px;
+  color: #888;
+  text-align: left;
+}
+
+.dm-timestamp-sent {
+  margin-top: 8px;
+  color: #888;
+  text-align: right;
+}
+
+.dm-header-sent {
+  justify-content: flex-end;
+
+} 
+
+.dm-header-received {
+  justify-content: flex-start;
 }
