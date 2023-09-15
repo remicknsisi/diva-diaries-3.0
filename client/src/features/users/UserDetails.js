@@ -25,15 +25,15 @@ function UserDetails() {
         <title>Instagram User Page</title>
         <div class="counts">
           <div class="count">
-            <span class="count-number">123</span>
+            <span class="count-number">{userToDisplay.posts.length}</span>
             <span class="count-label">Posts</span>
           </div>
           <div class="count">
-            <span class="count-number">456</span>
+            <span class="count-number">X</span>
             <span class="count-label">Followers</span>
           </div>
           <div class="count">
-            <span class="count-number">789</span>
+            <span class="count-number">X</span>
             <span class="count-label">Following</span>
           </div>
         </div>

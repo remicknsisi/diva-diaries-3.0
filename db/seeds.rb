@@ -188,4 +188,20 @@ end
     )
   end
 
+100.times do
+    user_id = nil
+    followed_user_id = nil
+  
+    loop do
+      user_id = rand(1..15)
+      followed_user_id = rand(1..15)
+      break if user_id != followed_user_id
+    end
+
+    Following.create(
+        user_id: user_id,
+        followed_user_id: followed_user_id
+    )
+end
+
 puts "✅ Done seeding!"
