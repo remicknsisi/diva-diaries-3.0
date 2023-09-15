@@ -330,18 +330,26 @@ footer {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.message-input {
+.message-input-container {
   display: flex;
+  background-color: #fff;
   border-top: 1px solid #ddd;
-  padding: 10px 0;
+  padding: 10px;
+  align-items: center;
 }
 
-.message-input input {
+.message-input-field {
   flex-grow: 1;
   border: none;
   outline: none;
   padding: 10px;
   font-size: 14px;
+  border-radius: 20px;
+  margin-right: 10px;
+}
+
+.message-input-field::placeholder {
+  color: #bbb;
 }
 
 .send-button {
@@ -355,3 +363,4 @@ footer {
 .send-button:hover {
   background-color: #2473c0;
 }
+
