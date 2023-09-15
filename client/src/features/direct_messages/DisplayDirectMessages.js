@@ -21,25 +21,28 @@ function DisplayDirectMessages() {
 
   const sentMessagesToDisplay = [...messages].filter((m) => m.recipient_id === recipient_id*1)
   const recipientToDisplay = users.find((u) => u.id === recipient_id*1)
-  const receivedMessagesToDisplay = recipientToDisplay.direct_messages
-  const allMessages = [...receivedMessagesToDisplay, ...sentMessagesToDisplay]
+  const receivedMessagesToDisplay = recipientToDisplay ? recipientToDisplay.direct_messages : null
+  const allMessages = receivedMessagesToDisplay ? [...receivedMessagesToDisplay, ...sentMessagesToDisplay] : null
 
-  allMessages.sort((a, b) => {
+  if (allMessages){allMessages.sort((a, b) => {
     // Convert the 'created_at' strings to Date objects for comparison
     const dateA = new Date(a.created_at);
     const dateB = new Date(b.created_at);
   
     // Compare the dates
     return dateA - dateB;
-  });
+  })};
 
-  return (
+  if(allMessages){return (
     <div className="message-container">
       <button className="button" onClick={() => navigate(`/users/${id}/direct_messages`)}>Back</button>
       {allMessages.map((message) => <DirectMessage key={message.id} message={message}/>)}
       <NewDirectMessageForm/>
     </div>
-  );
+  )} else {
+    return(
+    <p>Loading messages...</p>)
+  }
 }
 
 export default DisplayDirectMessages;

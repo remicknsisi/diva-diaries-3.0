@@ -6,8 +6,9 @@ import { fetchUsers } from "../users/usersSlice";
 function DirectMessage({ message }) {
     const { id, user_id, recipient_id, content, created_at } = message
     const dispatch = useDispatch();
-    const currentUserJSON = useSelector(state => state.auth.currentUser)
-    const currentUser = JSON.parse(currentUserJSON)
+    const users = useSelector((state) => state.users.entities);
+
+    const userToDisplay = users.find((u) => u.id === user_id)
 
     useEffect(() => {
         dispatch(fetchUsers());
@@ -16,8 +17,8 @@ function DirectMessage({ message }) {
   return (
     <div className="message">
         <header className="dm-header">
-            {/* <img className="user-info-profile-pic" src={currentUser.user.profile_picture}/>
-            <p className="user-info">{currentUser.user.username}</p> */}
+            <img className="user-info-profile-pic" src={userToDisplay.profile_picture}/>
+            <p className="user-info">{userToDisplay.username}</p>
         </header>
         {message.content}
     </div>
