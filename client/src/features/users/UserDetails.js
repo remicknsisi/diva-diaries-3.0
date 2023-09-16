@@ -4,9 +4,11 @@ import { fetchUsers } from "./usersSlice";
 import { useParams } from 'react-router-dom';
 import EditUserForm from "./EditUserForm";
 import Post from "../posts/Post";
+import { addFollowing } from "../followings/followingsSlice";
 
 function UserDetails() {
-  const [errorsList, setErrorsList] = useState([])
+  const [errorsList, setErrorsList] = useState([]);
+  const [error, setError] = useState('');
   const dispatch = useDispatch();
 
   const users = useSelector((state) => state.users.entities);
@@ -19,10 +21,15 @@ function UserDetails() {
     dispatch(fetchUsers());
   }, [])
 
+  const userToDisplay = users.find((u) => u.id === id*1)
+
+  const isFollowed = userToDisplay ? userToDisplay.followers.find((follower) => follower.user_id === currentUser.user.id) : null
+  console.log(Boolean(isFollowed))
+
   function handleFollowUser(){
 
     const newFollowing = {
-      followed_user_id: 10
+      followed_user_id: userToDisplay.id
     }
 
     fetch(`/users/${currentUser.user.id}/followings`, {
@@ -35,7 +42,8 @@ function UserDetails() {
     .then(res => {
       if(res.ok){
           res.json().then((newFollowing) => {
-              // dispatch(addPost(newFollowing))
+              dispatch(addFollowing(newFollowing))
+              dispatch(fetchUsers())
               })
       } else {
           res.json().then((message) => {
@@ -46,22 +54,39 @@ function UserDetails() {
   })
   }
 
-  const userToDisplay = users.find((u) => u.id === id*1)
+  function handleUnfollowUser(){
+    fetch(`/followings/${id}`, {
+      method: 'DELETE',
+      headers: {"Content-Type": "application/json"},
+    })
+    .then(res => {
+      if(res.ok){
+          res.json().then((deletedFollowing) => {
+              // dispatch(removeComment(deletedComment.id))
+              })
+      } else {
+          res.json().then((message) => {
+              const errorMessage = message.error
+              setError(errorMessage)
+          })
+      }
+  })
+  }
 
   if (userToDisplay){return (
     <div>
-        <div class="counts">
-          <div class="count">
-            <span class="count-number">{userToDisplay.posts.length}</span>
-            <span class="count-label">Posts</span>
+        <div className="counts">
+          <div className="count">
+            <span className="count-number">{userToDisplay.posts.length}</span>
+            <span className="count-label">Posts</span>
           </div>
-          <div class="count">
-            <span class="count-number">{userToDisplay.followers.length}</span>
-            <span class="count-label">Followers</span>
+          <div className="count">
+            <span className="count-number">{userToDisplay.followers.length}</span>
+            <span className="count-label">Followers</span>
           </div>
-          <div class="count">
-            <span class="count-number">{userToDisplay.followings.length}</span>
-            <span class="count-label">Following</span>
+          <div className="count">
+            <span className="count-number">{userToDisplay.followings.length}</span>
+            <span className="count-label">Following</span>
           </div>
         </div>
         <header>
@@ -75,8 +100,9 @@ function UserDetails() {
           {currentUser.user.id === id*1 ? <EditUserForm currentUser={currentUser.user} /> : null}
       </div>
       <div className="follow-user">
-          {currentUser.user.id === id*1 ? null : <button className="button" onClick={() => handleFollowUser()}>Follow</button>}
+          {currentUser.user.id === id*1 ? null : isFollowed ? <button className="button" onClick={() => handleUnfollowUser()}>Unfollow</button> : <button className="button" onClick={() => handleFollowUser()}>Follow</button>}
           <p className="error-message">{errorsList}</p>
+          <p className="error-message">{error}</p>    
       </div>
       <section className="user-posts">
           {userToDisplay.posts.map((p) => <Post key={p.id} inUserDetails={true} post={p} user={userToDisplay} />)}

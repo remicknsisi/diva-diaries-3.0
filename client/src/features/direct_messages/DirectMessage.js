@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams, useNavigate } from "react-router-dom";
 import { fetchUsers } from "../users/usersSlice";
 
 function DirectMessage({ message }) {
-    const { id, user_id, recipient_id, content, created_at } = message
+    const { user_id, created_at } = message
     const dispatch = useDispatch();
     const users = useSelector((state) => state.users.entities);
     const userToDisplay = users.find((u) => u.id === user_id)

@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :comments, only: [:index, :destroy]
   resources :likes, only: [:index, :destroy]
   resources :direct_messages, only: [:index]
-  resources :followings, only: [:index, :create, :destroy]
+  resources :followings, only: [:index, :destroy]
 
   get "/users/:id/posts/:post_id", to: "posts#show"
   # get "/users/:id/posts/:post_id/likes", to: "users#users_who_liked"
@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   post "/users/:id/posts/:post_id/likes", to: "likes#create"
   post "/users/:id/posts", to: "posts#create"
   post "/users/:id/direct_messages", to: "direct_messages#create"
+  post "/users/:id/followings", to: "followings#create"
   post "/signup", to: "users#create"
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"

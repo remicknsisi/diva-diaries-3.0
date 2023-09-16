@@ -5,6 +5,7 @@ import postsReducer from "./features/posts/postsSlice";
 import commentsReducer from "./features/comments/commentsSlice";
 import authReducer from "./features/auth/authReducer";
 import messagesReducer from "./features/direct_messages/dmsSlice";
+import followingsReducer from "./features/followings/followingsSlice";
 
 const rootReducer = combineReducers({
   users: usersReducer,
@@ -12,7 +13,8 @@ const rootReducer = combineReducers({
   comments: commentsReducer,
   auth: authReducer,
   likes: likesReducer,
-  messages: messagesReducer
+  messages: messagesReducer,
+  followings: followingsReducer
 });
 
 export default rootReducer;
