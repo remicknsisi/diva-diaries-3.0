@@ -18,6 +18,10 @@ function UserDetails() {
     dispatch(fetchUsers());
   }, [])
 
+  function handleFollowUser(){
+    
+  }
+
   const userToDisplay = users.find((u) => u.id === id*1)
 
   if (userToDisplay){return (
@@ -45,7 +49,10 @@ function UserDetails() {
       </header>
       <div className="edit-profile">
           {currentUser.user.id === id*1 ? <EditUserForm currentUser={currentUser.user} /> : null}
-        </div>
+      </div>
+      <div className="follow-user">
+          {currentUser.user.id === id*1 ? null : <button className="button" onClick={() => handleFollowUser()}>Follow</button>}
+      </div>
       <section className="user-posts">
           {userToDisplay.posts.map((p) => <Post key={p.id} inUserDetails={true} post={p} user={userToDisplay} />)}
       </section>
