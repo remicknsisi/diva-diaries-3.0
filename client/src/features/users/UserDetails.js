@@ -6,6 +6,7 @@ import EditUserForm from "./EditUserForm";
 import Post from "../posts/Post";
 
 function UserDetails() {
+  const [errorsList, setErrorsList] = useState([])
   const dispatch = useDispatch();
 
   const users = useSelector((state) => state.users.entities);
@@ -19,7 +20,30 @@ function UserDetails() {
   }, [])
 
   function handleFollowUser(){
-    
+
+    const newFollowing = {
+      followed_user_id: 10
+    }
+
+    fetch(`/users/${currentUser.user.id}/followings`, {
+      method: 'POST',
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(
+          newFollowing
+      )
+    })
+    .then(res => {
+      if(res.ok){
+          res.json().then((newFollowing) => {
+              // dispatch(addPost(newFollowing))
+              })
+      } else {
+          res.json().then((message) => {
+              const errorLis = message.errors.map(error => <li key={error}>{error}</li>)
+              setErrorsList(errorLis)
+          })
+      }
+  })
   }
 
   const userToDisplay = users.find((u) => u.id === id*1)
@@ -52,6 +76,7 @@ function UserDetails() {
       </div>
       <div className="follow-user">
           {currentUser.user.id === id*1 ? null : <button className="button" onClick={() => handleFollowUser()}>Follow</button>}
+          <p className="error-message">{errorsList}</p>
       </div>
       <section className="user-posts">
           {userToDisplay.posts.map((p) => <Post key={p.id} inUserDetails={true} post={p} user={userToDisplay} />)}
