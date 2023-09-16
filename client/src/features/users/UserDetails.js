@@ -19,10 +19,10 @@ function UserDetails() {
   }, [])
 
   const userToDisplay = users.find((u) => u.id === id*1)
+  console.log(userToDisplay)
 
   if (userToDisplay){return (
     <div>
-        <title>Instagram User Page</title>
         <div class="counts">
           <div class="count">
             <span class="count-number">{userToDisplay.posts.length}</span>
@@ -33,7 +33,7 @@ function UserDetails() {
             <span class="count-label">Followers</span>
           </div>
           <div class="count">
-            <span class="count-number">X</span>
+            <span class="count-number">{userToDisplay.followings.length}</span>
             <span class="count-label">Following</span>
           </div>
         </div>
