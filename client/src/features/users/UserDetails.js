@@ -19,7 +19,6 @@ function UserDetails() {
   }, [])
 
   const userToDisplay = users.find((u) => u.id === id*1)
-  console.log(userToDisplay)
 
   if (userToDisplay){return (
     <div>
@@ -29,7 +28,7 @@ function UserDetails() {
             <span class="count-label">Posts</span>
           </div>
           <div class="count">
-            <span class="count-number">X</span>
+            <span class="count-number">{userToDisplay.followers.length}</span>
             <span class="count-label">Followers</span>
           </div>
           <div class="count">

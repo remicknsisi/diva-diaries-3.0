@@ -8,4 +8,9 @@ class User < ApplicationRecord
     has_many :comments
     has_many :direct_messages
     has_many :followings
+
+    def followers
+        allFollowings = Following.all
+        followers = allFollowings.where('followed_user_id = ?', self.id)
+    end
 end
