@@ -4,7 +4,7 @@ import { fetchUsers } from "./usersSlice";
 import { useParams } from 'react-router-dom';
 import EditUserForm from "./EditUserForm";
 import Post from "../posts/Post";
-import { addFollowing } from "../followings/followingsSlice";
+import { addFollowing, removeFollowing } from "../followings/followingsSlice";
 
 function UserDetails() {
   const [errorsList, setErrorsList] = useState([]);
@@ -55,14 +55,17 @@ function UserDetails() {
   }
 
   function handleUnfollowUser(){
-    fetch(`/followings/${id}`, {
+    const following_id = userToDisplay.followers.find((follower) => follower.user_id === currentUser.user.id)
+
+    fetch(`/followings/${following_id.id}`, {
       method: 'DELETE',
       headers: {"Content-Type": "application/json"},
     })
     .then(res => {
       if(res.ok){
           res.json().then((deletedFollowing) => {
-              // dispatch(removeComment(deletedComment.id))
+              dispatch(removeFollowing(deletedFollowing.id))
+              dispatch(fetchUsers())
               })
       } else {
           res.json().then((message) => {
@@ -100,7 +103,7 @@ function UserDetails() {
           {currentUser.user.id === id*1 ? <EditUserForm currentUser={currentUser.user} /> : null}
       </div>
       <div className="follow-user">
-          {currentUser.user.id === id*1 ? null : isFollowed ? <button className="button" onClick={() => handleUnfollowUser()}>Unfollow</button> : <button className="button" onClick={() => handleFollowUser()}>Follow</button>}
+          {currentUser.user.id === id*1 ? null : Boolean(isFollowed) ? <button className="button" onClick={() => handleUnfollowUser()}>Unfollow</button> : <button className="button" onClick={() => handleFollowUser()}>Follow</button>}
           <p className="error-message">{errorsList}</p>
           <p className="error-message">{error}</p>    
       </div>
