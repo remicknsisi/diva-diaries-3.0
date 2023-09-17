@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import AccountIcon from './icons/AccountIcon';
 import PlusIcon from './icons/PlusIcon';
 import DMIcon from './icons/DMIcon';
+import SearchIcon from './icons/SearchIcon';
 
 function StickyMenu() {
   const [isSticky, setIsSticky] = useState(false);
@@ -31,6 +32,7 @@ function StickyMenu() {
     <header className={`sticky-menu ${isSticky ? 'sticky' : ''}`}>
         <header className="app-header">
             <a className="title" href={`/`}>DivaDiaries</a>
+            <a href={`/users`} ><SearchIcon /></a>
             <a href={`/users/${currentUser.user.id}`} ><AccountIcon /></a>
             <a href={`/users/${currentUser.user.id}/posts`} ><PlusIcon /></a>
             <a className="button" href={`/login`} onClick={() => logout(currentUser.user)}>Logout</a>
