@@ -13,6 +13,7 @@ import NewPostForm from "./features/posts/NewPostForm";
 import PostDetails from './features/posts/PostDetails';
 import DisplayDMContainers from './features/direct_messages/DisplayDMContainers';
 import DisplayDirectMessages from './features/direct_messages/DisplayDirectMessages';
+import DisplayUsers from './features/users/DisplayUsers';
 
 function App() {
   const dispatch = useDispatch();
@@ -26,6 +27,7 @@ function App() {
       <StickyMenu/>
         <Routes>
           <Route path="/" element={<DisplayPosts/>}/>
+          <Route path="/users" element={<DisplayUsers/>}/>
           <Route path="/users/:id" element={<UserDetails/>}/>
           <Route path="/users/:id/posts/:post_id" element={<PostDetails/>}/>
           <Route path="/users/:id/posts" element={<NewPostForm/>}/>
