@@ -39,7 +39,7 @@ function DisplayDMContainers() {
     if(messages){return (
     <>
         <button className="button" onClick={() => navigate(`/`)}>Back</button>
-        Messages
+        <p className="heading">All Conversations</p>
         <div className="conversation-list">
             {recipientsToDisplay.map((recipient) => <DMContainer key={recipient.id} recipient={recipient}/>)}
         </div>

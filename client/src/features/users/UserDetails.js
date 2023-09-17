@@ -24,7 +24,6 @@ function UserDetails() {
   const userToDisplay = users.find((u) => u.id === id*1)
 
   const isFollowed = userToDisplay ? userToDisplay.followers.find((follower) => follower.user_id === currentUser.user.id) : null
-  console.log(Boolean(isFollowed))
 
   function handleFollowUser(){
 

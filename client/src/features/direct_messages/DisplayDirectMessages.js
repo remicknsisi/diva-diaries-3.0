@@ -32,9 +32,11 @@ function DisplayDirectMessages() {
   })};
 
   if(allMessages){return (
-    <div className="message-container">
+    <div className="dm-container">
       <button className="button" onClick={() => navigate(`/users/${id}/direct_messages`)}>Back</button>
-      {allMessages.map((message) => <DirectMessage key={message.id} message={message}/>)}
+      <div className="dm-messages">
+        {allMessages.map((message) => <DirectMessage key={message.id} message={message}/>)}
+      </div>
       <NewDirectMessageForm/>
     </div>
   )} else {

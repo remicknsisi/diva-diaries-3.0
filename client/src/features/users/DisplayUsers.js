@@ -20,7 +20,7 @@ function DisplayUsers() {
       })
 
   if(usersToDisplay){return (
-    <div className="posts-container">
+    <div className="conversation-list">
         <Search search={search} setSearch={setSearch}/>
         {usersToDisplay.map((u) => <User key={u.id} user={u}/>)}
     </div>
