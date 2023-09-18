@@ -31,14 +31,17 @@ function DisplayDirectMessages() {
     return dateA - dateB;
   })};
 
+
   if(allMessages){return (
+    <>
+    <button className="button" onClick={() => navigate(`/users/${id}/direct_messages`)}>Back</button>
     <div className="dm-container">
-      <button className="button" onClick={() => navigate(`/users/${id}/direct_messages`)}>Back</button>
       <div className="dm-messages">
         {allMessages.map((message) => <DirectMessage key={message.id} message={message}/>)}
       </div>
-      <NewDirectMessageForm/>
     </div>
+    <NewDirectMessageForm/>
+    </>
   )} else {
     return(
       <p>Loading messages...</p>

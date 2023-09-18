@@ -27,10 +27,13 @@ function DirectMessage({ message }) {
             <img className="user-info-profile-pic" src={userToDisplay.profile_picture}/>
             <p className="user-info">{userToDisplay.username}</p>
         </header>
-        <p className={`message-content ${currentUser.user.id === user_id ? "sent-message" : "received-message"}`}>{message.content}</p>
-        <div className={`dm-timestamp ${currentUser.user.id === user_id ? "dm-timestamp-sent" : "dm-timestamp-received"}`}>
-            <span>{formattedDate}</span>
+        <div className="message-content-container">
+            <p className={`message-content ${currentUser.user.id === user_id ? "sent-message" : "received-message"}`}>{message.content}</p>
+            <p className={`dm-timestamp ${currentUser.user.id === user_id ? "dm-timestamp-sent" : "dm-timestamp-received"}`}>{formattedDate}</p>
         </div>
+        {/* <div className={`dm-timestamp ${currentUser.user.id === user_id ? "dm-timestamp-sent" : "dm-timestamp-received"}`}>
+            <span>{formattedDate}</span>
+        </div> */}
     </div>
   );
 }
