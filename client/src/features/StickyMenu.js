@@ -32,11 +32,11 @@ function StickyMenu() {
     <header className={`sticky-menu ${isSticky ? 'sticky' : ''}`}>
         <header className="app-header">
             <a className="title" href={`/`}>DivaDiaries</a>
-            <a href={`/users`} ><SearchIcon tooltipText='Search Users'/></a>
-            <a href={`/users/${currentUser.user.id}`} ><AccountIcon tooltipText="My Account"/></a>
-            <a href={`/users/${currentUser.user.id}/posts`} ><PlusIcon tooltipText="New Post"/></a>
-            <a className="button" href={`/login`} onClick={() => logout(currentUser.user)}>Logout</a>
+            <a href={`/users`} ><SearchIcon tooltipText='Search'/></a>
+            <a href={`/users/${currentUser.user.id}`} ><AccountIcon tooltipText="Account"/></a>
+            <a href={`/users/${currentUser.user.id}/posts`} ><PlusIcon tooltipText="New"/></a>
             <a href={`/users/${currentUser.user.id}/direct_messages`} ><DMIcon tooltipText="Messages"/></a>
+            <a className="button" href={`/login`} onClick={() => logout(currentUser.user)}>Logout</a>
         </header>
     </header>
   );} else{
