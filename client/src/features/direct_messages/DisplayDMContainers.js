@@ -34,8 +34,8 @@ function DisplayDMContainers() {
       const uniqueRecipients = getUniqueRecipients(messages, "recipient_id");
     
       const recipientsToDisplay = users.filter((user) => uniqueRecipients.includes(user.id))
-
-      const chatOptions = users.map(user => <option value={user.id} key={user.id}>{user.username}</option>)
+      const usersForNewChat = users.map((user) => recipientsToDisplay.includes(user) ? null : user).filter((user) => user!== null)
+      const chatOptions = usersForNewChat.map(user => <option value={user.id} key={user.id}>{user.username}</option>)
 
   
     useEffect(() => {
@@ -47,7 +47,7 @@ function DisplayDMContainers() {
     <>
         <button className="button" onClick={() => navigate(`/`)}>Back</button>
         <p className="heading">All Conversations</p> 
-        <p>Start a chat with...</p><DropDown setOptions={setOptions} options={chatOptions}/><button className="button"><ComposeIcon/></button>
+        <p>Start a chat with...</p><DropDown setOptions={setOptions} options={chatOptions}/><button className="button">Let's Go! <ComposeIcon/></button>
         <div className="conversation-list">
             {recipientsToDisplay.map((recipient) => <DMContainer key={recipient.id} recipient={recipient}/>)}
         </div>
