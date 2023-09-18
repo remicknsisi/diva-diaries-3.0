@@ -31,9 +31,6 @@ function DirectMessage({ message }) {
             <p className={`message-content ${currentUser.user.id === user_id ? "sent-message" : "received-message"}`}>{message.content}</p>
             <p className={`dm-timestamp ${currentUser.user.id === user_id ? "dm-timestamp-sent" : "dm-timestamp-received"}`}>{formattedDate}</p>
         </div>
-        {/* <div className={`dm-timestamp ${currentUser.user.id === user_id ? "dm-timestamp-sent" : "dm-timestamp-received"}`}>
-            <span>{formattedDate}</span>
-        </div> */}
     </div>
   );
 }

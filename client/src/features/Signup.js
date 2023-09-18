@@ -3,6 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { addUser } from "./users/usersSlice";
 import { login } from "./auth/authActions";
 import { useDispatch } from "react-redux";
+import NameGenerator from './NameGenerator';
 
 function Signup (){
     const [name, setName] = useState('')
@@ -88,6 +89,7 @@ function Signup (){
                 <br/><br/><br/>
                 <p className='form-prompt'>Already have an account? <Link to={`/login`}>Login</Link></p>
             </form>
+            <NameGenerator/>
         </div>
     )
 }

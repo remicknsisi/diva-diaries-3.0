@@ -472,3 +472,24 @@ footer {
   padding: 10px;
 
 }
+
+.generated-name {
+  background: linear-gradient(#C13584, #E1306C, #FD1D1D);
+  width:fit-content;
+  padding: 8px 16px;
+  border-radius: 50px;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  font-size: 15px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+}
+
+.generator {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #ccc;
+  border-radius: 8px; 
+  padding: 10px
+}
