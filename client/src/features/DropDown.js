@@ -1,10 +1,10 @@
 import React from "react";
 
-function DropDown({ options, setOptions }) {
+function DropDown({ options, setSelectedOption }) {
 
   return (
     <div>
-        <select type="text" onChange={e => setOptions(e.target.value)}>
+        <select type="text" onChange={e => setSelectedOption(e.target.value*1)}>
         {options}
         </select>
     </div>

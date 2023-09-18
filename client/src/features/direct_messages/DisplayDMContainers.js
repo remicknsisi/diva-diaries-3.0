@@ -8,7 +8,7 @@ import ComposeIcon from "../icons/ComposeIcon";
 import DropDown from "../DropDown";
 
 function DisplayDMContainers() {
-  const [options, setOptions] = useState([])
+  const [selectedOption, setSelectedOption] = useState()
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const { id } = useParams()
@@ -47,7 +47,7 @@ function DisplayDMContainers() {
     <>
         <button className="button" onClick={() => navigate(`/`)}>Back</button>
         <p className="heading">All Conversations</p> 
-        <p>Start a chat with...</p><DropDown setOptions={setOptions} options={chatOptions}/><button className="button">Let's Go! <ComposeIcon/></button>
+        <p>Start a chat with...</p><DropDown setSelectedOption={setSelectedOption} options={chatOptions}/><button onClick={() => navigate(`/users/${id}/direct_messages/${selectedOption}`)} className="button">Let's Go! <ComposeIcon/></button>
         <div className="conversation-list">
             {recipientsToDisplay.map((recipient) => <DMContainer key={recipient.id} recipient={recipient}/>)}
         </div>
