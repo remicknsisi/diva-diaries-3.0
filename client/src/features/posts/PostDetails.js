@@ -69,7 +69,7 @@ function PostDetails() {
             <DisplayLikes post={post}/>
             </div>
             <div className="comment-button">
-            <button onClick={() => navigate(`/users/${id}/posts/${post_id}/comments`)}><CommentIcon/> Comment</button>
+            <button onClick={() => navigate(`/users/${id}/posts/${post_id}/comments`)}><CommentIcon tooltipText="Comment"/> Comment</button>
             </div>
         </div>
         <div className="post-caption">

@@ -4,7 +4,7 @@ import { faXmark } from '@fortawesome/free-solid-svg-icons';
 
 const DeleteIcon = () => {
   return (
-    <FontAwesomeIcon icon={faXmark} />
+    <FontAwesomeIcon className="icon" icon={faXmark} />
   );
 };
 

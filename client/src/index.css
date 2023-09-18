@@ -493,3 +493,30 @@ footer {
   border-radius: 8px; 
   padding: 10px
 }
+
+.icon-container {
+  position: relative;
+  display: inline-block;
+  cursor: pointer; 
+}
+
+.tooltip {
+  position: absolute;
+  background-color: #C13584 ; 
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+}
+
+.icon-container:hover .tooltip {
+  opacity: 1;
+}
+
+
+
+
+

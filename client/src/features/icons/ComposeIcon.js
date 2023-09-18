@@ -4,7 +4,7 @@ import { faPenNib } from '@fortawesome/free-solid-svg-icons';
 
 const ComposeIcon = () => {
   return (
-    <FontAwesomeIcon icon={faPenNib} />
+    <FontAwesomeIcon className="icon" icon={faPenNib} />
   );
 };
 

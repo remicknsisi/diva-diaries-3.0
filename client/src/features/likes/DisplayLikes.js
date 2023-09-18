@@ -63,7 +63,7 @@ function DisplayLikes({ post }) {
 
   return (
     <div>
-        { selfLiked ? <button onClick={() => handleUnlike()}><FullHeartIcon/> {post.likes.length} Likes</button> : <button onClick={() => handleLike()}><EmptyHeartIcon/> {post.likes.length} Likes</button>}
+        { selfLiked ? <button onClick={() => handleUnlike()}><FullHeartIcon tooltipText="Unlike"/> {post.likes.length} Likes</button> : <button onClick={() => handleLike()}><EmptyHeartIcon tooltipText="Like"/> {post.likes.length} Likes</button>}
         <p className="error-message">{errorsList}</p>  
         <p className="error-message">{error}</p>    
     </div>

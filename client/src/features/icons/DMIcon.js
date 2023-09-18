@@ -2,9 +2,12 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
 
-const DMIcon = () => {
+const DMIcon = ({ tooltipText }) => {
   return (
-    <FontAwesomeIcon icon={faEnvelope} />
+    <div className="icon-container">
+        <FontAwesomeIcon className="icon" icon={faEnvelope} />
+        <div className="tooltip">{tooltipText}</div>
+  </div>
   );
 };
 

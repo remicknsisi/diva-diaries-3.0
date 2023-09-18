@@ -2,9 +2,12 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faComment } from '@fortawesome/free-regular-svg-icons';
 
-const CommentIcon = () => {
+const CommentIcon = ({ tooltipText }) => {
   return (
-    <FontAwesomeIcon icon={faComment} />
+    <div className="icon-container">
+    <FontAwesomeIcon className="icon" icon={faComment} />
+    <div className="tooltip">{tooltipText}</div>
+</div>
   );
 };
 
