@@ -1,13 +1,16 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import DMContainer from "./DMContainer";
 import { fetchMessages } from "./dmsSlice";
 import { fetchUsers } from "../users/usersSlice";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import ComposeIcon from "../icons/ComposeIcon";
 
 function DisplayDMContainers() {
+  const [options, setOptions] = useState([])
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const { id } = useParams()
 
     const messages = useSelector((state) => state.messages.entities);
     const users = useSelector((state) => state.users.entities);
@@ -39,7 +42,8 @@ function DisplayDMContainers() {
     if(messages){return (
     <>
         <button className="button" onClick={() => navigate(`/`)}>Back</button>
-        <p className="heading">All Conversations</p>
+        <p className="heading">All Conversations</p> 
+        <p>Start a chat with...</p><DropDown options={options}/><button className="button"><ComposeIcon/></button>
         <div className="conversation-list">
             {recipientsToDisplay.map((recipient) => <DMContainer key={recipient.id} recipient={recipient}/>)}
         </div>
