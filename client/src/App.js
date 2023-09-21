@@ -14,6 +14,7 @@ import PostDetails from './features/posts/PostDetails';
 import DisplayDMContainers from './features/direct_messages/DisplayDMContainers';
 import DisplayDirectMessages from './features/direct_messages/DisplayDirectMessages';
 import DisplayUsers from './features/users/DisplayUsers';
+import DisplayFollowings from './features/followings/DisplayFollowings';
 
 function App() {
   const dispatch = useDispatch();
@@ -34,6 +35,8 @@ function App() {
           <Route path="/users/:id/posts/:post_id/comments" element={<NewCommentForm/>}/>
           <Route path="/users/:id/direct_messages" element={<DisplayDMContainers/>}/>
           <Route path="/users/:id/direct_messages/:recipient_id" element={<DisplayDirectMessages/>}/>
+          <Route path="/users/:id/followings" element={<DisplayFollowings inFollowers={false}/>}/>
+          <Route path="/users/:id/followers" element={<DisplayFollowings inFollowers={true}/>}/>
           <Route path="/signup" element={<Signup/>}/>
           <Route path="/login" element={<Login/>}/>
         </Routes>
