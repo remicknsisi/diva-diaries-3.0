@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUsers } from "./usersSlice";
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import EditUserForm from "./EditUserForm";
 import Post from "../posts/Post";
 import { addFollowing, removeFollowing } from "../followings/followingsSlice";
@@ -14,7 +14,7 @@ function UserDetails() {
   const users = useSelector((state) => state.users.entities);
   const currentUserJSON = useSelector(state => state.auth.currentUser)
   const currentUser = JSON.parse(currentUserJSON)
-
+  const navigate = useNavigate();
   const { id } = useParams();
 
   useEffect(() => {
@@ -82,11 +82,11 @@ function UserDetails() {
             <span className="count-number">{userToDisplay.posts.length}</span>
             <span className="count-label">Posts</span>
           </div>
-          <div className="count">
+          <div className="count" onClick={() => navigate(`/users/${id}/followers`)}>
             <span className="count-number">{userToDisplay.followers.length}</span>
             <span className="count-label">Followers</span>
           </div>
-          <div className="count">
+          <div className="count" onClick={() => navigate(`/users/${id}/followings`)}>
             <span className="count-number">{userToDisplay.followings.length}</span>
             <span className="count-label">Following</span>
           </div>
