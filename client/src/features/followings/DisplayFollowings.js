@@ -9,19 +9,22 @@ function DisplayFollowings({ inFollowers }) {
     const { id } = useParams();
     const users = useSelector((state) => state.users.entities);
     const user = users.find((u) => u.id === id*1)
+    console.log(user)
+
+    // const recipientsToDisplay = users.filter((user) => uniqueRecipients.includes(user.id))
+    
+    // follower count is off bc i have repeats from the smae user
+
+    const followers = user ? users.filter((u) => user.followers.some((f) => f.user_id === u.id)) : null
+    const followings = user ? users.filter((u) => user.followings.some((f) => f.user_id === u.id)) : null
 
     useEffect(() => {
         dispatch(fetchUsers());
     }, [])
 
-    // const usersToDisplay = users.filter(user => {
-    //     if (user.name.toLowerCase().includes(search)) return true;
-    //     else if (user.username.toLowerCase().includes(search)) return true;
-    //   })
-
   if(user){return (
     <div className="conversation-list">
-        {inFollowers ? user.followers.map((u) => <User key={u.id} user={u}/>) : user.followings.map((u) => <User key={u.id} user={u}/>) }
+        {inFollowers ? followers.map((u) => <User key={u.id} user={u}/>) : followings.map((u) => <User key={u.id} user={u}/>) }
     </div>
   );} else{
     return(<p>Loading...</p>)
