@@ -14,10 +14,10 @@ class User < ApplicationRecord
         followers = allFollowings.where('followed_user_id = ?', self.id)
         duplicate_ids = {}
         unique_followers = followers.select do |follower|
-            if duplicate_ids[follower.id]
+            if duplicate_ids[follower.user_id]
                 false
             else
-                duplicate_ids[follower.id] = true
+                duplicate_ids[follower.user_id] = true
             end
         end
     end

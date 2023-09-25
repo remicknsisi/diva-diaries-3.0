@@ -25,7 +25,7 @@ function UserDetails() {
   const userToDisplay = users.find((u) => u.id === id*1)
   console.log(userToDisplay)
 
-  const isFollowed = userToDisplay ? userToDisplay.followers.find((follower) => follower.user_id === currentUser.user.id) : null
+  const isFollowed = userToDisplay ? userToDisplay.unique_followers.find((follower) => follower.user_id === currentUser.user.id) : null
 
   function handleFollowUser(){
 
@@ -85,11 +85,11 @@ function UserDetails() {
             <span className="count-label">Posts</span>
           </div>
           <div className="count" onClick={() => navigate(`/users/${id}/followers`)}>
-            <span className="count-number">{userToDisplay.followers.length}</span>
+            <span className="count-number">{userToDisplay.unique_followers.length}</span>
             <span className="count-label">Followers</span>
           </div>
           <div className="count" onClick={() => navigate(`/users/${id}/followings`)}>
-            <span className="count-number">{userToDisplay.followings.length}</span>
+            <span className="count-number">{userToDisplay.unique_followings.length}</span>
             <span className="count-label">Following</span>
           </div>
         </div>
