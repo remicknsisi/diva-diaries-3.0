@@ -54,9 +54,9 @@ function UserDetails() {
   }
 
   function handleUnfollowUser(){
-    const following_id = userToDisplay.followers.find((follower) => follower.user_id === currentUser.user.id)
+    const following_id = userToDisplay.unique_followers.find((follower) => follower.user_id === currentUser.user.id).id
 
-    fetch(`/followings/${following_id.id}`, {
+    fetch(`/followings/${following_id}`, {
       method: 'DELETE',
       headers: {"Content-Type": "application/json"},
     })
