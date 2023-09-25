@@ -16,6 +16,7 @@ function UserDetails() {
   const currentUser = JSON.parse(currentUserJSON)
   const navigate = useNavigate();
   const { id } = useParams();
+  console.log(users)
 
   useEffect(() => {
     dispatch(fetchUsers());
