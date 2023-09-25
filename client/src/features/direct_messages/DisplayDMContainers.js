@@ -8,14 +8,12 @@ import ComposeIcon from "../icons/ComposeIcon";
 import DropDown from "../DropDown";
 
 function DisplayDMContainers() {
-  const [selectedOption, setSelectedOption] = useState()
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const { id } = useParams()
 
     const messages = useSelector((state) => state.messages.entities);
     const users = useSelector((state) => state.users.entities);
-    console.log(users)
 
     function getUniqueMessagers(arr, key) {
         const uniqueValues = [];
@@ -34,12 +32,13 @@ function DisplayDMContainers() {
 
       const uniqueRecipientIds = getUniqueMessagers(messages, "recipient_id");
       const currentUser = users.find((u) => u.id === id*1)
-      const uniqueSenderIds = getUniqueMessagers(currentUser.received_messages, "user_id");
+      const uniqueSenderIds = currentUser ? getUniqueMessagers(currentUser.received_messages, "user_id") : null
     
       const recipientsToDisplay = users.filter((user) => uniqueRecipientIds.includes(user.id) || uniqueSenderIds.includes(user.id))
       const usersForNewChat = users.map((user) => recipientsToDisplay.includes(user) ? null : user).filter((user) => user!== null)
       const chatOptions = usersForNewChat.map(user => <option value={user.id} key={user.id}>{user.username}</option>)
-  
+      const [selectedOption, setSelectedOption] = useState(chatOptions[0].props.value)
+
     useEffect(() => {
       dispatch(fetchMessages());
       dispatch(fetchUsers());
