@@ -16,14 +16,12 @@ function UserDetails() {
   const currentUser = JSON.parse(currentUserJSON)
   const navigate = useNavigate();
   const { id } = useParams();
-  console.log(users)
 
   useEffect(() => {
     dispatch(fetchUsers());
   }, [])
 
   const userToDisplay = users.find((u) => u.id === id*1)
-  console.log(userToDisplay)
 
   const isFollowed = userToDisplay ? userToDisplay.unique_followers.find((follower) => follower.user_id === currentUser.user.id) : null
 
