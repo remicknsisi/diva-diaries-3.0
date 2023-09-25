@@ -35,4 +35,9 @@ class User < ApplicationRecord
         end
     end
 
+    def received_messages
+        messages = DirectMessage.all
+        received_messages = messages.where('recipient_id = ?', self.id)
+    end
+
 end

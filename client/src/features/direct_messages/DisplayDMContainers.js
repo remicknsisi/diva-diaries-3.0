@@ -13,6 +13,8 @@ function DisplayDMContainers() {
     const navigate = useNavigate();
     const { id } = useParams()
 
+    const currentUserJSON = useSelector(state => state.auth.currentUser)
+    const currentUser = JSON.parse(currentUserJSON)
     const messages = useSelector((state) => state.messages.entities);
     const users = useSelector((state) => state.users.entities);
 
@@ -30,12 +32,14 @@ function DisplayDMContainers() {
       
         return uniqueValues;
       }
-      
+
       const uniqueRecipients = getUniqueRecipients(messages, "recipient_id");
     
       const recipientsToDisplay = users.filter((user) => uniqueRecipients.includes(user.id))
       const usersForNewChat = users.map((user) => recipientsToDisplay.includes(user) ? null : user).filter((user) => user!== null)
       const chatOptions = usersForNewChat.map(user => <option value={user.id} key={user.id}>{user.username}</option>)
+
+      console.log(users)
   
     useEffect(() => {
       dispatch(fetchMessages());
