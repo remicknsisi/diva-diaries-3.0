@@ -36,7 +36,6 @@ function DisplayDMContainers() {
       const recipientsToDisplay = users.filter((user) => uniqueRecipients.includes(user.id))
       const usersForNewChat = users.map((user) => recipientsToDisplay.includes(user) ? null : user).filter((user) => user!== null)
       const chatOptions = usersForNewChat.map(user => <option value={user.id} key={user.id}>{user.username}</option>)
-
   
     useEffect(() => {
       dispatch(fetchMessages());
@@ -47,13 +46,13 @@ function DisplayDMContainers() {
     <>
         <button className="button" onClick={() => navigate(`/`)}>Back</button>
         <div className="start-chat">
-        <p className="heading">All Conversations</p> 
         <p>Start a chat with...</p>
         <br/>
         <DropDown setSelectedOption={setSelectedOption} options={chatOptions}/>
         <br/>
         <button onClick={() => navigate(`/users/${id}/direct_messages/${selectedOption}`)} className="button">Let's Go! <ComposeIcon/></button>
         </div>
+        <p className="heading">All Current Conversations</p> 
         <div className="conversation-list">
             {recipientsToDisplay.map((recipient) => <DMContainer key={recipient.id} recipient={recipient}/>)}
         </div>

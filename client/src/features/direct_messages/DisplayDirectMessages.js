@@ -21,7 +21,7 @@ function DisplayDirectMessages() {
 
   const sentMessagesToDisplay = [...messages].filter((m) => m.recipient_id === recipient_id*1)
   const recipientToDisplay = users.find((u) => u.id === recipient_id*1)
-  const receivedMessagesToDisplay = recipientToDisplay ? recipientToDisplay.direct_messages.filter((dm) => dm.recipient_id === id) : null
+  const receivedMessagesToDisplay = recipientToDisplay ? recipientToDisplay.direct_messages.filter((dm) => dm.recipient_id === id*1) : null
   const allMessages = receivedMessagesToDisplay ? [...receivedMessagesToDisplay, ...sentMessagesToDisplay] : null
 
   if (allMessages){allMessages.sort((a, b) => {
