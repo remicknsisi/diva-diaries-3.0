@@ -21,7 +21,17 @@ function DisplayFollowings({ inFollowers }) {
   if(user){return (
     <div className="conversation-list">
         <button className="button" onClick={() => navigate(`/users/${id}`)}>Back</button>
-        {inFollowers ? followers.map((u) => <User key={u.id} user={u}/>) : followings.map((u) => <User key={u.id} user={u}/>) }
+        {inFollowers ? 
+        <>
+            <h2>Your Followers</h2>
+            {followers.map((u) => <User key={u.id} user={u}/>)}
+        </>
+        :
+        <>
+            <h2>Who You're Following</h2>
+            {followings.map((u) => <User key={u.id} user={u}/>)}
+        </>
+        }
     </div>
   );} else{
     return(<p>Loading...</p>)
