@@ -9,8 +9,26 @@ class User < ApplicationRecord
     has_many :direct_messages
     has_many :followings
 
-    def followers
+    def unique_followers
         allFollowings = Following.all
         followers = allFollowings.where('followed_user_id = ?', self.id)
+        unique_followers = followers.select do |follower|
+            if duplicate_ids[follower.id]
+                false
+            else
+                duplicate_ids[follower.id] = true
+            end
     end
+
+    def unique_followings
+        followings = self.followings
+        unique_followings = followings.select do |following|
+            if duplicate_ids[following.followed_user_id]
+                false
+            else
+                duplicate_ids[following.followed_user_id] = true
+                true
+        end
+    end
+
 end
