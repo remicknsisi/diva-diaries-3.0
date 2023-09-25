@@ -46,12 +46,14 @@ function DisplayDMContainers() {
     if(messages){return (
     <>
         <button className="button" onClick={() => navigate(`/`)}>Back</button>
+        <div className="start-chat">
         <p className="heading">All Conversations</p> 
         <p>Start a chat with...</p>
         <br/>
         <DropDown setSelectedOption={setSelectedOption} options={chatOptions}/>
         <br/>
         <button onClick={() => navigate(`/users/${id}/direct_messages/${selectedOption}`)} className="button">Let's Go! <ComposeIcon/></button>
+        </div>
         <div className="conversation-list">
             {recipientsToDisplay.map((recipient) => <DMContainer key={recipient.id} recipient={recipient}/>)}
         </div>
