@@ -35,9 +35,11 @@ function DisplayDMContainers() {
       const uniqueSenderIds = currentUser ? getUniqueMessagers(currentUser.received_messages, "user_id") : null
     
       const recipientsToDisplay = users.filter((user) => uniqueRecipientIds.includes(user.id) || uniqueSenderIds.includes(user.id))
-      const usersForNewChat = users.map((user) => recipientsToDisplay.includes(user) ? null : user).filter((user) => user!== null)
+      const usersForNewChat = users.map((user) => recipientsToDisplay.includes(user) ? null : user).filter((user) => user!== null && user.id !== id*1)
       const chatOptions = usersForNewChat.map(user => <option value={user.id} key={user.id}>{user.username}</option>)
-      const [selectedOption, setSelectedOption] = useState(chatOptions[0].props.value)
+      // const [selectedOption, setSelectedOption] =  useState(chatOptions[0].props.value)
+      const [selectedOption, setSelectedOption] =  useState('')
+
 
     useEffect(() => {
       dispatch(fetchMessages());
