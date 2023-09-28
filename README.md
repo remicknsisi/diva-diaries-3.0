@@ -1,16 +1,16 @@
-## DivaDiaries: RuPaul-themed Instagram Clone with a React/Rails API
+## DivaDiaries 2.0: RuPaul-themed Instagram Clone with a React/Rails API
 
 ## Description
 
-Thank you so much for your interest in DivaDiaries! While deep in a RuPaul's Drag Race binge (I'm on season 9 - no spoilers please), I'm continuously working on my coding skills. This app has a React/Rails API, and is intended to function as an Instagram clone, but specifically for past contestants of Drag Race.
+Welcome to DivaDiaries 2.0, I appreciate you following along on the progress of this application! For those of you who are unfamiliar with DivaDiaries 1.0 here is some context. While deep in a RuPaul's Drag Race binge (I'm on season 9 - no spoilers please), I'm continuously working on my coding skills. This app has a React/Rails API, and is intended to function as an Instagram clone, but specifically for past contestants of Drag Race. I built this app to continue to sharpen my API-building skills. In doing so, I taught myself Redux and discovered a whole new world of state management.
 
-I have implemented a secure functionality for signing up and logging in users that involves the bcrypt gem and 'has_secure_password' to hash and store sensitive user information reliably. Like when using Instagram, queens will be able to peruse their main feed, which is filled with other users' content. Queens can interact by liking or commenting on posts, as well as post their own photo to be seen on the main feed and their own profile page. 
+In the first version of this app, I implemented a secure functionality for signing up and logging in users that involves the bcrypt gem and 'has_secure_password' to hash and store sensitive user information reliably. Like when using Instagram, queens will be able to peruse their main feed, which is filled with other users' content. Queens can interact by liking or commenting on posts, as well as post their own photo to be seen on the main feed and their own profile page. 
 
-I built this app to continue to sharpen my API-building skills. In doing so, I wanted to try to learn and implement a new concept. This time, I taught myself Redux and I used it to manage state in my frontend to keep track of changes based on user interaction as well as persist session information as a queen navigates around the app.
+I'm proud to say that in my 2.0 version, I have added in Following and DirectMessage models to my database. Users can now follow each other and keep track of who follows them. Additionally, users can start chats with each other using the new DM functionality and dish all the shade they want in private. I've also improved overall design layout, added in hover states to icons, and a search functionality for a quicker look-up of good friends (or enemies).
 
-I have a few ideas on how I would like to expand upon this project, and some I've already begun to pursue. Like Instagram, I would like to add in a DM model and a Following Model to my backend. This way, I can manipulate the relationships between users and display new information in interesting new ways. With a Following model, I could more closely emulate Instagram by only displaying content from queens that the current user follows. Eventually, I might also look into building out a Discover page possibly tied to an external API.
+As far as even further enhancements go, I'd love to look into the implementation of an external API, and possibly adding in a Discover feed feature like the real Instagram has. Also, as more users join the database, conditional rendering to only view posts of your followed friends would make the experience feel even more like IG. DivaDiaries 24hr stories, and perhaps notification logic, are also in the works. :)
 
-Thanks again for checking out DivaDiaries, I hope you like it!
+Thank you for checking out DivaDiaries 2.0, and stay tuned for 3.0...
 
 ## Requirements
 

@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { removeComment } from "./commentsSlice";
-import { useNavigate } from "react-router-dom";
-import { fetchPosts } from "../posts/postsSlice"
+import { fetchPosts } from "../posts/postsSlice";
 
 function Comment({ comment }) {
   const [error, setError] = useState('')
-  const navigate = useNavigate()
   const dispatch = useDispatch();
   const { content, user, id } = comment
 
@@ -23,7 +21,7 @@ function Comment({ comment }) {
               res.json().then((deletedComment) => {
                   dispatch(removeComment(deletedComment.id))
                   dispatch(fetchPosts());
-                  navigate('/')})
+                  })
           } else {
               res.json().then((message) => {
                   const errorMessage = message.error
