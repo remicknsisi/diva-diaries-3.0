@@ -5,12 +5,6 @@ class UsersController < ApplicationController
     skip_before_action :authorize, only: :create
 
     def index
-        # if @user
-        #     render json: User.all, status: :ok
-        # else 
-        #     render json: { error: "You must log in or sign up to view this page." }, status: :unauthorized
-        # end
-
         render json: User.all, status: :ok
     end
 
@@ -44,10 +38,6 @@ class UsersController < ApplicationController
         else
             render json: { error: "You may only delete your own account!" }, status: :unauthorized
         end
-    end
-
-    def users_who_liked
-        # code here for users who liked the post 
     end
 
     private
