@@ -2,15 +2,11 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchPosts } from './postsSlice';
 import Post from "./Post";
-import { current } from "@reduxjs/toolkit";
 
 function DisplayPosts() {
   const dispatch = useDispatch();
 
   const posts = useSelector((state) => state.posts.entities);
-  // const currentUserJSON = useSelector(state => state.auth.currentUser);
-  // const currentUser = JSON.parse(currentUserJSON);
-  // console.log(currentUser)
 
   useEffect(() => {
     dispatch(fetchPosts());

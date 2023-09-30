@@ -5,10 +5,6 @@ export const login = (user) => {
     localStorage.setItem('authToken', user.authToken);
     localStorage.setItem('userData', JSON.stringify(user));
 
-    // return {
-    //   type: LOGIN,
-    //   payload: user,
-    // };
     return {
       type: LOGIN,
       payload: { authToken: user.authToken, 
@@ -26,26 +22,6 @@ export const login = (user) => {
     };
   };
 
-
-  // export const loadUserFromStorage = () => {
-  //   const authToken = localStorage.getItem('authToken');
-  //   const userData = localStorage.getItem('userData');
-  
-  //   if (authToken && userData) {
-  //     return {
-  //       type: LOAD_USER_FROM_STORAGE,
-  //       payload: JSON.parse(userData)
-  //     };
-  //   } else {
-  //     // Handle the case where either authToken or userDataJSON is not defined
-  //     // You can return an empty object or any other suitable value here
-  //     return {
-  //       type: LOAD_USER_FROM_STORAGE,
-  //       payload: null,
-  //     };
-  //   }
-  // };
-
 export const loadUserFromStorage = () => {
     const authToken = localStorage.getItem('authToken');
     const userData = localStorage.getItem('userData');
@@ -57,8 +33,7 @@ export const loadUserFromStorage = () => {
           userData: userData }
       };
     } else {
-      // Handle the case where either authToken or userDataJSON is not defined
-      // You can return an empty object or any other suitable value here
+
       return {
         type: LOAD_USER_FROM_STORAGE,
         payload: null,

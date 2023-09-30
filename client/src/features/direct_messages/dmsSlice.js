@@ -6,7 +6,6 @@ export const addMessage = (message) => {
     };
   };
   
-  
 //   Reducers
   const initialState = {
     entities: [],
