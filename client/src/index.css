@@ -388,11 +388,12 @@ footer {
 }
 
 .message-content-container{
-  position:relative;
+  /* position:relative; */
+  display: flex;
+  justify-content: space-between; 
 }
 
 .sent-message {
-  /* position:absolute; */
   float:right;
   text-align: right;
   right: 0;
@@ -401,19 +402,23 @@ footer {
   padding: 5px;
   border-radius: 25px;
   display:block;
-  /* display: inline-block; */
   max-width: 70%;
   word-wrap: break-word;
 }
 
 .received-message {
+  margin-left: auto;
   position:absolute;
   left: 0;
   background-color: #e5e5ea;
   color: #000;
   text-align: left;
+  word-wrap: break-word;
   left: 0;
-  float: left
+  float: left;
+  /* display: flex;
+  flex-direction: column;
+  justify-content: space-between; */
 }
 
 .dm-header-sent {
@@ -429,8 +434,8 @@ footer {
   color: #888;
   text-align: left;
   padding-top:5px;
-  display: inline-block;
-  padding-left: 5px
+  /* display: inline-block; */
+  padding-left: 5px;
 }
 
 .dm-timestamp-sent {

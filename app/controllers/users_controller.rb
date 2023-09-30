@@ -24,6 +24,9 @@ class UsersController < ApplicationController
 
     def create
         userData = User.create!(user_params)
+        if userData.profile_picture == nil
+            userData.update(profile_picture: "https://img.freepik.com/premium-vector/account-icon-user-icon-vector-graphics_292645-552.jpg")
+        end
         session[:user_id] = userData.id
         auth_token = AuthToken.encode(user_id: userData.id)
         render json: {user: userData, authToken: auth_token}, status: :created
